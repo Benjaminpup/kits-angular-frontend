@@ -1,7 +1,7 @@
 {
   "/api": {
-    "target": "https://d0d4a53atrial-dev-kits-cap-backend-srv.cfapps.us10-001.hana.ondemand.com",
-    "secure": true,
+    "target": "http://localhost:4004",
+    "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   }

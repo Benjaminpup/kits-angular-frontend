@@ -1,0 +1,934 @@
+<!-- <body data-layout="horizontal" data-topbar="dark"> -->
+ 
+<!-- Begin page -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+ 
+<p-toast style="margin-left: 20%"></p-toast>
+ 
+<div id="layout-wrapper">
+  <header id="page-topbar">
+    <div class="navbar-header" style="background: #fff !important">
+      <div class="d-flex">
+        <!-- LOGO -->
+ 
+        <div
+          [ngClass]="{
+            'navbar-brand-box': !isSidebarShrunk,
+            'vertical-menum': isSidebarShrunk
+          }"
+        >
+          <!-- <a class="logo logo-dark">
+                        <span class="logo-sm">
+                            <img src="assets/images/logo-icon-dark.png" alt="" height="35">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="assets/images/roboxa-logo-lite.png" alt="" height="35"
+                                style="float: left; margin-top: 35px;">
+                        </span>
+                    </a> -->
+ 
+          <a class="logo logo-light" *ngIf="!isSidebarShrunk">
+            <span class="logo-lg">
+              <img
+                style="margin-left: -60%; vertical-align: sub"
+                src="assets/images/roboxa-logo-lite.png"
+                alt=""
+                height="35"
+              />
+            </span>
+          </a>
+          <a *ngIf="isSidebarShrunk">
+            <span class="logo-lg" *ngIf="isSidebarShrunk">
+              <img
+                style="margin-top: 34%"
+                src="assets/images/logo-icon-lite.png"
+                alt=""
+                height="35"
+              />
+            </span>
+          </a>
+        </div>
+ 
+        <button
+          type="button"
+          class="menu-toggle"
+          id="sidebar-toggle"
+          class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+        >
+          <i class="mdi mdi-menu"></i>
+        </button>
+      </div>
+ 
+      <div class="d-flex">
+        <div class="dropdown d-inline-block d-lg-none ms-2">
+          <button
+            type="button"
+            class="btn header-item noti-icon waves-effect"
+            id="page-header-search-dropdown"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="mdi mdi-magnify"></i>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+            aria-labelledby="page-header-search-dropdown"
+          >
+            <form class="p-3">
+              <div class="form-group m-0">
+                <div class="input-group">
+                  <input
+                    autocomplete="off"
+                    type="text"
+                    class="form-control"
+                    placeholder="Search ..."
+                    aria-label="Recipient's username"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                      <i class="mdi mdi-magnify"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+ 
+        <div
+          *ngIf="!isfullscreen"
+          class="dropdown d-none d-lg-inline-block ms-1 fullscreen-button"
+        >
+          <button
+            type="button"
+            class="btn header-item noti-icon waves-effect"
+            data-bs-toggle="fullscreen"
+            (click)="openfullscreen()"
+          >
+            <i class="bx bx-fullscreen"></i>
+          </button>
+        </div>
+ 
+        <div
+          *ngIf="isfullscreen"
+          class="dropdown d-none d-lg-inline-block ms-1 exit-fullscreen-button"
+        >
+          <button
+            type="button"
+            class="btn header-item noti-icon waves-effect"
+            data-bs-toggle="fullscreen"
+            (click)="openfullscreen()"
+          >
+            <i class="bx bx-exit-fullscreen"></i>
+          </button>
+        </div>
+ 
+        <!-- <div class="dropdown d-none d-lg-inline-block ms-1">
+                    <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen" (click)="openfullscreen()">
+                      <i class="bi" [class.bi-fullscreen]="!isfullscreen" [class.bi-compress]="isfullscreen"></i>
+                    </button>
+                  </div>
+                   -->
+ 
+        <div class="dropdown d-inline-block">
+          <b>Role: </b>{{ role }}
+          <button
+            type="button"
+            class="btn header-item waves-effect"
+            id="page-header-user-dropdown"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              class="rounded-circle header-profile-user"
+              src="assets/images/profile_img.jpg"
+              alt="Header Avatar"
+            />
+            <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{
+              fullName | uppercase
+            }}</span>
+            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a
+              style="width: 85%"
+              (click)="profile()"
+              class="dropdown-item text-danger"
+              data-bs-toggle="model"
+              data-target="#myModal"
+              >
+              <span style="cursor: pointer;  
+              margin-left: -26px;
+              color: #20456a;
+              font-size: 0.9rem;" key="t-logout"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-pencil-square"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                  />
+                </svg>
+                &nbsp;View Profile</span
+              ></a
+            >
+ 
+            <a
+              style="width: 85%"
+              (click)="update()"
+              class="dropdown-item text-danger"
+              >
+              <span key="t-logout" style="    cursor: pointer;
+              margin-left: -26px;
+              color: #20456a;
+              font-size: 0.9rem;"
+                > <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-clockwise"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+                />
+              </svg>&nbsp;Update Password</span
+              >
+             
+             
+             
+             
+             
+              </a
+            >
+ 
+            <a
+              style="width: 85%"
+              (click)="updaten()"
+              class="dropdown-item text-danger"
+            >
+ 
+            <span key="t-logout" style=" cursor: pointer;
+              margin-left: -26px;
+              color: #20456a;
+              font-size: 0.9rem;"
+                >
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-power"
+                viewBox="0 0 16 16"
+              >
+                <path d="M7.5 1v7h1V1z" />
+                <path
+                  d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"
+                />
+              </svg>&nbsp;
+                Logout</span
+              >
+             
+              </a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <p-toast></p-toast> -->
+  </header>
+  <!-- <p-confirmDialog
+    [style]="{ width: '29vw', height: '18vw', 'padding-top': '14px' }"
+    rejectButtonStyleClass="p-button-text"
+    class="logoutDialogBox"
+  ></p-confirmDialog> -->
+ 
+  <p-confirmDialog class="logout-popup" styleClass="custom-dialog" [style]="{width: '27vw', height:'17vw'}" rejectButtonStyleClass="p-button-text">
+    <p-footer>
+        <button
+          type="button"
+          pButton
+          label="Yes"
+          (click)="clear()"
+          value="Yes"
+          class="p-button-tertiary"
+           
+        ></button>
+        <button
+          type="button"
+          pButton
+          label="No"
+          (click)="cancel()"
+          value="No"
+          class="p-button-secondary"
+           
+        ></button>
+     
+      </p-footer>
+</p-confirmDialog>
+ 
+  <p-button
+    style="font-size: 10px"
+    (click)="confirm2()"
+    label="Delete"
+  ></p-button>
+  <!-- View profile popup Start-->
+  <p-dialog
+    [style]="{ width: '25vw', height: '15vw' }"
+    [class.overlay]="addprofile"
+    [(visible)]="addprofile"
+    *ngIf="addprofile"
+    styleClass="customView-dialog"
+  >
+    <div class="view">
+      <svg
+      style="padding-bottom: 11px; margin-bottom: -24px;"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="40"
+        fill="currentColor"
+        class="bi bi-person-check-fill"
+        viewBox="0 0 15 15"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+        />
+        <path
+          d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+        />
+      </svg>
+    </div>
+    <br />
+ 
+    <div style="margin-left: 20px; height:45% ">
+      <label>First Name :&nbsp;&nbsp;{{ first_name }}</label
+      ><br />
+      <label>Last Name :&nbsp;&nbsp;{{ last_name }}</label
+      ><br />
+      <label>Email Id :&nbsp;&nbsp;{{ email }}</label
+      ><br />
+      <label>Role :&nbsp;&nbsp;{{ role }}</label>
+    </div>
+    <br />
+    <hr />
+  </p-dialog>
+ 
+   <!-- View profile popup End-->
+  <div>
+ 
+    <!-- Update password popup Start -->
+ 
+    <!-- <form [formGroup]="updatepasswordForm">
+      <p-dialog
+        [class.overlay]="updatepassword"
+        [(visible)]="updatepassword"
+        style="position: fixed;"
+        styleClass="custom1-dialog"
+        class="updatePassword-popup"
+      >
+        <p-toast class="" style="margin-left: 80%; height: 10px;"></p-toast>
+        <h5
+          class="modal-title passwordText"
+          style="margin-left: 20%; color: black; padding-bottom: 15px;"
+          id="transaction-detailModalLabel"
+        >
+          Update Password
+        </h5>
+        <div class="mb-3" style="width: 400px" class="enter">
+          <label> Email Iddd</label
+          ><label style="color: red; margin-left: 4px">*</label>
+          <input
+            autocomplete="off"
+            type="text"
+            style="margin-top: 2%; width: 65% !important;"
+            *ngIf="!passwordvisible"
+            [attr.disabled]="true"
+            formControlName="email"
+            class="form-control mb-3"
+            id=""
+            placeholder="Enter Username/Mail id"
+          />
+          <input
+            autocomplete="off"
+            type="text"
+            style="margin-top: 2%"
+            *ngIf="passwordvisible"
+            formControlName="email"
+            [attr.disabled]="true"
+            class="form-control mb-3"
+            id=""
+            placeholder="Enter Username/Mail id"
+          />
+        </div>
+ 
+        <div class="mb-3 modal-footer" class="reset">
+          <button
+            style="margin-left: 26%"
+            *ngIf="!passwordvisible"
+            (click)="set()"
+            class="btn btn-primary w-md"
+          >
+            Send OTP
+          </button>
+        </div>
+ 
+        <div *ngIf="passwordvisible" style="width: 100%;">
+          <label>Enter OTP</label
+          ><label style="color: red; margin-left: 4px">*</label>
+          <input
+            autocomplete="off"
+            style="margin-top: 2%"
+            type="text"
+            class="mb-3"
+            (input)="validateOTP($event.target, 'otp')"
+            id=""
+            formControlName="otp"
+            class="form-control"
+            placeholder="Enter OTP"
+            maxlength="6"
+          />
+          <div
+            *ngIf="
+              updatepasswordForm.get('otp')?.touched &&
+              updatepasswordForm.get('otp')?.hasError('required')
+            "
+            class="text-danger"
+          >
+            OTP is required
+          </div>
+          <div>
+            <label
+              for="password"
+              *ngIf="passwordvisible"
+              class="password-label form-group has-top-label w-100"
+            >
+              <span>Previous Password</span
+              ><label style="color: red; margin-left: 4px">*</label>
+              <input
+                autocomplete="off"
+                style="margin-top: 2%"
+                class="form-control"
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="passwordp"
+                (paste)="preventPaste($event)"
+                maxlength="16"
+                class="form-control mb-3"
+                id=""
+                placeholder="Enter Previous Password"
+              />
+              <button
+                type="button"
+                class="eye-button"
+                tabindex="-1"
+                style="color: #495057a3"
+                (click)="showPassword = !showPassword"
+              >
+                <i
+                  *ngIf="showPassword"
+                  class="fa fa-eye"
+                  aria-hidden="true"
+                ></i>
+                <i
+                  *ngIf="!showPassword"
+                  class="fa fa-eye-slash"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </label>
+            <div style="margin-top: -24px">
+              <div
+                *ngIf="
+                  updatepasswordForm.get('passwordp')?.touched &&
+                  updatepasswordForm.get('passwordp')?.hasError('required')
+                "
+                class="text-danger"
+              >
+                Password is required
+              </div>
+              <div
+                *ngIf="
+                  updatepasswordForm.get('passwordp')?.touched &&
+                  updatepasswordForm.get('passwordp')?.hasError('minlength')
+                "
+                class="text-danger"
+              >
+                Password should contain a minimum of 8 characters
+              </div>
+            </div>
+            <div
+              *ngIf="
+                updatepasswordForm.get('passwordp')?.touched &&
+                updatepasswordForm.get('passwordp')?.hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Password should include at least one lowercase letter, one
+              uppercase letter, one digit, and one special character
+            </div>
+          </div>
+          <div>
+            <label
+              for="passwordu"
+              *ngIf="passwordvisible"
+              class="password-label form-group has-top-label w-100"
+            >
+              <span>Update Password</span
+              ><label style="color: red; margin-left: 4px">*</label><br />
+              <input
+                autocomplete="off"
+                style="margin-top: 2%; display: flex"
+                class="form-control"
+                id="passwordu"
+                [type]="showPassword1 ? 'text' : 'password'"
+                formControlName="passwordu"
+                (paste)="preventPaste($event)"
+                maxlength="16"
+                class="form-control mb-3"
+                id=""
+                placeholder="Enter Update Password"
+              />
+              <button
+                type="button"
+                class="eye-button1"
+                tabindex="-1"
+                style="color: #495057a3"
+                (click)="showPassword1 = !showPassword1"
+              >
+                <i
+                  *ngIf="showPassword1"
+                  class="fa fa-eye"
+                  aria-hidden="true"
+                ></i>
+                <i
+                  *ngIf="!showPassword1"
+                  class="fa fa-eye-slash"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </label>
+ 
+            <div
+              style="margin-top: -24px"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('required')
+              "
+              class="text-danger"
+            >
+              Password is required
+            </div>
+            <div
+              style="margin-top: -24px"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('minlength')
+              "
+              class="text-danger"
+            >
+              Password should contain a minimum of 8 characters
+            </div>
+ 
+            <div
+              style="margin-top: -24px"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Password should include at least one lowercase letter, one
+              uppercase letter, one digit, and one special character
+            </div>
+ 
+            <hr />
+            <div
+              *ngIf="passwordvisible"
+              class="reset"
+              class="mb-3 modal-footer"
+            >
+              <button
+                #myModal
+                style="margin-right: 36%"
+                type="submit"
+                data-bs-dismiss="modal"
+                (click)="reset()"
+                class="btn btn-primary w-md"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </p-dialog>
+    </form> -->
+ 
+    <form [formGroup]="updatepasswordForm">
+      <p-dialog
+        [class.overlay]="updatepassword"
+        [(visible)]="updatepassword"
+        style="overflow: hidden;"
+       
+        styleClass="custom1-dialog"
+        class="updatePassword-popup"
+       
+      >
+ 
+      <div>
+        <h5
+        class="modal-title passwordText"
+        style="margin-left: 30%; color: #0073aa !important; font-size: 1rem !important; "
+        id="transaction-detailModalLabel"
+      >
+        Update Password
+      </h5>
+      <p-toast class="" style="margin-left: 80%; height: 10px;">
+      </p-toast>
+      </div>
+       
+ 
+        <!-- <p-toast class="" style="margin-left: 80%; height: 10px;">
+        </p-toast>
+        <h5
+          class="modal-title passwordText"
+          style="margin-left: 20%; color: black; padding-bottom: 15px;"
+          id="transaction-detailModalLabel"
+        >
+          Update Password
+        </h5> -->
+        <div class="mb-3 enter emailIDallignment" [ngClass]="{'before-otp': !passwordvisible, 'after-otp': passwordvisible}">
+          <label>Email Id</label><label style="color: red; margin-left: 4px">*</label>
+          <input
+            autocomplete="off"
+            type="text"
+            style="margin-top: 2%; padding: 5px !important; width: 100% !important;"
+            [ngClass]="{'full-width': !passwordvisible, 'reduced-width': passwordvisible}"
+            formControlName="email"
+            [attr.disabled]="true"
+            class="form-control mb-3"
+            placeholder="Enter Username/Mail id"
+          />
+        </div>
+        <!-- style="margin-left: 26% !important" -->
+        <div class="mb-2 modal-footer reset" *ngIf="!passwordvisible" styleClass="sendOtp-buttonAllignment"  >
+          <button
+         
+            (click)="set()"
+            class="btn btn-primary w-md send-otp-button"
+            styleClass=""
+          >
+            Send OTP
+          </button>
+        </div>
+   
+        <!-- <div *ngIf="passwordvisible" style="width: 138%; margin-bottom: -30px;"> -->
+          <div *ngIf="passwordvisible" style="width: 100% !important;">
+          <label>Enter OTP</label><label style="color: red; margin-left: 4px">*</label>
+          <input
+            autocomplete="off"
+            style="margin-top: 2%; width: 100% !important; padding: 5px !important;"
+            type="text"
+            class="mb-3"
+            (input)="validateOTP($event.target, 'otp')"
+            formControlName="otp"
+            class="form-control"
+            placeholder="Enter OTP"
+            maxlength="6"
+          />
+          <div
+            *ngIf="
+              updatepasswordForm.get('otp')?.touched &&
+              updatepasswordForm.get('otp')?.hasError('required')
+            "
+            class="text-danger required-text"
+          >
+            OTP is required
+          </div>
+          <div>
+            <label
+              for="password"
+              *ngIf="passwordvisible"
+              class="password-label form-group has-top-label w-100"
+            >
+              <span>Old Password</span><label style="color: red; margin-left: 4px">*</label>
+              <input
+                autocomplete="off"
+                style="margin-top: 2%; width: 100% !important; padding: 5px !important;"
+                class="form-control"
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="passwordp"
+                (paste)="preventPaste($event)"
+                maxlength="16"
+                class="form-control mb-3"
+                placeholder="Enter Old Password"
+              />
+              <div>
+              <button
+                type="button"
+                class="eye-button"
+                tabindex="-1"
+                style="color: #495749a3"
+                (click)="showPassword = !showPassword"
+              >
+                <i
+                  *ngIf="showPassword"
+                  class="fa fa-eye eyeIcon"
+                  aria-hidden="true"
+                  style="margin-right: -3rem;"
+             
+                ></i>
+                <!-- style="margin-left: -2000% !important" -->
+                <i
+                  *ngIf="!showPassword"
+                  class="fa fa-eye-slash eyeIcon"
+                  aria-hidden="true"
+                  style="margin-right: -3rem;"
+                 
+                ></i>
+                <!-- style="margin-left: -2000% !important" -->
+              </button>
+            </div>
+            </label>
+            <div style="margin-top: -24px">
+              <div
+                *ngIf="
+                  updatepasswordForm.get('passwordp')?.touched &&
+                  updatepasswordForm.get('passwordp')?.hasError('required')
+                "
+                class="text-danger required-text"
+              >
+                Password is required
+              </div>
+              <div style="width: 89% !important;"
+                *ngIf="
+                  updatepasswordForm.get('passwordp')?.touched &&
+                  updatepasswordForm.get('passwordp')?.hasError('minlength')
+                "
+                class="text-danger required-text"
+              >
+                Password should contain a minimum of 8 characters
+              </div>
+            </div>
+            <div
+              *ngIf="
+                updatepasswordForm.get('passwordp')?.touched &&
+                updatepasswordForm.get('passwordp')?.hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Password should include at least one lowercase letter, one
+              uppercase letter, one digit, and one special character
+            </div>
+          </div>
+          <div>
+            <label
+              for="passwordu"
+              *ngIf="passwordvisible"
+              class="password-label form-group has-top-label w-100"
+            >
+              <span>New Password</span><label style="color: red; margin-left: 4px">*</label><br />
+              <input
+                autocomplete="off"
+                style="margin-top: 2%; display: flex; width: 100% !important; padding: 5px !important;"
+                class="form-control"
+                id="passwordu"
+                [type]="showPassword1 ? 'text' : 'password'"
+                formControlName="passwordu"
+                (paste)="preventPaste($event)"
+                maxlength="16"
+                class="form-control mb-3"
+                placeholder="Enter New Password"
+              />
+              <button
+                type="button"
+                class="eye-button1"
+                tabindex="-1"
+                style="color: #495057a3"
+                (click)="showPassword1 = !showPassword1"
+              >
+                <i
+                  *ngIf="showPassword1"
+                  class="fa fa-eye eyeIcon"
+                  aria-hidden="true"
+                  style="margin-right: -3rem;"
+                 
+                ></i>
+                <!-- style="margin-left: -1400% !important" -->
+                <i
+                  *ngIf="!showPassword1"
+                  class="fa fa-eye-slash eyeIcon"
+                  aria-hidden="true"
+                  style="margin-right: -3rem;"
+                 
+                ></i>
+                <!-- style="margin-left: -1400% !important" -->
+              </button>
+            </label>
+   
+            <div
+              style="margin-top: -20px"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('required')
+              "
+              class="text-danger required-text"
+            >
+              Password is required
+            </div>
+            <div
+              style="margin-top: -24px; width: 89% !important;"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('minlength')
+              "
+              class="text-danger required-text"
+            >
+              Password should contain a minimum of 8 characters
+            </div>
+   
+            <div
+              style="margin-top: -24px"
+              *ngIf="
+                updatepasswordForm.get('passwordu')?.touched &&
+                updatepasswordForm.get('passwordu')?.hasError('pattern')
+              "
+              class="text-danger"
+            >
+              Password should include at least one lowercase letter, one
+              uppercase letter, one digit, and one special character
+            </div>
+   
+            <hr />
+            <div
+              *ngIf="passwordvisible"
+              class="reset  modal-footer"
+            >
+              <button
+                #myModal
+                 style="margin-top: -24px"
+                type="submit"
+                data-bs-dismiss="modal"
+                (click)="reset()"
+                class="btn btn-primary w-md update-button"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </p-dialog>
+    </form>
+   
+ 
+     <!-- Update password popup End -->
+     
+  </div>
+ 
+  <!--
+        <div *ngIf="role=='admin'" class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <div id="sidebar">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" key="t-menu">{{role}}</li>
+                        <li *ngFor="let item of menuItems">
+                            <a class="waves-effect" (click)="toggleSubItems(item)">
+                                <i [class]="item.icon"></i>
+                                <span key="t-chat">{{ item.label }}</span>
+                            </a>
+                            <ul *ngIf="item.expanded">
+                                <li *ngFor="let subItem of item.subItems">
+                                    <a [routerLink]="subItem.link" class="waves-effect">{{ subItem.label }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+ 
+  <div
+    class="vertical-menu sideNav-bgColor sidenav-hover"
+    id="sidebar"
+    style="width: 175px"
+  >
+    <div data-simplebar class="h-100">
+      <div id="sidebar-menu">
+        <ul
+          style="line-height: 18px"
+          class="metismenu list-unstyled"
+          id="side-menu"
+        >
+          <!-- <li *ngIf="!isSidebarShrunk" style="font-size: 11px;margin-left: 5px;" class="menu-title"
+                       key="t-menu">{{role}}</li>                   -->
+          <!-- Add *ngIf directive to conditionally render the icon -->
+          <i
+            *ngIf="isSidebarShrunk"
+            class="fas fa-user-md fa-2x"
+            style="color: white; margin-left: 23px; margin-bottom: 20%; display: none;"
+          ></i>
+ 
+          <li
+            *ngFor="let subItem of menuItems"
+            [routerLinkActive]="'active'"
+            class="sidenavHover"
+          >
+            <a [routerLink]="subItem.link" class="waves-effect">
+              <i
+                *ngIf="isSidebarShrunk"
+                style="margin-left: -16px"
+                class="{{ subItem.icon }}"
+              ></i>
+              <span *ngIf="!isSidebarShrunk" >{{
+                subItem.label
+              }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- <app-material></app-material> -->
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+  <div id="layout-wrapper" [ngClass]="{ 'content-shrunk': isSidebarShrunk }">
+    <router-outlet style="margin-left: 40%"></router-outlet>
+  </div>
+ 
+  <!-- end main content-->
+</div>
+<!-- <div id="layout-wrapper" [ngClass]="{ sh: isSidebarShrunk }">
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          ©2022, All Rights Reserved by Roboxa.
+        </div>
+      </div>
+    </div>
+  </footer>
+</div> -->
+<!-- END layout-wrapper -->
+ 
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>

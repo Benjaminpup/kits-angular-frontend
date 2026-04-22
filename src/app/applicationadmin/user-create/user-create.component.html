@@ -1,0 +1,312 @@
+<div class="main-content" style="margin-top: -7% !important;">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div>
+        <div class="fixed-header">
+ 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 *ngIf="!isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-id-card-alt" style="font-size: 1rem;"></i> User Create</h4>
+                    <h4 *ngIf="isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fas fa-id-card-alt" style="font-size: 1rem;"></i> User Update</h4>
+              </div>
+              <div class="col-6">
+ 
+                <ol class="breadcrumb m-0" style="margin-left: 23rem !important;">
+                  <li class="breadcrumb-item">
+                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a routerLink="/home/admin/userGrid" class="waves-effect">Users</a>
+                  </li>
+                  <li *ngIf="!isEdit" class="breadcrumb-item active">Add User</li>
+                  <li *ngIf="isEdit" class="breadcrumb-item active">Edit User</li>
+                </ol>
+              </div>
+            </div>
+ 
+ 
+ 
+ 
+          </nav>
+        </div>
+ 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between">
+ 
+                <h4 class="custom-cro-header">
+ 
+                </h4>
+ 
+                <div class="page-title-right">
+ 
+                  <ol class="breadcrumb" style="margin-left: 28rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+ 
+                    <li class="breadcrumb-item active">CRO</li>
+                  </ol>
+                </div>
+ 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="card ml-2 mr-2 bg-white">
+        <div class="container-fluid">
+          <div class="card-body">
+            <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">User Basic Details</h5>
+            <hr>
+
+            <p-toast></p-toast>
+            <form [formGroup]="userForm">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>User First Name</label><label style="color: red;margin-left: 4px;">*</label>
+
+                    <input autocomplete="off" type="text" class="form-control" maxlength="100" id="first_name"
+                    placeholder="Enter User First Name"  pattern="[A-Za-z\s]+"  formControlName="first_name"
+                    [class.custom-invalid]="shouldShowRequired('first_name') && userForm.get('first_name')?.touched">
+                  <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('first_name')" class="invalid-feedback"> User First Name is required
+                  </div>
+
+                  <div *ngIf="userForm.get('first_name')?.hasError('pattern') && userForm.get('first_name')?.touched"
+                  class="invalid-feedback">
+                      First Name Accepts Alphabets and spaces only.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label>User Last Name</label>
+                  <div class="form-group">
+                    <input autocomplete="off" type="text" class="form-control" id="last_name"
+                      placeholder="Enter User Last Name" formControlName="last_name">
+                    </div>
+
+                      <div *ngIf="userForm.get('last_name')?.hasError('pattern') && userForm.get('last_name')?.touched"
+                      class="invalid-feedback">
+                      Last Name should contain alphabets and spaces only.
+
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Email Id</label><label style="color: red;margin-left: 4px;">*</label>
+
+                    <input autocomplete="off" type="text" class="form-control" maxlength="100" id="email"
+                    placeholder="Enter Email" formControlName="email"
+                    [class.custom-invalid]="shouldShowRequired('email') && userForm.get('email')?.touched">
+                  <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('email')" class="invalid-feedback">
+                    Email is required
+                  </div>
+
+<!--
+                    <input autocomplete="off" type="text" class="form-control" id="email" placeholder="Enter Email"
+                      formControlName="email">
+                    <div *ngIf="shouldShowRequired('email')" class="text-danger">
+                      Email is required.
+                    </div> -->
+                    <div *ngIf="userForm.get('email')?.hasError('pattern')" class="text-danger">
+                      Please enter a valid email address.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+           <label style="margin-top: 0.8rem;" >Password</label><label style="color: red; margin-left: 4px;">*</label>
+                  <input autocomplete="off" type="password" class="form-control" id="password" placeholder="Enter Password"
+                         formControlName="password" [type]="showPassword ? 'text' : 'password'"
+                         (paste)="preventPaste($event)" maxlength="16"
+                         [class.custom-invalid]="shouldShowRequired('password') && userForm.get('password')?.touched">
+                  <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('password') && !userForm.get('password')?.value" class="invalid-feedback">
+                    Password is required.
+                </div>
+
+
+  
+
+                <div style="font-size: 0.8rem; font-family: 'Times New Roman', Times, serif; width: 15.3rem; word-wrap: break-word;" *ngIf="userForm.get('password')?.hasError('pattern')" class="text-danger">
+                  Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.
+                </div>
+                <button type="button" class="eye-button" tabindex="-1" style="color:#495057" (click)="showPassword = !showPassword">
+                    <i *ngIf="showPassword" class="fa fa-eye" aria-hidden="true"></i>
+                    <i *ngIf="!showPassword" class="fa fa-eye-slash" aria-hidden="true"></i>
+                  </button>
+
+
+
+
+                </div>
+                </div>
+                <br>
+
+                <div class="row">
+
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Role</label><label style="color: red;margin-left: 4px;">*</label>
+
+                    <select formControlName="role" (change)="roleChange($event)" class="form-select"
+                      aria-label="Default select example" class="form-select form-control"
+                      [class.custom-invalid]="shouldShowRequired('role') && userForm.get('role')?.touched">
+                      <option disabled selected value="">Select Role</option>
+                      <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                    </select>
+                    <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('role')" class="text-danger">
+                      Please Select Role
+                    </div>
+                  </div>
+                </div>
+                
+                <div *ngIf="sponsor" class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Sponsor Name</label>
+                    <select formControlName="sId" class="form-select form-control"
+                      [class.custom-invalid]="shouldShowRequired('sId') && userForm.get('sId')?.touched">
+                      <option selected value="">Select Sponsor Name</option>
+                      <option *ngFor="let sponser of sponsorDetails" [value]="sponser.sponsor_id">
+                        {{ sponser.sponsor_name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div *ngIf="site" class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Site Name</label><label
+                      style="color: red;margin-left: 4px;">*</label>
+                    <select formControlName="sId" class="form-select form-control"
+                      [class.custom-invalid]="shouldShowRequired('sId') && userForm.get('sId')?.touched">
+                      <option selected value="">Select Site Name</option>
+                      <option *ngFor="let site of siteDetails" [value]="site.site_id">
+                        {{ site.site_data_name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div *ngIf="isEdit" class="col-md-4">
+                  <div class="form-group">
+                    <label>Status</label>
+                    <select formControlName="status" class="form-select" aria-label="Default select example">
+                      <option selected value="">Select Status</option>
+                      <option *ngFor="let option of status" [value]="option.id">{{ option.label }}</option>
+                    </select>
+
+                  </div>
+                </div>
+              
+
+               
+              </div>
+              <!-- <div class="row" *ngIf="view">
+                <div class="row">
+                  <hr>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Created By</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{createdName}}" disabled
+                        placeholder="Created By" >
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Created On</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{getUserData.created_on  | date: 'd-M-y'}}" disabled
+                        placeholder="Created On" >
+          
+                    </div>
+                  </div>
+          
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Changed By</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{changedName}}" disabled
+                      placeholder="Changed By" >
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Changed On</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value= "{{getUserData.changed_on | date: 'd-M-y'}}"  disabled
+                        placeholder="Changed On" >
+          
+                    </div>
+                  </div>
+                </div>
+
+
+             
+                
+              
+
+                <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+                  <button style="margin: 2px;" *ngIf="!view" (click)="reset()" class="btn btn-primary">Reset</button>
+
+                  <button style="margin: 2px;" *ngIf="!view" type="submit" (click)="submit()"
+                    class="btn btn-primary">Submit</button>
+                </div>
+              </div> -->
+              
+
+            </form>
+          </div>
+          <div class="form-buttons-all">
+            <button class="btn btn-inverse"  *ngIf="!view" (click)="goBack()">Back</button>
+             
+             
+            <button style="margin: 2px;" *ngIf="!view" (click)="reset()"
+              class="btn btn-secondary btn-round">Reset</button>
+
+            <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="submit()"
+              class="btn btn-primary">Submit</button>
+           </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <br/>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="view">
+  <div class="card-body">
+  
+    
+    
+     
+     
+ 
+  </div>
+  <!-- <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+    <button style="margin: 2px;" *ngIf="!view" (click)="reset()" class="btn btn-secondary btn-round">Reset</button>
+
+    <button style="margin: 2px;" *ngIf="!view" (click)="submit()" class="btn btn-primary">Submit</button>
+  </div> -->
+
+  
+</div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+
+

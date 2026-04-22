@@ -1,0 +1,102 @@
+.p-card .p-card-body {
+    padding-top: 0px !important;
+}
+.custom-study-header {
+    color: #757575;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Mada', sans-serif;
+  }
+
+  Adjust the size of the calendar dropdown
+.ui-datepicker.ui-widget {
+    font-size: 12px; /* Adjust the font size as needed */
+    width: 200px; /* Adjust the width as needed */
+  }
+  
+  /* Adjust the size of the days in the calendar */
+  /* .ui-datepicker-calendar tbody td {
+    padding: 5px;
+  } */
+  
+  .custom-kit-header {
+    color: #757575;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Mada', sans-serif;
+  }
+  th, td {
+    font-family: 'Mada', sans-serif !important; /* Apply font-family to both th and td */
+  }
+  th {
+    height: 10px;
+    padding: 5px;
+    /* padding: 8px 16px; */
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    /* text-align: center; */
+    padding-left: 10px;
+  }
+  .table th {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+  }
+  .table td {
+    color: #212529;
+    font-size: .875em;
+    font-weight: 400;
+    /* text-align: center; */
+    
+  }
+  .text-muted {
+    /* --bs-text-opacity: 1; */
+    color: #212529;
+    font-size: .875em;
+    font-weight: 400;
+    /* text-align: center; */
+  }
+
+  .form-control {
+       width: 78% !important;
+    font-family: Mada, sans-serif !important;
+    font-weight: 400;
+    font-size: 14px;
+}
+.textareastyle{
+  width: 90% !important;
+    font-family: Mada, sans-serif !important;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.p-inputtext:enabled:focus {
+  box-shadow: none !important;
+  border-color: initial !important;
+}
+.btn-inverse {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    height: 2.2rem;
+    margin-left: 0.2rem;
+   
+  }
+  .button-container {
+  display: flex !important;
+  padding: 1rem;}
+   
+  element.style {
+    padding: 0px;
+    padding-right: 25px;
+  }
+.form-buttons-all{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+  padding-bottom: 1rem;
+  }
+

@@ -1,0 +1,548 @@
+<div class="main-content" style="margin-top: -7% !important">
+  <div class="page-content">
+    <div class="container-fluid">
+      <p-toast></p-toast>
+      <!-- start page title -->
+      <!-- <div class="row">
+        <div class="col-12">
+          <div
+            style="padding: 1px"
+            *ngIf="!view"
+            class="page-title-box d-sm-flex align-items-center justify-content-between"
+          >
+            <h4 *ngIf="!isEdit" class="custom-material-header">
+              <i class="fas fa-prescription-bottle"></i>Add Material
+            </h4>
+            <h4 *ngIf="isEdit" class="custom-material-header">
+              <i class="fas fa-prescription-bottle"></i>Edit Material
+            </h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 20rem !important;">
+                <li class="breadcrumb-item">
+                  <a routerLink="/home/cro/dashboards" class="waves-effect"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="breadcrumb-item">
+                  <a
+                    routerLink="/home/cro/labTestGrid"
+                    (click)="tabchange()"
+                    class="waves-effect"
+                    >Material</a
+                  >
+                </li>
+                <li *ngIf="!isEdit" class="breadcrumb-item active">
+                  Add Material
+                </li>
+                <li *ngIf="isEdit" class="breadcrumb-item active">
+                  Edit Material
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div
+            style="padding: 1px"
+            *ngIf="view"
+            class="page-title-box d-sm-flex align-items-center justify-content-between"
+          >
+            <h4 class="custom-material-header">
+              <i class="fas fa-prescription-bottle"></i> View Material
+            </h4>
+
+            <div class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 20rem !important;">
+                <li class="breadcrumb-item">
+                  <a routerLink="/home/cro/dashboards" class="waves-effect"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="breadcrumb-item">
+                  <a
+                    routerLink="/home/cro/labTestGrid"
+                    (click)="tabchange()"
+                    class="waves-effect"
+                    >Material</a
+                  >
+                </li>
+                <li class="breadcrumb-item active">View Material</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <h4><i class="fab fa-codiepie cro-icon mr-sm-2"></i>CRO Data</h4>/ -->
+
+
+
+      <div *ngIf="view">
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-prescription-bottle" style="font-size: 1rem;"></i> View Material</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 20rem !important;">
+                  <li class="breadcrumb-item">
+                    <a routerLink="/home/cro/dashboards" class="waves-effect"
+                      >Dashboard</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a
+                      routerLink="/home/cro/labTestGrid"
+                      (click)="tabchange()"
+                      class="waves-effect"
+                      >Material</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item active">View Material</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 20rem !important;">
+                    <li class="breadcrumb-item">
+                      <a routerLink="/home/cro/dashboards" class="waves-effect"
+                        >Dashboard</a
+                      >
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a
+                        routerLink="/home/cro/labTestGrid"
+                        (click)="tabchange()"
+                        class="waves-effect"
+                        >Material</a
+                      >
+                    </li>
+                    <li class="breadcrumb-item active">View Material</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div *ngIf="!view">
+        <div class="fixed-header"> 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 *ngIf="!isEdit" class="custom-material-header">
+                  <i class="fas fa-prescription-bottle"></i>Add Material
+                </h4>
+                <h4 *ngIf="isEdit" class="custom-material-header">
+                  <i class="fas fa-prescription-bottle"></i>Edit Material
+                </h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 20rem !important;">
+                  <li class="breadcrumb-item">
+                    <a routerLink="/home/cro/dashboards" class="waves-effect"
+                      >Dashboard</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a
+                      routerLink="/home/cro/labTestGrid"
+                      (click)="tabchange()"
+                      class="waves-effect"
+                      >Material</a
+                    >
+                  </li>
+                  <li *ngIf="!isEdit" class="breadcrumb-item active">
+                    Add Material
+                  </li>
+                  <li *ngIf="isEdit" class="breadcrumb-item active">
+                    Edit Material
+                  </li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4>
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb m-0" style="display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a> 
+                    <li class="breadcrumb-item active">CRO</li>
+                  </ol>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="card ml-2 mr-2 bg-white textAllignment">
+        <div class="container-fulid">
+          <div class="card-body">
+            <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+              Material Basic Details
+            </h5>
+            <hr />
+            <form [formGroup]="labForm">
+              <div class="row">
+                <div class="col-md-4 mb-2">
+                  <div class="form-group">
+                    <label
+                      >Material<label
+                        style="color: red; display: inline; margin-left: 4px"
+                        >*</label
+                      ></label
+                    >
+                    <input
+                      autocomplete="off"
+                      type="text"
+                      class="form-control formAllingment"
+                      id="material"
+                      formControlName="material"
+                      placeholder="Enter Material"
+                      [class.custom-invalid]="
+                        shouldShowRequired('material') &&
+                        labForm.get('material')?.touched
+                      "
+                    />
+                    <div
+                      *ngIf="shouldShowRequired('material')"
+                      class="text-danger"
+                    >
+                      Material is required.
+                    </div>
+                  </div>
+                </div>
+ 
+                <!-- <div class="col-md-1"></div> -->
+ 
+                <!-- upload image -->
+ 
+                <!-- <div *ngIf="fieldDisplay" class="col-md-3">
+                  <div class="form-group">
+                    <label>Upload Imagee</label>
+                    <br />
+                    <button
+                      type="submit"
+                      class="btn btn-primary r-darkblue pull-Right"
+                      (click)="fileInput.click()"
+                    >
+                      Upload Image
+                    </button>
+ 
+                    <div class="avatar-upload">
+                      <div class="avatar-edit">
+                        <input
+                          autocomplete="off"
+                          type="file"
+                          accept=".jpg,.png"
+                          class="form-control"
+                          formControlName="image"
+                          #fileInput
+                          (change)="uploadFile($event, false)"
+                          id="image"
+                          placeholder="Select Image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+ 
+                <div *ngIf="fieldDisplay" class="col-md-2">
+                  <div class="form-group">
+                    <!-- <label>Upload Image</label> -->
+                    <!-- <br /> -->
+                    <!-- <br> -->
+                    <p>
+                      <a
+                        href="javascript:void(0)"
+                        target="_blank"
+                        class="custom-link link-opacity-25-hover imageAllignment pull-Right"
+                        (click)="fileInput.click()"
+                      >
+                        Upload Image
+                      </a>
+                    </p>
+                    <div class="avatar-upload">
+                      <div class="avatar-edit">
+                        <input
+                          autocomplete="off"
+                          type="file"
+                          accept=".jpg,.png"
+                          class="form-control"
+                          formControlName="image"
+                          #fileInput
+                          (change)="uploadFile($event, false)"
+                          id="image"
+                          placeholder="Select Image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+ 
+                <div class="col-md-3">
+                  <div class="form-group" *ngIf="view">
+                    <span *ngIf="editImage"
+                      ><img
+                        style="width: 100px"
+                        src="{{ 'data:image/jpg;base64,' + labData.image }}"
+                      />
+                      &nbsp;&nbsp;&nbsp;<a
+                        *ngIf="!view"
+                        style="color: blue; cursor: pointer"
+                        >Click Here To Upload New Image</a
+                      ></span
+                    >
+                    <span *ngIf="imgDisplay"
+                      ><img
+                        style="width: 100px"
+                        src="{{ 'data:image/jpg;base64,' + bas2 }}"
+                    /></span>
+                  </div>
+                  <div class="form-group" *ngIf="!view">
+                     <!-- <a *ngIf="!view" style="color: blue; cursor: pointer">
+                        Click Here To Upload New Image
+                      </a> -->
+                    <span
+                      *ngIf="editImage"
+                      (click)="confirm2(labData.image, labData.name)"
+                      >
+                       <a *ngIf="!view" style="color: blue; cursor: pointer; margin-top: 20% !important;">
+                        Click Here To Upload New Image
+                      </a>
+                      <img
+                        style="width: 100px; margin-left: 112%; margin-top: -19px;"
+   
+                        src="{{ 'data:image/jpg;base64,' + labData.image }}"
+                      />
+                      &nbsp;&nbsp;&nbsp;
+                      <br />
+                      <!-- <a *ngIf="!view" style="color: blue; cursor: pointer; margin-top: 20% !important;">
+                        Click Here To Upload New Imageee
+                      </a> -->
+                      </span
+                    >
+                    <span *ngIf="imgDisplay"
+                      ><img
+                        style="width: 100px"
+                        src="{{ 'data:image/jpg;base64,' + bas2 }}"
+                    /></span>
+                  </div>
+                </div>
+ 
+                <div
+                  class="col-md-12 mb-2"
+                  style="
+                    font-family: Mada, sans-serif !important;
+                    font-weight: 400;
+                    font-size: 14px;
+                  "
+                >
+                  <div class="form-group form-size">
+                    <label>
+                      Size (Click on Enter After Adding Size)<label
+                        style="color: red; display: inline; margin-left: 4px"
+                        >*</label
+                      ></label
+                    ><br />
+                    <!-- <input
+                    formControlName="size"
+                    placeholder="Size"
+                    class="form-control formSize-allignment"
+                    [class.custom-invalid]="
+                      shouldShowRequired('size') &&
+                      labForm.get('size')?.touched
+                    "
+                  /> -->
+                    <!-- style="border: none;". -->
+ 
+                    <!-- <p-chips
+                     style="border: #fff !important; height: 14px !important;"
+                      styleClass="size-form-control"
+                      formControlName="size"
+                      placeholder="Size"
+                      class="form-control "
+                      [class.custom-invalid]="
+                        shouldShowRequired('size') &&
+                        labForm.get('size')?.touched
+                      "
+                    ></p-chips> -->
+ 
+                    <p-chips
+                      styleClass="size-inputAllignment"
+                      formControlName="size"
+                      placeholder="Size"
+                    >
+                    </p-chips>
+ 
+                    <div
+                      *ngIf="shouldShowRequired('size')"
+                      class="text-danger"
+                    >
+                      Size is required.
+                    </div>
+                  </div>
+                </div>
+                <!-- <div *ngIf="fieldDisplay" class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Upload Image</label><br>
+                                        <button type="submit" class="btn btn-primary  r-darkblue pull-Right"
+                                            (click)="fileInput.click()">Upload Image</button>
+                                        <div class="avatar-upload">
+                                            <div class="avatar-edit">
+                                              <input autocomplete="off" type="file" accept=".jpg,.png" class="form-control"
+                                                    formControlName="image" #fileInput
+                                                    (change)="uploadFile($event, false)" id="image"
+                                                    placeholder="Select Image">
+                                            </div>
+                                        </div>
+ 
+                                    </div>
+                                </div> -->
+ 
+                <!-- <div class="col-md-10">
+                                    <div class="form-group" *ngIf="view">
+                                        <span  *ngIf="editImage" ><img style="width:100px"
+                                                src="{{'data:image/jpg;base64,' + labData.image}}" />
+                                            &nbsp;&nbsp;&nbsp;<a *ngIf="!view" style="color:blue;cursor: pointer">Click Here To Upload New
+                                                Image</a></span>
+                                        <span *ngIf="imgDisplay"><img style="width:100px"
+                                                src="{{'data:image/jpg;base64,' + bas2}}" /></span>
+                                    </div>
+                                    <div class="form-group" *ngIf="!view">
+                                        <span  *ngIf="editImage" (click)="confirm2(labData.image, labData.name)"><img style="width:100px"
+                                                src="{{'data:image/jpg;base64,' + labData.image}}" />
+                                            &nbsp;&nbsp;&nbsp;<a *ngIf="!view" style="color:blue;cursor: pointer">Click Here To Upload New
+                                                Image</a></span>
+                                        <span *ngIf="imgDisplay"><img style="width:100px"
+                                                src="{{'data:image/jpg;base64,' + bas2}}" /></span>
+                                    </div>
+                                </div> -->
+              </div>
+              <!-- <div class="container-fluid"  *ngIf="view">
+                                <div class="card-body">
+                   
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Created By</label>
+                                                <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                    value="{{labData.created_by}}" disabled placeholder="Created By">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Created On</label>
+                                                <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                    value="{{labData.created_on  | date: 'd-M-y'}}" disabled
+                                                    placeholder="Created On">
+                   
+                                            </div>
+                                        </div>
+                   
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Changed By</label>
+                                                <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                    value="{{labData.changed_by}}" disabled placeholder="Changed By">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Changed On</label>
+                                                <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                    value="{{labData.changed_on | date: 'd-M-y'}}" disabled
+                                                    placeholder="Changed By">
+                   
+                                            </div>
+                                        </div>
+                   
+                                    </div>
+                   
+                                </div>
+                            </div> -->
+            </form>
+          </div>
+          <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+            <button
+            style="margin: 2px"
+            *ngIf="!view"
+            (click)="submit()"
+            class="btn btn-primary btn-round"
+          >
+            Submit
+          </button>
+            <button
+              style="margin: 2px"
+              *ngIf="!view"
+              (click)="reset()"
+              class="btn btn-secondary btn-round"
+            >
+              Reset
+            </button>
+
+
+
+            <button class="btn btn-inverse"  *ngIf="!view" (click)="goBack()">Back</button>
+ 
+
+           
+          </div>
+        </div>
+        <br />
+      </div>
+
+
+
+
+
+      
+
+     
+
+
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>

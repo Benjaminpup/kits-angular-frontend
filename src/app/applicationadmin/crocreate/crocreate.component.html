@@ -1,0 +1,488 @@
+<div class="main-content" style="margin-top: -4% !important;">
+ 
+  <div class="page-content">
+    
+    <div class="container-fluid">
+ 
+      <!-- start page title -->
+      <div>
+        <div class="fixed-header"> 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4  *ngIf="!isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fa fa-user-circle" style="font-size: 1rem;"></i> CRO Create</h4>
+                    <h4 *ngIf="isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fa fa-user-circle" style="font-size: 1rem;"></i> CRO Update</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb m-0" style="margin-left: 23rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item"><a routerLink="/home/admin/croGrid" class="waves-effect">CRO</a></li>
+                  <li *ngIf="!isEdit" class="breadcrumb-item active">Add CRO</li>
+                  <li *ngIf="isEdit" class="breadcrumb-item active">Edit CRO</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4>
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb m-0" style="display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a> 
+                    <li class="breadcrumb-item active">CRO</li>
+                  </ol>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+
+
+      
+      <p-toast></p-toast>
+  
+
+
+
+      
+      <form [formGroup]="CroForm">
+        <div class="card ml-2 mr-2 bg-white">
+          <div class="container-fluid">
+ 
+            <div class="card-body">
+              <h5 class="text-primary"
+                style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+                CRO Basic Details</h5>
+              <hr>
+              <form [formGroup]="CroForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label style="font-family: 'Mada', sans-serif;">CRO Code<span style="color: red;">*</span></label>
+                      <!-- <label style="color: red; margin-left: 4px; font-family: 'Mada', sans-serif;">*</label> -->
+                      <input #croCodeInput autocomplete="off" type="text" class="form-control" id="CROCode"
+                        maxlength="10" placeholder="Enter CRO Code" formControlName="cro_code"
+                        style="font-family: 'Mada', sans-serif;"
+                        (input)="croCodeInput.value = croCodeInput.value.toUpperCase()"
+                        [class.custom-invalid]="shouldShowRequired('cro_code') && CroForm.get('cro_code')?.touched">
+ 
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('cro_code')" class="text-danger">
+                        CRO Code is required.
+                      </div>
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowLengthError('cro_code')" class="text-danger">
+                        CRO Code should contain between 5 and 10 characters.
+                      </div>
+                    </div>
+                  </div>
+ 
+                  <div class="col-md-4" >
+                    <div class="form-group">
+                      <label>CRO Name </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="100" id="CROName"
+                        placeholder="Enter CRO Name" formControlName="cro_name"
+                        [class.custom-invalid]="shouldShowRequired('cro_name') && CroForm.get('cro_name')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('cro_name')" class="text-danger">
+                        CRO Name is Required.
+                      </div>
+                      <div style="font-size: 0.8rem;" *ngIf="CroForm.get('cro_name')?.hasError('pattern') && CroForm.get('cro_name')?.touched"
+                        class="text-danger">
+                        CRO Name Accepts Alphabets only.
+                      </div>
+ 
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowLengthError('cro_name')" class="text-danger">
+                        CRO Name should contain 2 characters.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4" >
+                    <div class="form-group">
+                      <label>Legal CRO Name </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="100" id="CROName"
+                        placeholder="Enter Legal CRO Name" formControlName="legal_cro_name"
+                        [class.custom-invalid]="shouldShowRequired('legal_cro_name') && CroForm.get('legal_cro_name')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('legal_cro_name')" class="text-danger">
+                        Legal CRO Name is Required
+                      </div>
+                      <div style="font-size: 0.8rem;"
+                        *ngIf="CroForm.get('legal_cro_name')?.hasError('pattern') && CroForm.get('legal_cro_name')?.touched"
+                        class="text-danger">
+                        Legal CRO Name Accepts Alphabets only.
+                      </div>
+ 
+                      <!-- <div *ngIf="shouldShowLengthError('cro_name')" class="invalid-feedback">
+                        CRO Name should contain between 5 and 1 characters.
+                      </div> -->
+                    </div>
+                  </div>
+ 
+ 
+                </div>
+ 
+              </form>
+            </div>
+ 
+          </div>
+ 
+          <div class="container-fluid " >
+            <div class="card-body">
+              <h5 class="text-primary"
+                style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important; z-index: 1080;">
+                Address Details</h5>
+              <hr>
+              <form [formGroup]="CroForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Address 1 </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="80" id="Address 1"
+                        placeholder="Enter Address 1" formControlName="address_1"
+                        [class.custom-invalid]="shouldShowRequired('address_1') && CroForm.get('address_1')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('address_1')" class="text-danger">
+                        Address is required.
+                      </div>
+ 
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-4" >
+                    <div class="form-group">
+                       <label for="zipcode">Zipcode:</label>
+                      <input autocomplete="off" type="text" class="form-control" id="zipcode" 
+                        placeholder="Enter Zipcode" formControlName="zipcode">
+                        
+                    </div>
+                  </div> -->
+                  <div class="col-md-4" >
+                    <div class="form-group">
+                      <label>Zipcode </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input id="zipcode" placeholder="Enter Zipcode" formControlName="zipcode" (input)="onZipcodeChange()" min="5" max="6" class="form-control" [class.custom-invalid]="shouldShowRequired('zipcode') && CroForm.get('zipcode')?.touched"/>
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('zipcode')" class="text-danger">
+                        Zipcode is required.
+                      </div>
+
+
+                      <!-- <div *ngIf="CroForm.get('zipcode')?.invalid && CroForm.get('zipcode')?.touched" class="text-danger"> -->
+                        <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('required')">Zipcode is required.</small> -->
+                        <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('pattern')">Zipcode must be 5 or 6 digits.</small> -->
+                      <!-- </div> -->
+                    </div>
+                    <!-- <div class="form-group">
+                      <label>Country </label><label style="color: red;margin-left: 4px;">*</label>
+                      <select formControlName="country" maxlength="40" class="form-select country-dropdown"
+                        aria-label="Default select example" formControlName="country"
+                        [class.custom-invalid]="shouldShowRequired('country') && CroForm.get('country')?.touched">
+                        <option selected value="">Select Country</option>
+                        <option *ngFor="let c of countries" [value]="c.name">
+                          {{c.name}}</option>
+                      </select>
+ 
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('country')&& CroForm.get('country')?.touched" class="text-danger">
+                        Country is required.
+                      </div>
+                    </div> -->
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div *ngIf="CroForm.get('country')?.value" class="form-group">
+                      <label for="country">Country</label>
+                      <input id="country" formControlName="country" readonly class="form-control" />
+                      <!-- <div *ngIf="stateenable" class="col-md-4"><select id="country" formControlName="country">
+                        <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                      </select> -->
+                    </div>
+                    <!-- <div class="form-group">
+                      <label>Region/State </label><label style="color: red;margin-left: 4px;">*</label>
+                      <select formControlName="region" maxlength="40" class="form-select"
+                        aria-label="Default select example" formControlName="region"
+                        [class.custom-invalid]="shouldShowRequired('region') && CroForm.get('region')?.touched">
+                        <option selected value="">Select State</option>
+                        <option *ngFor="let s of states" [value]="s.name">
+                          {{s.name}}
+                        </option>
+                      </select>
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('region')&& CroForm.get('region')?.touched" class="text-danger">
+                        Region is required.
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <br>
+                <!-- <div class="row"> -->
+ 
+ 
+ 
+ 
+                <!-- </div> -->
+                <br>
+                <div class="row" >
+ 
+                  
+                  <div  class="col-md-4">
+                    <div *ngIf="CroForm.get('state')?.value" class="form-group">
+                      <label for="state">State</label>
+                      <input id="state" formControlName="state" readonly class="form-control"/>
+                      <!-- <select id="state" formControlName="state">
+                        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                      </select> -->
+                    </div>
+                    <!-- <div *ngIf="districtEnable" class="col-md-4"> <div class="form-group">
+                      <label>District</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="40" id="District"
+                        placeholder="Enter District" formControlName="district">
+                      <div style="font-size: 0.8rem;" *ngIf="CroForm.get('district')?.hasError('pattern') && CroForm.get('district')?.touched"
+                        class="text-danger">
+                        District Accepts Alphabets only.
+                      </div>
+ 
+                    </div> -->
+                  </div>
+                  <div  class="col-md-4">
+                    <div *ngIf="CroForm.get('district')?.value" class="form-group">
+                      <label for="district">District</label>
+                      <input id="district" formControlName="district" readonly class="form-control"/>
+                    </div>
+                    <!-- <div *ngIf="districtEnable" class="col-md-4"><div class="form-group">
+                      <label>City </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type=" text" class="form-control" maxlength="40" id="City"
+                        placeholder="Enter City" formControlName="city"
+                        [class.custom-invalid]="shouldShowRequired('city') && CroForm.get('city')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('city')" class="text-danger">
+                        City is required.
+                      </div>
+                      <div style="font-size: 0.8rem;" *ngIf="CroForm.get('city')?.hasError('pattern') && CroForm.get('city')?.touched"
+                        class="text-danger">
+                        City Accepts Alphabets only.
+                      </div>
+                    </div> -->
+                  </div>
+                  <div class="col-md-4">
+                         
+                    <div *ngIf="CroForm.get('city')?.value" class="form-group">
+                      <label for="city">City</label>
+                      <input id="city" formControlName="city" readonly class="form-control"/>
+                    </div>
+                      <!-- <div class="form-group">
+                        <label>Zip Code </label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="number" class="form-control" maxlength="12" id="Zip Code"
+                          placeholder="Enter Zip Code" formControlName="zip_code"
+                          [class.custom-invalid]="shouldShowRequired('zip_code') && CroForm.get('zip_code')?.touched">
+                        <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('zip_code')" class="text-danger">
+                          Zipcode is required.
+                        </div>
+   
+                      </div> -->
+                    </div>
+                </div>
+            
+                <br>
+                
+               
+                 
+                 
+           
+         
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+ 
+              </form>
+            </div>
+ 
+          </div>
+         
+          <div class="container-fluid">
+            <div class="card-body">
+              <h5 class="text-primary"
+                style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+                Communication Details</h5>
+              <hr>
+              <form [formGroup]="CroForm">
+                <div class="row">
+                  <div class="col-md-4">  
+                    <div class="form-group">
+                      <label>Office Telephone</label>
+                      <input autocomplete="off" type="text" class="form-control"
+                        (input)="validateMobileNumber($event.target, 'office')" id="Office Telephone"
+                        placeholder="Enter Office Telephone" formControlName="office_telephone">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Extension</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="4" id="Extension"
+                        placeholder="Enter Extension" (input)="validateMobileNumber($event.target, 'office')"
+                        formControlName="extension">
+ 
+                    </div>
+                  </div>
+ 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Mobile Number</label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="text" class="form-control" id="mobile_no"
+                        placeholder="Enter Mobile Number" formControlName="mobile_telephone"
+                        (input)="validateMobileNumber($event.target, 'mobile')"
+                        [class.custom-invalid]="shouldShowRequired('mobile_telephone') && CroForm.get('mobile_telephone')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('mobile_telephone')" class="text-danger">
+                        Mobile Number is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Email Id</label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="text" class="form-control" id="email" placeholder="Enter Email Id"
+                        formControlName="email"
+                        [class.custom-invalid]="shouldShowRequired('email') && CroForm.get('email')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('email')" class="text-danger">
+                        Email is required.
+                      </div>
+                      <div style="font-size: 0.8rem;" *ngIf="CroForm.get('email')?.hasError('pattern')" class="text-danger">
+                        Please enter a valid email address.
+                      </div>
+ 
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Website</label>
+                      <input autocomplete="off" type="text" class="form-control" id="website"
+                        placeholder="Enter Website" formControlName="website"
+                        [class.custom-invalid]="CroForm.get('website')?.invalid && CroForm.get('website')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="CroForm.get('website')?.hasError('pattern')" class="text-danger">
+                        Please enter a valid URL.
+                      </div>
+ 
+                    </div>
+                  </div>
+                </div>
+ 
+              </form>
+            </div>
+ 
+     
+ 
+       
+           <div class="form-buttons-all">
+            <button class="btn btn-inverse"  *ngIf="!view" (click)="goBack()">Back</button>
+             
+             
+            <button style="margin: 2px;" *ngIf="!view" (click)="reset()"
+              class="btn btn-secondary btn-round">Reset</button>
+
+            <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="submit()"
+              class="btn btn-primary">Submit</button>
+           </div>
+             
+    
+           
+          </div>
+          <!-- <div class="container-fluid" *ngIf="view">
+            <div class="card-body">
+           
+              <hr>
+              <form [formGroup]="CroForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Created By</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{createdName}}" disabled
+                        placeholder="Created By" >
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Created On</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{getcroData.created_on  | date: 'd-M-y'}}" disabled
+                        placeholder="Created On" >
+ 
+                    </div>
+                  </div>
+ 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Changed By</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value="{{changedName}}" disabled
+                      placeholder="Changed By" >
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Changed On</label>
+                      <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                      value= "{{getcroData.changed_on | date: 'd-M-y'}}"  disabled
+                        placeholder="Changed On" >
+ 
+                    </div>
+                  </div>
+                 
+                </div>
+ 
+              </form>
+            </div>
+            <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+              <button style="margin: 2px;" *ngIf="!view" (click)="reset()" class="btn btn-primary">Reset</button>
+ 
+              <button style="margin: 2px;" *ngIf="!view"  class="btn btn-primary">Submit</button>
+            </div>
+          </div> -->
+ 
+        </div>
+      </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+  </div>
+</div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+ 

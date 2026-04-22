@@ -1,0 +1,598 @@
+<div class="main-content" style="margin-top: -7% !important;">
+
+  <div class="page-content">
+    <div class="container-fluid">
+
+      <!-- start page title -->
+      <!-- <div class="row">
+        <div class="col-12">
+          <div style="padding:1px" *ngIf="!view"
+            class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 *ngIf="!isEdit" class="custom-sponsor-header"><i class="bx bxs-user-check"></i>Add Sponsor
+            </h4>
+            <h4 *ngIf="isEdit" class="custom-sponsor-header"><i class="bx bxs-user-check"></i>Edit Sponsor
+            </h4>
+            <div class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 21rem !important;">
+                <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+                <li *ngIf="!isEdit" class="breadcrumb-item active">Add Sponsor</li>
+                <li *ngIf="isEdit" class="breadcrumb-item active">Edit Sponsor</li>
+              </ol>
+            </div>
+
+          </div>
+          <div style="padding:1px" *ngIf="view"
+            class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="custom-sponsor-header"><i class="bx bxs-user-check"></i>View Sponsor
+            </h4>
+
+            <div class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 21rem !important;">
+                <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+
+                <li class="breadcrumb-item active">View Sponsor</li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
+      </div> -->
+      <!-- <h4><i class="fab fa-codiepie cro-icon mr-sm-2"></i>CRO Data</h4>/ -->
+
+
+
+
+      <div *ngIf="view">
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-user-nurse" style="font-size: 1rem;"></i> View Sponsor</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 21rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+  
+                  <li class="breadcrumb-item active">View Sponsor</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 21rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+    
+                    <li class="breadcrumb-item active">View Sponsor</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div *ngIf="!view">
+        <div class="fixed-header"> 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4  *ngIf="!isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-user-nurse" style="font-size: 1rem;"></i>  Sponsor Create</h4>
+                    <h4 *ngIf="isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fas fa-user-nurse" style="font-size: 1rem;"></i> Sponsor Update</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 21rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+                  <li *ngIf="!isEdit" class="breadcrumb-item active">Add Sponsor</li>
+                  <li *ngIf="isEdit" class="breadcrumb-item active">Edit Sponsor</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4>
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 21rem !important; display: none !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a></li>
+                    <li *ngIf="!isEdit" class="breadcrumb-item active">Add Sponsor</li>
+                    <li *ngIf="isEdit" class="breadcrumb-item active">Edit Sponsor</li>
+                  </ol>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+
+
+
+
+
+
+
+
+
+
+      <p-toast></p-toast>
+      <!-- <p-tabView> -->
+
+      <!-- <p-tabPanel header="Sponsor"> -->
+        <form [formGroup]="sponsorForm">
+          <div class="card ml-2 mr-2 bg-white">
+            <div class="container-fluid">
+  
+              <div class="card-body">
+                <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">Sponsor Basic Details</h5>
+                <hr>
+                <form [formGroup]="sponsorForm">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label style="font-family: 'Mada', sans-serif;">Sponsor Code</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" id="SponsorCode"
+                          placeholder="Enter Sponsor Code" formControlName="sponsor_code"
+                          [class.custom-invalid]="shouldShowRequired('sponsor_code') && sponsorForm.get('sponsor_code')?.touched">
+                          <div *ngIf="shouldShowRequired('sponsor_code')" class="text-danger">
+                            Sponsor Code is required.
+                          </div>
+                        <!-- <div *ngIf="sponsorForm.get('sponsor_code')?.hasError('pattern') "
+                          class="text-danger">
+                            Sponsor Name Accepts Alphabets and spaces only.
+                            </div> -->
+  
+  
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Reference Sponsor Code</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="10" id="SponsorCode"
+                          placeholder="Enter Reference Sponsor Code" formControlName="existing_sponsor_code"
+                           [class.custom-invalid]="shouldShowRequired('existing_sponsor_code') && sponsorForm.get('existing_sponsor_code')?.touched">
+  
+                        <div *ngIf="shouldShowRequired('existing_sponsor_code')" class="text-danger">
+                          Reference Sponsor Code is required.
+                        </div>
+                       
+                      </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sponsor Name</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="100" id="SponsorName"
+                          placeholder="Enter Sponsor Name" formControlName="sponsor_name"
+                           [class.custom-invalid]="shouldShowRequired('sponsor_name') && sponsorForm.get('sponsor_name')?.touched">
+                        <div *ngIf="shouldShowRequired('sponsor_name')" class="text-danger">
+                          Sponsor Name is required.
+                        </div>
+                        <div *ngIf="sponsorForm.get('sponsor_name')?.hasError('pattern') "
+                          class="text-danger">
+                            Sponsor Name Accepts Alphabets and spaces only.
+                            </div>
+                        <!-- <div *ngIf="shouldShowLengthError('sponsor_name')" class="invalid-feedback">
+                          Sponsor Name should contain between 5 and 15 characters.
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Legal Sponsor Name</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="100" id="LegalSponsorName"
+                          placeholder="Enter Legal Sponsor Name" formControlName="legal_sponsor_name"
+                          [class.custom-invalid]="shouldShowRequired('legal_site_data_name') && sponsorForm.get('legal_site_data_name')?.touched">
+                          <div *ngIf="shouldShowRequired('legal_sponsor_name')" class="text-danger">Legal Sponsor Name is required.
+                          </div>
+                          <div *ngIf="sponsorForm.get('legal_sponsor_name')?.hasError('pattern') "
+                          class="text-danger">
+                            Legal Sponsor Name Accepts Alphabets and spaces only.
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+  
+  
+                </form>
+              </div>
+  
+            </div>
+            <!-- <br> -->
+            <div class="container-fluid">
+              <div class="card-body">
+                <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">Address</h5>
+                <hr>
+                <form [formGroup]="sponsorForm">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Address 1</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="80"
+                          appInputRestriction="mobileNum" id="Address 1" placeholder="Enter Address 1"
+                          formControlName="address_1"
+                           [class.custom-invalid]="shouldShowRequired('address_1') && sponsorForm.get('address_1')?.touched">
+                        <div *ngIf="shouldShowRequired('address_1')" class="text-danger">
+                          Adress is required.
+                        </div>
+  
+                      </div>
+                    </div>
+  
+                  <div class="col-md-4" >
+                    <div class="form-group">
+                      <label>Zipcode </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input id="zipcode" placeholder="Enter Zipcode" formControlName="zipcode" (input)="onZipcodeChange()" min="5" max="6" class="form-control" [class.custom-invalid]="shouldShowRequired('zipcode') && sponsorForm.get('zipcode')?.touched"/>
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('zipcode')" class="text-danger">
+                        Zipcode is required.
+                      </div>
+  
+  
+                      <!-- <div *ngIf="CroForm.get('zipcode')?.invalid && CroForm.get('zipcode')?.touched" class="text-danger"> -->
+                        <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('required')">Zipcode is required.</small> -->
+                        <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('pattern')">Zipcode must be 5 or 6 digits.</small> -->
+                      <!-- </div> -->
+                    </div>
+                  </div>
+  
+  
+                  <div class="col-md-4">
+                    <div *ngIf="sponsorForm.get('country')?.value" class="form-group">
+                      <label for="country">Country</label>
+                      <input id="country" formControlName="country" readonly class="form-control" />
+                     
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!-- <div class="row"> -->
+  
+  
+  
+  
+                <!-- </div> -->
+                <br>
+                <div class="row" >
+  
+                 
+                  <div  class="col-md-4">
+                    <div *ngIf="sponsorForm.get('state')?.value" class="form-group">
+                      <label for="state">State</label>
+                      <input id="state" formControlName="state" readonly class="form-control"/>
+                      <!-- <select id="state" formControlName="state">
+                        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                      </select> -->
+                    </div>
+                  </div>
+                  <div  class="col-md-4">
+                    <div *ngIf="sponsorForm.get('district')?.value" class="form-group">
+                      <label for="district">District</label>
+                      <input id="district" formControlName="district" readonly class="form-control"/>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                         
+                    <div *ngIf="sponsorForm.get('city')?.value" class="form-group">
+                      <label for="city">City</label>
+                      <input id="city" formControlName="city" readonly class="form-control"/>
+                    </div>
+                    </div>
+                </div>
+           
+                <br>
+                </form>
+              </div>
+  
+            </div>
+            <br>
+            <div class="container-fluid">
+              <div class="card-body">
+                <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">Communication</h5>
+                <hr>
+                <form [formGroup]="sponsorForm">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Office Telephone</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                          appInputRestriction="mobileNum" (input)="validateMobileNumber($event.target, 'office')"
+                          id="Office Telephone" placeholder="Enter Office Telephone" formControlName="office_telephone">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Extension</label>
+                        <input autocomplete="off" type="text" (input)="validateMobileNumber($event.target, 'office')"
+                          class="form-control" maxlength="10" id="Extension" placeholder="Enter Extension"
+                          formControlName="extension">
+  
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Mobile Number</label><label style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" id="mobile_no"
+                          placeholder="Enter Mobile Number" formControlName="mobile_telephone"
+                          (input)="validateMobileNumber($event.target, 'mobile')"
+                          [class.custom-invalid]="shouldShowRequired('mobile_telephone') && sponsorForm.get('mobile_telephone')?.touched">
+                        <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('mobile_telephone')" class="text-danger">
+                          Mobile Number is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Primary Representative Email Id</label><label
+                          style="color: red;margin-left: 4px;">*</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="60" id="Address 1"
+                          placeholder="Enter Primary Representative Email Id" formControlName="email"
+                          [class.custom-invalid]="shouldShowRequired('email') && sponsorForm.get('email')?.touched">
+                        <div *ngIf="shouldShowRequired('email')" class="text-danger">
+                          Email Id is required.
+                        </div>
+                        <div *ngIf="sponsorForm.get('email')?.hasError('pattern')" class="text-danger">
+                          Please enter a valid email address.
+                        </div>
+  
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Website</label>
+                        <input autocomplete="off" type="text" class="form-control" maxlength="60" id="Address"
+                          placeholder="Enter Website" formControlName="website"
+                          [class.custom-invalid]="sponsorForm.get('website')?.invalid && sponsorForm.get('website')?.touched">
+                          <div *ngIf="sponsorForm.get('website')?.hasError('pattern')" class="text-danger">
+                            Please enter a valid URL.
+                          </div>
+  
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                
+  
+                </form>
+                
+              </div>
+  
+            </div>
+            <div class="container-fluid">
+              <div class="card-body">
+                <!-- <h6 style="color: rgb(250, 49, 49);">Communication</h6> -->
+                <hr>
+  
+  
+                <div *ngIf="!isEdit" >
+                  <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+                    <button style="font-size: 11px; margin-right: -1px" (click)="addContact()"
+                      class="btn btn-primary btn-round">Add Secondary Contact Details</button>
+                  </div>
+  
+                  <div class="col-md-8 mb-3"></div>
+  
+                  <div *ngIf="contactForm.get('contacts').controls.length > 0" class="col-md-12 mb-3">
+                    <form [formGroup]="contactForm">
+                      <div formArrayName="contacts">
+                        <div class="table-responsive">
+                          <table class="table table-striped mb-0">
+                            <thead Style="background:#EEE">
+                              <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email Id</th>
+                                <th>Designation</th>
+                                <th>Mobile Number</th>
+                                <th>Delete</th>
+  
+  
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr [formGroupName]="i"
+                                *ngFor="let contact of contactForm.get('contacts').controls; let i = index;">
+                                <th scope="row">
+                                  <input  style="width: 100% !important;" autocomplete="off" type="text" maxlength="100" class="form-control"
+                                    id="Office Telephone" placeholder="Enter First Name " formControlName="first_name">
+                                </th>
+  
+                                <td>
+                                  <input  style="width: 100% !important;" autocomplete="off" type="text" maxlength="100" class="form-control"
+                                    id="Office Telephone" placeholder="Enter Last Name " formControlName="last_name">
+  
+                                </td>
+                                <td>
+                                  <input  style="width: 100% !important;" autocomplete="off" type="text" maxlength="60" class="form-control"
+                                    id="Office Telephone" placeholder="Enter Email Id " formControlName="email">
+                                </td>
+                                <td>
+                                  <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Designation"
+                                    placeholder="Enter Designation" formControlName="designation">
+                                </td>
+                                <td>
+                                  <input  style="width: 100% !important;" autocomplete="off" type="number" maxlength="20" class="form-control"
+                                    id="Office Telephone" placeholder="Enter Mobile Number"
+                                    (input)="validateMobileNumber($event.target, 'mobile')" formControlName="contact">
+                                </td>
+  
+                                <td>
+                                  <button type="button" class="bg" (click)="removeSponsor(i)"
+                                    class="btn btn-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-trash" viewBox="0 0 16 16">
+                                      <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                      <path
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                    </svg>
+                                  </button>
+  
+  
+  
+                                  <!-- <i class="bx bx-edit-alt font-size-16 align-middle me-2"></i> -->
+                                </td>
+                              </tr>
+  
+  
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+              </div>
+              <div *ngIf="isEdit" >
+                <div class="col-12 mt-auto mb-2 d-flex justify-content-end">
+                  <button *ngIf="!view" style="font-size: 11px; margin-right: -1px" (click)="addContacte()"
+                    class="btn btn-primary">Add Secondary Contact Details</button>
+                </div>
+
+                <div class="col-md-8 mb-3"></div>
+
+                <!-- <div *ngIf=tableE class="col-md-12 mb-3"> -->
+                  <div *ngIf="editcontactsForm.get('editcontacts').controls.length > 0" class="col-md-12 mb-3">
+                  <form [formGroup]="editcontactsForm">
+                    <div formArrayName="editcontacts">
+                      <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                          <thead Style="background:#EEE">
+                            <tr>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Email Id</th>
+                              <th>Designation</th>
+                              <th>Mobile Number</th>
+                              <th *ngIf="!view">Delete</th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                            <tr [formGroupName]="i"
+                              *ngFor="let contact of editcontactsForm.get('editcontacts').controls; let i = index;">
+                              <th scope="row">
+                                <input style="width: 100% !important;" autocomplete="off" type="text" maxlength="100" class="form-control"
+                                  id="Office Telephone" placeholder="Enter First Name " formControlName="first_name">
+                              </th>
+
+                              <td>
+                                <input style="width: 100% !important;" autocomplete="off" type="text" maxlength="100" class="form-control"
+                                  id="Office Telephone" placeholder="Enter Last Name " formControlName="last_name">
+
+                              </td>
+                              <td>
+                                <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" maxlength="40"
+                                  id="Office Telephone" placeholder="Enter Email Id " formControlName="email">
+                              </td>
+                              <td>
+                                <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Designation"
+                                  placeholder="Enter Designation" formControlName="designation">
+                              </td>
+                              <td>
+                                <input style="width: 100% !important;" autocomplete="off" type="number" class="form-control" maxlength="20"
+                                  id="Office Telephone" placeholder="Enter Mobile Number" type="number"
+                                  (input)="validateMobileNumber($event.target, 'mobile')" formControlName="contact">
+                              </td>
+
+                              <td *ngIf="!view">
+                                <button *ngIf="contact.get('editable').value !== 'true'" type="button" class="bg"
+                                        (click)="removeeditsponser(i)" class="btn btn-danger">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                       class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                    <path
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                  </svg>
+                                </button>
+                              </td>
+
+                              <!-- <td>
+                            <button type="button" (click)="removeMatScreenKit(j)"
+                              class="btn btn-danger ml-3 mt-2">Delete</button>
+
+                          </td>
+                   -->
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-12 mt-auto mb-2 d-flex justify-content-end" style="margin: -18px;">
+              <button style="font-size: 11px; margin: 2px;" *ngIf="!view" (click)="submit()"
+              class="btn btn-primary btn-round">Submit</button>
+              <button style="margin: 2px;" *ngIf="!view" (click)="reset()" class="btn btn-secondary btn-round" >Reset</button>
+              <button class="btn btn-inverse"   (click)="goBack()">Back</button>
+
+
+              
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
+
+<!-- end main content-->
+
+<!-- END layout-wrapper -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+
+

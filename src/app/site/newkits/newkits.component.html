@@ -1,0 +1,951 @@
+
+
+
+<!-- 
+            <div *ngIf="reports" class="row">
+                <div class="col-12">
+                    <div style="padding:1px"
+                        class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="custom-lab-header">
+                            <i class="bx bxs-dashboard"></i>Lab Reports Details
+                        </h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb" style="margin-left: 28rem !important;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/site/viewcraAcknowledgement" class="waves-effect">Lab
+                                        Reports</a>
+                                </li>
+                                <li class="breadcrumb-item active">Lab Reports Details </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="subject" class="row">
+                <div class="col-12">
+                    <div style="padding:1px"
+                        class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="custom-lab-header">
+                            <i class="bx bxs-dashboard"></i>Study Subject Details
+                        </h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb" style="margin-left: 28rem !important;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/site/viewSubject" class="waves-effect">Study
+                                        Subject</a>
+                                </li>
+                                <li class="breadcrumb-item active">Study Subject Details </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="inventory" class="row">
+                <div class="col-12">
+                    <div style="padding:1px"
+                        class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="custom-lab-header">
+                            <i class="bx bxs-dashboard"></i>Kit Inventory
+                        </h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb" style="margin-left: 28rem !important;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active">Kit
+                                    Inventory </li>
+
+                                <li class="breadcrumb-item active">Site : {{name}}</li>
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+            <div class="main-content" style="margin-top: -7% !important;">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+            <div *ngIf="reports">
+                <div class="fixed-header">
+                  <nav aria-label="breadcrumb">
+                    <div class="row">
+                      <div class="col-6">
+                        <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                            class="fas fa-bong" style="font-size: 1rem;"></i>Lab Reports Details </h4>
+                      </div>
+                      <div class="col-6"> 
+                        <ol class="breadcrumb" style="margin-left: 6rem !important;">
+                            <li class="breadcrumb-item">
+                                <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a routerLink="/home/site/viewcraAcknowledgement" class="waves-effect">Lab
+                                    Reports</a>
+                            </li>
+                            <li class="breadcrumb-item active">Lab Reports Details </li>
+                        </ol>
+
+                      </div>
+                    </div> 
+                  </nav>
+                </div> 
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                      <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                        <h4 class="custom-cro-header">
+                        </h4> 
+                        <div class="page-title-right"> 
+                            <ol class="breadcrumb" style="margin-left: 6rem !important;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/site/viewcraAcknowledgement" class="waves-effect">Lab
+                                        Reports</a>
+                                </li>
+                                <li class="breadcrumb-item active">Lab Reports Details </li>
+                            </ol>
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+
+              <div *ngIf="subject">
+                <div class="fixed-header">
+                  <nav aria-label="breadcrumb">
+                    <div class="row">
+                      <div class="col-6">
+                        <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                            class="fas fa-bong" style="font-size: 1rem;"></i>Study Subject Details </h4>
+                      </div>
+                      <div class="col-6"> 
+                        <ol class="breadcrumb" style="margin-left: 15rem !important;">
+                            <li class="breadcrumb-item">
+                                <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a routerLink="/home/site/viewSubject" class="waves-effect">Study
+                                    Subject</a>
+                            </li>
+                            <li class="breadcrumb-item active">Study Subject Details </li>
+                        </ol>
+
+                      </div>
+                    </div> 
+                  </nav>
+                </div> 
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                      <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                        <h4 class="custom-cro-header">
+                        </h4> 
+                        <div class="page-title-right"> 
+                            <ol class="breadcrumb" style="margin-left: 6rem !important; display:none;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/site/viewSubject" class="waves-effect">Study
+                                        Subject</a>
+                                </li>
+                                <li class="breadcrumb-item active">Study Subject Details </li>
+                            </ol>
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+
+              <div *ngIf="inventory">
+                <div class="fixed-header">
+                  <nav aria-label="breadcrumb">
+                    <div class="row">
+                      <div class="col-6">
+                        <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                            class="fas fa-user-md" style="font-size: 1rem;"></i> Kit Inventory </h4>
+                      </div>
+                      <div class="col-6"> 
+                        
+                        <ol class="breadcrumb" style="margin-left: 6rem !important;">
+                            <li class="breadcrumb-item">
+                                <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Kit
+                                Inventory </li>
+
+                            <li class="breadcrumb-item active">Site : {{name}}</li>
+
+                        </ol>
+                      </div>
+                    </div> 
+                  </nav>
+                </div> 
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                      <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                        <h4 class="custom-cro-header">
+                        </h4> 
+                        <div class="page-title-right"> 
+                         
+                            <ol class="breadcrumb" style="margin-left: 6rem !important; display:none;">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active">Kit
+                                    Inventory </li>
+
+                                <li class="breadcrumb-item active">Site : {{name}}</li>
+
+                            </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+        
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <p-toast></p-toast>
+            
+
+
+
+
+            <div *ngIf="subject" class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- <hr width="100%" class="mb-4"> -->
+                            <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row" style="padding: 1rem !important;">
+                                    <form [formGroup]="subjectForm">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Subject Id</label>
+                                                    <select class="form-select form-control"
+                                                        formControlName="patient_id">
+                                                        <option value="">Select Subject Id</option>
+                                                        <option *ngFor="let data of uniquePatientIds">
+                                                            {{ data }}
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Kit Type</label>
+                                                    <select class="form-select form-control" formControlName="kit_type">
+                                                        <option value="">Select Kit Type</option>
+                                                        <option *ngFor="let data of variantssubjects">
+                                                            {{ data }}
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Age</label>
+
+                                                    <select class="form-select form-control" formControlName="age">
+                                                        <option value="">Select Age</option>
+                                                        <option *ngFor="let data of uniquePatientAge">
+                                                            {{ data }}
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <select class="form-select form-control" formControlName="gender">
+                                                        <option value="">Select Gender</option>
+                                                        <option *ngFor="let data of Gender">
+                                                            {{ data }}
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="col-12 mt-auto mb-2 d-flex justify-content-end"
+                                            style="margin-top:0.6%;margin-left:-3px">
+                                            <button class="btn btn-secondary" (click)="resets()">Reset</button>
+
+                                            <button style="margin-left: 11px; font-size: 12px;"
+                                                (click)="getsubjectDetailss()" class="btn btn-primary">Search</button>
+                                        </div>
+
+                                    </form>
+                                    <div class="row" class="table-responsive text-nowrap" style="margin-top:2%">
+                                        <div class="col-sm-12">
+                                            <table id="datatable" class="table table-striped"
+                                                class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                                role="grid" aria-describedby="datatable_info" style="width: 82px;">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 243.2px;" aria-sort="ascending"
+                                                            aria-label="Code: activate to sort column descending">
+                                                            CRA
+
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 335.2px;"
+                                                            aria-label="Name: activate to sort column ascending">Kit
+                                                            Type
+
+
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 335.2px;"
+                                                            aria-label="Name: activate to sort column ascending">Subject
+                                                            ID
+
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Site
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Name
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Gender
+                                                        </th>
+
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Age
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Last Visit
+                                                        </th>
+                                                        <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                            colspan="1" style="width: 289.2px;"
+                                                            aria-label="Legal Name: activate to sort column ascending">
+                                                            Last Visit Date
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+
+                                                    <tr class="odd" style="  vertical-align: middle;"
+                                                        *ngFor="let croData of subjectsfiltered | paginate: { id: 'croPagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCount }; let i=index">
+
+                                                        <td>{{craname}}</td>
+                                                        <td>{{croData.kit_variant}}</td>
+                                                        <td>{{croData.patientId}}</td>
+                                                        <td>{{croData.site_id}}</td>
+                                                        <td>{{croData.patientName}}</td>
+                                                        <td>{{croData.patientSex}}</td>
+                                                        <td>{{croData.patientAge}}</td>
+                                                        <td>{{croData.Last_Visit}}</td>
+                                                        <td>{{croData.collectionDate}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="12" *ngIf="subjectsfiltered.length === 0"
+                                                            style="text-align: center; font-size: 0.8rem;">
+                                                            No Data Found
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <pagination-controls id="croPagination" (pageChange)="pageChange($event)"
+                                        *ngIf="subjectsfiltered && subjectsfiltered.length"></pagination-controls>
+                                    <div class="row">
+                                        <div class="col-md-10">
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p style="margin-top: -26%; color:#0a0a0a">Total Count:[{{totalCountR}}]</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end col -->
+                </div>
+            </div>
+            <!-- container-fluid -->
+
+            <div *ngIf="reports" class="row">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <!-- <hr width="100%" class="mb-4"> -->
+                                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+
+
+                                        <form [formGroup]="reportsForm">
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Kit Type</label>
+                                                        <select class="form-select form-control"
+                                                            formControlName="kit_type">
+                                                            <option value="">Select Kit Type</option>
+                                                            <option *ngFor="let data of variantsReports">
+                                                                {{ data }}
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Subject Id</label>
+                                                        <select class="form-select form-control"
+                                                            formControlName="patient_id">
+                                                            <option value="">Select Subject Id</option>
+                                                            <option *ngFor="let data of uniquePatientIdsr">
+                                                                {{ data }}
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>From Date</label>
+                                                        <input formControlName="from_date" type="text" type="date"
+                                                            value="" class="form-control" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>To Date</label>
+                                                        <input type="date" formControlName="to_date"
+                                                            class="form-control"
+                                                            [min]="reportsForm.get('from_date')?.value" />
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Accession</label>
+                                                        <select class="form-select form-control">
+                                                            <option *ngFor="let data of access">
+                                                                {{ data }}
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div style="margin-top:-5%">
+                                                <div class="col-12 mt-auto mb-2 d-flex justify-content-end"
+                                                    style="margin-top:0.6%;margin-left:-3px" style="margin-top:0.6%">
+                                                    <button class="btn btn-secondary" (click)="resetL()">Reset</button>
+
+                                                    <button style="margin-left: 11px; font-size: 12px;"
+                                                        (click)="getReportss()" class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row" class="table-responsive text-nowrap" style="margin-top:5%">
+                                            <div class="col-sm-12">
+                                                <table id="datatable" class="table table-striped"
+                                                    class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                                    role="grid" aria-describedby="datatable_info" style="width: 82px;">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 243.2px;"
+                                                                aria-sort="ascending"
+                                                                aria-label="Code: activate to sort column descending">
+                                                                Kit Type
+
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 335.2px;"
+                                                                aria-label="Name: activate to sort column ascending">
+                                                                Subject
+                                                                ID
+
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Accession
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Site
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Requistion No.
+                                                            </th>
+
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Visit
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Collected Date
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Posted Date
+                                                            </th>
+                                                            <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                colspan="1" style="width: 289.2px;"
+                                                                aria-label="Legal Name: activate to sort column ascending">
+                                                                Result
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+
+
+                                                    <tbody>
+
+                                                        <tr class="odd" style="  vertical-align: middle;"
+                                                            *ngFor="let croData of reportsfiltered | paginate: { id: 'croPagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCountR }; let i=index">
+
+                                                            <td>{{croData.kit_variant}}</td>
+                                                            <td>{{croData.patientId}}</td>
+                                                            <td>{{croData.access}}</td>
+                                                            <td>{{croData.site_id}}</td>
+                                                            <td>{{croData.requistionNumber}}</td>
+                                                            <td>{{croData.description}}</td>
+                                                            <td>{{croData.collectionDate}}</td>
+                                                            <td>{{croData.acknowledgementDate}}</td>
+
+
+                                                            <td width="20%">
+
+                                                                <ng-container *ngIf="croData.pdf">
+                                                                    <button class="text-center" type="button"
+                                                                        class="md btn btn-warning r-blue"
+                                                                        style="width: 40px; height: 40px"
+                                                                        (click)="openDialog(croData.pdf)">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="16" height="16" fill="currentColor"
+                                                                            class="bi bi-eye" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                                                            <path
+                                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                                                        </svg>
+                                                                    </button> </ng-container>
+                                                                <ng-container *ngIf="!croData.pdf">
+
+                                                                    <span class="md btn btn-warning r-blue">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="16" height="16" fill="currentColor"
+                                                                            class="bi bi-file-earmark-x"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z" />
+                                                                            <path
+                                                                                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                                                        </svg>
+                                                                    </span> </ng-container>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="12" *ngIf="reportsfiltered.length === 0"
+                                                                style="text-align: center; font-size: 0.8rem;">
+                                                                No Data Found
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <pagination-controls id="croPagination" (pageChange)="pageChange($event)"
+                                            *ngIf="reportsfiltered && reportsfiltered.length"></pagination-controls>
+                                        <div class="row">
+                                            <div class="col-md-10">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p style="margin-top: -26%; color:#0a0a0a">Total
+                                                    Count:[{{totalCountR}}]</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end col -->
+                    </div> <!-- end row -->
+                </div>
+                <!-- container-fluid -->
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <p-dialog header="Download Multiple PDF's" [(visible)]="display" [modal]="true">
+
+                            <table id="datatable"
+                                class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                role="grid" aria-describedby="datatable_info" style="width: 1182px;">
+                                <thead>
+                                    <tr role="row">
+
+                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                            colspan="1" style="width: 200.2px;"
+                                            aria-label="Name: activate to sort column ascending">
+                                            File Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                            colspan="1" style="width: 200.2px;"
+                                            aria-label="Legal Name: activate to sort column ascending">
+                                            Download</th>
+
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+
+
+                                    <ng-container>
+                                        <tr *ngFor="let file of pdfValuesview; let fileIndex = index">
+                                            <td>{{file.name}}
+
+                                            </td>
+
+                                            <td>
+                                                <button class="text-center" type="button"
+                                                    class="md btn btn-warning r-blue" style="width: 40px; height: 40px"
+                                                    (click)="Download(file.content, file.name)"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="text-center" class="bi bi-download"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                        <path
+                                                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                                    </svg>
+
+                                                </button>
+                                            </td>
+
+
+                                        </tr>
+                                    </ng-container>
+
+                                </tbody>
+                            </table>
+
+
+
+                        </p-dialog>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="inventory" class="row" style="margin-right: -2.5rem !important;
+    margin-top: 0 !important;">
+                <p-toast></p-toast>
+                <div class="row" >
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <!-- <hr width="100%" class="mb-4"> -->
+                                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                        <form [formGroup]="inventoryForm">
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Kit Type</label>
+                                                        <select class="form-select form-control"
+                                                            formControlName="kit_type">
+                                                            <option value="">Select Kit Type</option>
+                                                            <option *ngFor="let data of variants">
+                                                                {{ data }}
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>From Date</label>
+                                                        <input type="date" formControlName="from_date"
+                                                            class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>To Date</label>
+                                                        <input type="date" formControlName="to_date"
+                                                            class="form-control"
+                                                            [min]="reportsForm.get('from_date')?.value" />
+
+                                                    </div>
+                                                </div>
+          
+
+
+
+                                            </div>
+                                            <div style="margin-top:-4%">
+                                                <div class="col-12 mt-auto mb-2 d-flex justify-content-end"
+                                                    style="margin-top:0.6%;margin-left:-3px" style="margin-top:0.6%">
+                                                    <button class="btn btn-secondary" (click)="reseti()">Reset</button>
+
+                                                    <button style="margin-left: 11px; font-size: 12px;"
+                                                        (click)="getInventorys()" class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" class="table-responsive text-nowrap" style="margin-top:5%">
+                                                <div class="col-sm-12">
+                                                    <table id="datatable" class="table table-striped"
+                                                        class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                                        role="grid" aria-describedby="datatable_info"
+                                                        style="width: 82px;">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 243.2px;"
+                                                                    aria-sort="ascending"
+                                                                    aria-label="Code: activate to sort column descending">
+                                                                    Protocol Number
+
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 335.2px;"
+                                                                    aria-label="Name: activate to sort column ascending">
+                                                                    Region
+
+
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Country
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Variant
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Site
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Kits
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Description
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Pending Kits
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Shipped Kits
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Received
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Adjust
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    On Hand
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Last Shipped
+                                                                </th>
+                                                                <th tabindex="0" aria-controls="datatable" rowspan="1"
+                                                                    colspan="1" style="width: 289.2px;"
+                                                                    aria-label="Legal Name: activate to sort column ascending">
+                                                                    Last Shipped Date
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+
+
+                                                        <!-- <tbody *ngFor="let croData of inventoryData | paginate: { id: 'croPagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCountR }; let i=index"> -->
+                                                        <tbody>
+                                                            <tr class="odd" style="  vertical-align: middle;"
+                                                                *ngFor="let croData of this.inventoryfiltered | paginate: { id: 'croPagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCountR }; let i=index">
+                                                                <!-- <tr *ngIf="croData.kit_variant === inventoryForm.get('kit_type')?.value"> -->
+
+                                                                <td>{{croData.protocol_id}}</td>
+                                                                <td>{{croData.state}}</td>
+                                                                <td>{{croData.country}}</td>
+                                                                <td>{{croData.kit_variant}}</td>
+                                                                <td>{{croData.site}}</td>
+                                                                <td>{{croData.total_kits}}</td>
+                                                                <td>{{croData.description}}</td>
+                                                                <td>{{croData.pending_kits}}</td>
+                                                                <td>{{croData.shipped_kits}}</td>
+                                                                <td>{{croData.received_kits}}</td>
+                                                                <td>{{croData.adjust_kits}}</td>
+                                                                <td>{{croData.onhand_kits}}</td>
+                                                                <td>{{croData.last_shipped}}</td>
+                                                                <td>{{croData.last_shipped_date}}</td>
+
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="12"
+                                                                    *ngIf="this.inventoryfiltered.length === 0"
+                                                                    style="text-align: center; font-size: 0.8rem;">
+                                                                    No Data Found
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <pagination-controls id="croPagination" (pageChange)="pageChange($event)"
+                                            *ngIf="inventoryfiltered && inventoryfiltered.length"></pagination-controls>
+                                        <div class="row">
+                                            <div class="col-md-10">
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p style="margin-top: -26%; color:#0a0a0a">Total Count:[{{totalCountR}}]
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end col -->
+                    </div> <!-- end row -->
+                </div>
+                <!-- container-fluid -->
+            </div>
+
+            <!-- End Page-content -->
+        </div>
+    </div>
+
+</div>
+<footer class="footer footerheader">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  

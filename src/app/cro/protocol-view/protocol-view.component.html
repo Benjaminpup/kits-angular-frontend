@@ -1,0 +1,434 @@
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+  <div class="main-content" style="margin-top: -7% !important;">
+    <div class="page-content">
+      <div class="container-fluid">
+        <!-- start page title -->
+        <div>
+          <div class="fixed-header">
+            <nav aria-label="breadcrumb">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;">
+                    <i class="fas fa-pager" style="font-size: 1rem;"></i> View Study</h4>
+                </div>
+                <div class="col-6">
+                  <ol class="breadcrumb" style="margin-left: 18rem !important;">
+                    <li class="breadcrumb-item">
+                      <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+                    <li *ngIf="sponsor" class="breadcrumb-item">
+                      <a routerLink="/home/Sponsor/sponsorStudies" class="waves-effect">Study Summary</a>
+                    </li>
+                    <li *ngIf="!sponsor" class="breadcrumb-item">
+                      <a routerLink="/home/cro/protocolGrid" class="waves-effect">Study Summary</a>
+                    </li>
+                    <li class="breadcrumb-item active"> View Study</li>
+                  </ol>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between">
+                  <h4 class="custom-cro-header">
+                  </h4>
+                  <div class="page-title-right">
+                    <ol class="breadcrumb" style="margin-left: 18rem !important; display: none;">
+                      <li class="breadcrumb-item">
+                        <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                      </li>
+                      <li *ngIf="sponsor" class="breadcrumb-item">
+                        <a routerLink="/home/Sponsor/sponsorStudies" class="waves-effect">Study Summary</a>
+                      </li>
+                      <li *ngIf="!sponsor" class="breadcrumb-item">
+                        <a routerLink="/home/cro/protocolGrid" class="waves-effect">Study Summary</a>
+                      </li>
+                      <li class="breadcrumb-item active"> View Study</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <form [formGroup]="protocolForm">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Sponsor Study ID</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="selected_protocol_id" class="form-control" id="" placeholder="Enter Study ID"
+                      [class.custom-invalid]="shouldShowRequired('selected_protocol_id') && protocolForm.get('selected_protocol_id')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Study Title</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="selected_protocol_name" class="form-control" id=""
+                      placeholder="Enter Study Title"
+                      [class.custom-invalid]="shouldShowRequired('selected_protocol_name') && protocolForm.get('selected_protocol_name')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">CRO Study ID</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="cro_study_id" class="form-control" id="" placeholder="Enter CRO Study ID">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Sponsor ID / Name</label>
+                    <input autocomplete="off" type="text" placeholder="Sponsor Name" maxlength="100" autocomplete="off"
+                      formControlName="selected_sponsor_id" class="form-control" id="" placeholder="CRO Study ID">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Global Sample Size</label>
+                    <input autocomplete="off" type="number" formControlName="global_sample_size" class="form-control"
+                      maxlength="5" (input)="validateMobileNumber($event.target, 'office')" id=""
+                      placeholder="Enter Global Sample Size"
+                      [class.custom-invalid]="shouldShowRequired('global_sample_size') && protocolForm.get('global_sample_size')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Avant Sante Sample Size</label>
+                    <!-- (&nbsp;<input class="form-check-input"  placeholder="Enter Avant Sante Sample Size " maxlength="5"  formControlName="avantc" (input)="validateMobileNumber($event.target, 'office')"
+                      type="checkbox" value="checked" id="debugInfo" />
+                    &nbsp; <label for="formrow-firstname-input" class="form-label">Same as Global</label>) -->
+                    <input autocomplete="off" type="number" maxlength="5" formControlName="avant_sample_size"
+                      class="form-control" id="" placeholder="Enter Avant Sante Sample Size "
+                      (input)="validateMobileNumber($event.target, 'office')"
+                      [class.custom-invalid]="shouldShowRequired('avant_sample_size') && protocolForm.get('avant_sample_size')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Kit Variant Count</label>
+                    <input autocomplete="off" maxlength="5" type="number" autocomplete="off"
+                      formControlName="kit_variant_count" (input)="validateMobileNumber($event.target, 'office')"
+                      class="form-control" id="" placeholder="Enter Kit Variant Count"
+                      [class.custom-invalid]="shouldShowRequired('kit_variant_count') && protocolForm.get('kit_variant_count')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Total No.of Visits</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      formControlName="total_visits" (input)="validateMobileNumber($event.target, 'office')"
+                      placeholder="Enter Total No.of Visits" class="form-control"
+                      [class.custom-invalid]="shouldShowRequired('total_visits') && protocolForm.get('total_visits')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">No.of Screens</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5" formControlName="screens"
+                      (input)="validateMobileNumber($event.target, 'office')" class="form-control" id=""
+                      placeholder="Enter No.of Screens"
+                      [class.custom-invalid]="shouldShowRequired('screens') && protocolForm.get('screens')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Screen Kit Count</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      (input)="validateMobileNumber($event.target, 'office')" formControlName="selected_skit_count"
+                      class="form-control" id="" placeholder="Enter Screen Kit Count"
+                      [class.custom-invalid]="shouldShowRequired('selected_skit_count') && protocolForm.get('selected_skit_count')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Visit Kit Count</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      (input)="validateMobileNumber($event.target, 'office')" formControlName="selected_visit_count"
+                      class="form-control" id="" placeholder="Enter Visit Kit Count"
+                      [class.custom-invalid]="shouldShowRequired('selected_visit_count') && protocolForm.get('selected_visit_count')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Special Instructions</label>
+                    <textarea class="form-control" rows="3" cols="5" formControlName="specialInstructions"
+                      id="comment"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <p-toast></p-toast>
+        <div class="card allText">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <h4 class="r-blue-text"><b>Kit Details</b></h4>
+                <!-- <h4 class="r-blue-text" style="font-family: Mada, sans-serif !important;font-weight: 500;font-size: 16px;">Kit Details</h4> -->
+              </div>
+              <div class="col-md-12 mb-3">
+                <div *ngIf="displayValues" class="tab-content pt-3 text-muted">
+                  <div class="tab-pane active" role="tabpanel">
+                    <p-tabView>
+                      <p-tabPanel header="Screening">
+                        <!-- <h3 style="font-family: Mada, sans-serif !important;font-weight: 600;font-size: 16px; color: #212529;">  {{screeningVariant}}</h3> -->
+                        <!-- <h5 class="mb-sm-0 font-size-18">
+                                                  Screen Kit Count : {{scount}}
+                                              </h5> -->
+                        <!-- <div class="row">
+                                                  <div class="col-md-3 mt-2 mb-3">
+                                                    <h5>Selected Lab Tests </h5>
+                                                      <h6 
+                                                          *ngFor="let item of screenDetails  let k = index">
+                                                          &nbsp;&nbsp;{{k+1}}.&nbsp;&nbsp;{{ item }}</h6>
+                                                  </div>
+                                              </div>
+                                              <br> -->
+
+                        <div class="row">
+                          <div class="col-md-5">
+                            <ol class="ol-cards alternate">
+                              <li style="padding-left: 7rem;">
+                                <h3 style="text-align: center; font-size: 18px; font-weight: 600; color: #222;">
+                                  {{screeningVariant}}</h3><br />
+                                <!-- <div style="text-align: center; font-size: 15px; font-weight: 600; color: #4c4c4c;">Screen Kit Count : {{scount}}</div> -->
+                              </li>
+                            </ol>
+                            <ol class="ol-cards alternate">
+                              <li style="padding-left: 6rem;">
+                                <h3 style="text-align: center; font-size: 17px; font-weight: 600; color: #4c4c4c;">
+                                  Materials &nbsp; <i class="fa fa-angle-double-right"></i></h3><br />
+                                <div style="text-align: center; font-size: 14px; font-weight: 600; color: #4c4c4c;">
+                                  Selected Lab Tests<br />
+                                  <h6 style="color: #757575;" *ngFor="let item of screenDetails  let k = index">
+                                    {{k+1}}.{{ item }}</h6>
+                                </div>
+                              </li>
+                            </ol>
+                          </div>
+                          <div class="col-md-6" style="margin-top: 2rem;">
+                            <div class="vertical-card" *ngFor="let item of sMatDetails">
+                              <div class="vertical-card-image"
+                                [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
+                              </div>
+                              <div class="vertical-card-details">
+                                <h4></h4>
+                                <h5>{{ item.material_name || item.meterial_id }}</h5>
+                                <h6><b>Size:</b> {{item.size}}
+                                  <b>Qunatity:</b> {{item.quantity}}
+                                </h6>
+                              </div>
+                              <div class="vertical-card-border"></div>
+                            </div>
+                          </div>
+                          <!-- <div class="col-md-6" style="margin-top: 2rem;">
+
+                                                    <div class="vertical-card" *ngFor="let item of sMatDetails">
+                                                        <div class="vertical-card-image"
+                                                            [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
+                                                        </div>
+                                                        <div class="vertical-card-details">
+                                                            <h5>{{ item.material_name || item.meterial_id }}</h5>
+                                                            <h6><b>Size:</b> {{item.size}}
+                                                                <b>Qunatity:</b> {{item.quantity}}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="vertical-card-border"></div>
+                                                    </div>
+                                                </div> -->
+                        </div>
+                        <!-- <br /> -->
+                        <!-- <br>
+                                              <h5 class="mb-sm-0 allText">
+                                                  Materials
+                                              </h5>
+                                              <hr />
+                                           -->
+                        <!-- screening -->
+                        <!-- <div class="row card-group">
+                                                  <div class="col-md-3 mb-3" *ngFor="let item of sMatDetails">
+                                                      <p-card [styleClass]="'custom-card'"
+                                                          [style]="{width: '120px', height:'180px'}"
+                                                          styleClass="p-card-shadow">
+                                                          <ng-template pTemplate="header">
+                                                              <img style="width:120px; height: 70px; margin-bottom: -20px;"  src="{{item.image}}" />
+                                                          </ng-template>
+                                                          <h5 class="r-blue-text"> {{ item.material_name || item.meterial_id }}</h5>
+                                                          Size: {{item.size}}<br>
+                                                          Qunatity: {{item.quantity}}<br>
+                                                      </p-card>
+                                                  </div>
+                                              </div> -->
+
+
+                                              <br>
+
+
+
+
+                                          </p-tabPanel>
+                                          <p-tabPanel *ngFor="let item of vMatDetails let k = index"
+                                          header="{{item.alternate_names | titlecase}}">
+                                             
+                                              <div class="row">
+                                                  <div class="col-md-5">
+                                                      <ol class="ol-cards alternate">
+                                                          <li style="padding-left: 7rem;">
+                                                             <h3 style="font-size: 18px; font-weight: 600; color: #222;">{{item.kit_variant}}</h3><br/>
+                                                              <!-- <div style="text-align: center; font-size: 15px; font-weight: 600; color: #4c4c4c;">Visit Kit Count : {{vcount}}</div> -->
+                                                          </li>
+                                                      </ol>
+                                                      <ol class="ol-cards alternate"> <li style="padding-left: 6rem;"> <h3 style="text-align: center; font-size: 17px; font-weight: 600; color: #4c4c4c;">Materials &nbsp; <i class="fa fa-angle-double-right"></i></h3><br/> <div style="text-align: center; font-size: 14px; font-weight: 600; color: #4c4c4c;">Selected Lab Tests<br/> <h6 style="color: #757575;" 
+                                                        *ngFor="let items of item.selectedLabTests  let k = index"> {{k+1}}.{{ items }}</h6> </div> </li> </ol>
+                                                     
+                                                  </div>
+                                                  <div class="col-md-3" style="margin-top: 2rem;">
+                                                      <div class="vertical-card" *ngFor="let items of item.visits">
+                                                          <div class="vertical-card-image"
+                                                              [ngStyle]="{'background-image': 'url(' + items.image + ')'}">
+                                                          </div>
+                                                          <div class="vertical-card-details">
+                                                              
+                                                              <h5>{{ items.material_name || items.meterial_id }}</h5>
+                                                              <h6><b>Size:</b> {{items.size}}
+                                                                  <b>Qunatity:</b> {{items.quantity}}
+                                                              </h6>
+                                                          </div>
+                                                          <div class="vertical-card-border"></div>
+                                                      </div>
+                                                  </div>
+                                                  
+
+                                                  
+                                              </div>
+                                              <br />
+                                          
+                                        
+                                          <!-- <p-tabPanel *ngFor="let item of vMatDetails let k = index"
+                                          
+
+                                          header="{{item.alternate_names | titlecase}}">
+                                          <h3  style="font-family: Mada, sans-serif !important;font-weight: 600;font-size: 16px; color: #212529;">
+                                            {{item.kit_variant}}</h3>  
+                                          <div class="row">
+                                            <div class="col-md-3 mt-2 mb-3">
+                                              <h5>Selected Lab Tests</h5>
+                                              <h6 
+                                              *ngFor="let items of item.selectedLabTests  let k = index">
+                                              &nbsp;&nbsp;{{k+1}}.&nbsp;&nbsp;{{ items }}</h6>
+                                            </div>
+                                        </div>
+                                              <br>
+                                              <h5 class="mb-sm-0 font-size-16">
+                                                Materials
+                                            </h5>
+                                            <hr />
+                                              <div class="row card-group">
+                                                  <div class="col-md-3 mb-3" *ngFor="let items of item.visits">
+                                                      <p-card [style]="{width: '120px', height:'180px'}"
+                                                          styleClass="p-card-shadow">
+                                                          <ng-template pTemplate="header">
+                                                              <img style="width:120px; height: 70px; margin-bottom: -20px;"  src="{{items.image}}" />
+                                                          </ng-template>
+                                                          <h5 class="r-blue-text"> {{ items.material_name || items.meterial_id }}</h5>
+                                                          Size: {{items.size}}<br>
+                                                          Qunatity: {{items.quantity}}<br>
+                                                      </p-card>
+                                                  </div>
+                                              </div> -->
+
+
+                                           
+
+                                          </p-tabPanel>
+                                          <div class="col-md-12 mb-3" align="right">
+                                          <div class="form-buttons-all">
+                                            <button class="btn btn-inverse" (click)="goBack()">Back</button>
+                                          </div>
+                                             
+                                             
+                                           
+                                        </div>
+
+
+                                      </p-tabView>
+                                      <!-- <div class="container-fluid" >
+
+                   
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Created By</label>
+                                                        <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                            value="{{createdName}}" disabled placeholder="Created By">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Created On</label>
+                                                        <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                            value="{{protocolIdDetails.created_on  | date: 'd-M-y'}}" disabled
+                                                            placeholder="Created On">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Changed By</label>
+                                                        <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                            value="{{changedName}}" disabled placeholder="Changed By">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Changed On</label>
+                                                        <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                                            value="{{protocolIdDetails.changed_on | date: 'd-M-y'}}" disabled
+                                                            placeholder="Changed By">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- HTML template -->
+      <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+  </div>
+  <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>

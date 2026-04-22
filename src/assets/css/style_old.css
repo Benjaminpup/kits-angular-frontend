@@ -1,0 +1,131 @@
+.r-red {
+	background: #ff414b !important;
+}
+
+.r-red-text {
+	color: #ff414b !important;
+}
+
+
+.r-red-border {
+	border: #ff414b !important;
+}
+
+.r-dark-text {
+	color: #000 !important;
+}
+
+.pull-right {
+	float: right;
+}
+
+
+.r-dark {
+	background: #000 !important;
+}
+
+.r-lite {
+	color: #CCC;
+}
+
+.login-bg {
+	background-image: url("../images/login_bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+body[data-sidebar=dark] .mm-active {
+	color: #ff414b !important;
+}
+
+.vertical-menu {
+	background: #20456a !important;
+}
+
+.navbar-brand-box {
+	background: #20456a !important;
+}
+
+.show-btn {
+	background: #ff414b;
+	border: #111 solid 1px;
+	border: #f1c40f solid 1px;
+}
+
+.show-btn:hover {
+	background: #FFF;
+	border: #ff414b solid 1px;
+	color: #ff414b;
+}
+
+.dark-btn {
+	background: #111;
+	border: #111 solid 1px;
+}
+
+.dark-btn:hover {
+	background: #FFF;
+	border: #ff414b solid 1px;
+	color: #ff414b;
+}
+
+.edit-btn {
+	background: #111;
+	border: #111 solid 1px;
+	color: #FFF;
+}
+
+.edit-btn:hover {
+	background: #FFF;
+	border: #ff414b solid 1px;
+	color: #ff414b;
+}
+
+.delete-btn {
+	background: #FFF;
+	border: #111 solid 1px;
+	color: #111;
+}
+
+.delete-btn:hover {
+	background: #111;
+	border: #111 solid 1px;
+	color: #FFF;
+}
+
+hr {
+	margin: 7px 0;
+	border-top: 1px solid #EEE;
+}
+
+.wizard .steps .current a,
+.wizard .steps .current a:active,
+.wizard .steps .current a:hover {
+	background-color: rgba(255, 65, 75, .2);
+	color: var(--bs-gray-700);
+}
+
+.wizard .steps>ul>li a {
+	display: block;
+	padding: 0.5rem 1rem;
+	color: var(--bs-gray-600);
+	font-weight: 500;
+	background-color: rgba(237, 237, 237, .5);
+}
+
+.wizard {
+	min-height: 350px;
+}
+
+.menu-title {
+	color: #fff !important;
+}
+
+
+#sidebar-menu ul li a {
+	color: #fff !important;
+}
+
+#sidebar-menu ul li a i {
+	color: #fff !important;
+}

@@ -1,0 +1,252 @@
+<div class="container">
+  <div class="login-card">
+    <div class="auth-logo mb-3">
+      <a href="index.html" class="auth-logo-dark" align="center">
+        <img src="assets/images/roboxa-logo.png" alt="" height="38">
+      </a>
+    </div>
+    <div class="col-12 mb-3">
+      <div class="text-primary pt-2" align="center">
+        <h5 class="text-primary"
+          style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+          Welcome to Roboxa !</h5>
+          
+      </div>
+    </div>
+ 
+    <div class="p-2">
+      <form [formGroup]="loginForm" class="form-horizontal" action="index.html">
+        <div class="mb-3">
+          <label style="display: inline;  color: black;">User Name<label
+              style="color: red; display: inline;margin-left: 4px; ">*</label></label>
+          <input autocomplete="off" style="margin-top:2%; " *ngIf="!enableFields" type="text" formControlName="username"
+            class="form-control userNamePlaceholder" id="username" placeholder="Enter User Name">
+          <input autocomplete="off" style="text-align: left;margin-top:2%; width: 100% !important;" *ngIf="enableFields" type="text"
+            [attr.disabled]="true" class="form-control" formControlName="username" id="username"
+            placeholder="Enter User Name">
+ 
+        </div>
+        <div class="mb-3" *ngIf="enableFields">
+          <label for="password" *ngIf="enableFields" class="password-label form-group has-top-label w-100">
+            <span style="color:black;">Password<label
+                style="color: red; display: inline;margin-left: 4px;">*</label></span>
+            <input autocomplete="off" class="form-control" id="password" style="margin-top:2%; width: 99% !important;"
+              [type]="showPassword ? 'text' : 'password'" formControlName="password" (paste)="preventPaste($event)"
+              maxlength="16" class="form-control mb-3" id="" placeholder="Password">
+            <button type="button" class="eye-button" tabindex="-1" style="color:#495057a3; margin-top: 1%;"
+              (click)="showPassword = !showPassword">
+              <i *ngIf="showPassword" class="fa fa-eye eyeIcon eyeIcon" aria-hidden="true"
+                style="right:-1rem !important"></i>
+              <i *ngIf="!showPassword" class="fa fa-eye-slash eyeIcon" aria-hidden="true"
+                style="right:-1rem !important"></i>
+            </button>
+          </label>
+        </div>
+        <div class="mb-3" *ngIf="enableFields ">
+          <label for="username" class="form-label" style="display: flex; margin-bottom: -9px; color:black;">OTP<label
+              style="color: red; display: inline;margin-left: 4px;">*</label></label>
+          <input autocomplete="off" type="text" style="margin-top:2%; width: 99% !important;" formControlName="otp" maxlength="6"
+            class="form-control  mb-3" (input)="validateOTP($event.target, 'otp')" id="" placeholder="Enter OTP">
+          <button type="button" (click)="otp()" class="btn btn-link" style="padding: 0;
+         
+            margin-left: 11rem;
+            color: #0073aa;">Resend OTP</button>
+        </div>
+ 
+     
+        <div class="mt-3 d-grid">
+          <button *ngIf="!enableFields" (click)="otp()" class="btn btn-primary globalbutton"><i
+              class="bx bx-lock label-icon"></i>
+            Send OTP</button>
+ 
+          <div class="row">
+            <div class="col-md-6">
+              <button *ngIf="enableFields" (click)="login()" class="btn btn-primary globalbutton"
+                style="width: 100% !important;">Submit</button>
+            </div>
+            <div class="col-md-6">
+              <button *ngIf="enableFields" (click)="goBack()" class="btn btn-secondary globalbuttonb"
+                style="width: 100% !important;">
+                Back
+              </button>
+            </div>
+          </div>
+ 
+        </div>
+        <div *ngIf="enableFields" class="mt-4" style="padding-top: 6px; margin-top: 0.5rem !important;">
+          <a href="#" class="text-muted" data-bs-toggle="modal" data-bs-target=".transaction-detailModal"><i
+              class="mdi mdi-lock me-1"></i> Forgot Your
+            Password ?</a>
+        </div>
+      </form>
+ 
+    </div>
+  </div>
+</div>
+
+<body forgt-bg>
+  
+<p-toast></p-toast>
+  <form [formGroup]="forgetForm" >
+    <div class="modal fade transaction-detailModal" tabindex="-1" role="dialog"
+    aria-labelledby="transaction-detailModalLabel" aria-hidden="true" data-bs-backdrop="static">
+   <!-- Add the "data-bs-backdrop" attribute with value "static" to disable clicking outside to close -->
+
+   <!-- ... rest of your modal content ... -->
+
+
+      <div class="modal-dialog modal-dialog-centered modal-popup-allignment" role="document">
+        <div class="modal-content" style="width: 59% !important; margin-right: 21% !important;">
+          <div class="modal-header">
+            <h5 *ngIf="!disableFields" class="modal-title" id="transaction-detailModalLabel" 
+            style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important; margin-left: 76px;"
+            >Forgot Password</h5>
+            <h5 *ngIf="disableFields" class="modal-title" id="transaction-detailModalLabel" 
+            style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important; margin-left: 76px;"
+            >Reset Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="mb-3 text-center" class="enter">
+                <label  style="padding-bottom: 20px;display: flex; margin-bottom: -24px; margin-top: 4px;  ">User Name/Email Id<label style="color: red; display: inline;margin-left: 4px;">*</label></label>
+              <input autocomplete="off"  *ngIf="!disableFields" type="text" style="text-align: center;margin-top:2%;  width: 100% !important;" formControlName="email1" class="form-control text-center mb-3 login-card-allignment" id=""
+                  placeholder="Enter User Name/Email id">
+                  <input *ngIf="disableFields" style="text-align: left;margin-top:2%;  width: 100% !important;" type="text" [attr.disabled]="true" class="form-control"
+                        formControlName="email1" id="email1" placeholder="Enter Email">
+
+
+                     
+              </div>
+              <div class=" mb-3 text-center modal-footer" class="reset">
+                <button style="margin-left: 29%;  min-width: 100px;"*ngIf="!disableFields" (click)="set()" class="btn btn-primary  globalbutton">Verify</button>
+              </div>
+              <div class="mb-3" class="password" *ngIf="disableFields">
+                <label for="username" class="form-label" style="display: flex; margin-bottom: -9px;margin-top: 7px;">OTP<label style="color: red; display: inline;margin-left: 4px;">*</label></label>
+              <input autocomplete="off" type="text"  style="margin-top:2%; width: 100% !important;"
+                (input)="validateOTP($event.target, 'otp')"formControlName="otp" class="form-control mb-3" id=""
+                  placeholder="OTP">
+                  
+              </div>
+              <div style="text-align: center;" *ngIf="forgetForm.get('otp')?.touched && forgetForm.get('otp')?.hasError('required')"
+                  class="text-danger">
+                  OTP is required
+                </div>
+
+              <div class="mb-3" *ngIf="disableFields">
+                <label for="password" *ngIf="disableFields"
+              class="password-label form-group has-top-label w-100">
+              <span>New Password <label style="color: red; display: inline;margin-left: 4px;">*</label></span>
+            <input autocomplete="off" class="form-control" id="password"  style="margin-top:2%; width: 100% !important;"
+                  [type]="showPassword ? 'text' : 'password'"  formControlName="npassword" (paste)="preventPaste($event)" maxlength="16" class="form-control  mb-3" id=""
+                  placeholder="Confirm New Password">
+              <button type="button"  class="eye-button2" tabindex="-1" style="color:#000448a3; margin-top: -1%"
+                  (click)="showPassword = !showPassword">
+                  <i *ngIf="showPassword" class="fa fa-eye eyeIcon"  style="margin-left: -1400% !important"
+                      aria-hidden="true"></i>
+                  <i *ngIf="!showPassword" class="fa fa-eye-slash eyeIcon"
+                      aria-hidden="true"></i>
+              </button>
+              <div style="margin-top: -10px" *ngIf="forgetForm.get('npassword')?.touched && forgetForm.get('npassword')?.hasError('required')"
+              class="text-danger">
+              Password is required
+            </div>
+            <div style="text-align: left;margin-top: -10px" *ngIf="forgetForm.get('npassword')?.touched && forgetForm.get('npassword')?.hasError('minlength')"
+              class="text-danger">
+              Password should contain a minimum of 8 characters
+            </div>
+            </label>
+                
+              </div>
+              
+<!-- 
+
+                <div class="mb-3" class="password"*ngIf="disableFields">
+                  <label>
+                    Enter New Password 
+                  </label>
+                <div class="mb-3 text-center">
+
+
+
+                  
+                <input autocomplete="off" type="text" 
+
+
+ maxlength="16" formControlName="npassword"
+                    class="form-control text-center mb-3" id="" placeholder="Passowrd" required minlength="6">
+                  <div *ngIf="forgetForm.get('npassword')?.touched && forgetForm.get('npassword')?.hasError('required')"
+                    class="text-danger">
+                    Password is required
+                  </div>
+                  <div *ngIf="forgetForm.get('npassword')?.touched && forgetForm.get('npassword')?.hasError('minlength')"
+                    class="text-danger">
+                    Password should contain a minimum of 8 characters
+                  </div>
+                </div>
+                <div *ngIf="forgetForm.get('npassword')?.touched && forgetForm.get('npassword')?.hasError('pattern')"
+                  class="text-danger">
+                  Password should include at least one lowercase letter, one uppercase letter, one digit, and one
+                  special character
+                </div>
+
+              </div>
+           -->
+            </div>
+            <div class="row">
+              <div class="col-md-6" style="margin-left: -5%;"></div>
+              
+              <div class="mb-3" *ngIf="disableFields">
+                <label for="password" *ngIf="disableFields"
+              class="password-label form-group has-top-label w-100">
+              <span style=" display: flex;margin-top: -22px; margin-bottom: -9px;">Confirm New Password <label style="color: red; display: inline;margin-left: 4px;">*</label></span>
+            <input autocomplete="off" class="form-control" id="password" style="margin-top:2%; width: 100% !important;"
+                  [type]="showPasswordc ? 'text' : 'password'"  formControlName="confirmPassword" (paste)="preventPaste($event)" maxlength="16" class="form-control mb-3" id=""
+                  placeholder="Confirm New Password">
+              <button type="button" class="eye-button3" tabindex="-1" style="color:#495057a3; margin-top: -1%"
+                  (click)="showPasswordc = !showPasswordc">
+                  <i *ngIf="showPasswordc" class="fa fa-eye eyeIcon"
+                      aria-hidden="true"></i>
+                  <i *ngIf="!showPasswordc" class="fa fa-eye-slash eyeIcon"
+                      aria-hidden="true"></i>
+              </button>
+              <div style="text-align: left;margin-top: -10px" *ngIf="forgetForm.get('confirmPassword')?.touched && forgetForm.get('confirmPassword')?.hasError('required')"
+              class="text-danger">
+              Password is required
+            </div>
+
+              <div style="text-align: left;margin-top: -10px"  *ngIf="forgetForm.get('confirmPassword')?.hasError('password1')" class="text-danger">
+                Password and Confirm Password Must Be Same
+              </div>
+            </label>
+                
+              </div>
+                <!-- <div class="mb-3"  class="password" *ngIf="disableFields">
+                  <label >
+                    Enter Confirm Password 
+                  </label>
+                <div class="mb-3 text-center">
+                <input autocomplete="off" type="text" 
+
+
+ maxlength="16" formControlName="confirmPassword"  class="form-control text-center mb-3" id=""
+                    placeholder=" Confirm Passowrd">
+                  <div *ngIf="forgetForm.get('confirmPassword')?.hasError('password1')" class="text-danger">
+                    Password and Confirm Password Must Be Same
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div *ngIf="disableFields" class="reset" class=" mb-3 text-center modal-footer" style="margin-top: -50px;">
+            <button *ngIf="!valid" #myModal  style="margin-right: 29%; min-width: 100px;" type="submit"  (click)="reset()" class="btn btn-primary globalbutton">save</button>
+         
+            <button *ngIf="valid"  #myModal style="margin-right: 29%;" type="submit" data-bs-dismiss="modal" (click)="resetn()" class="btn btn-primary w-md">save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+

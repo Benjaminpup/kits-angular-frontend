@@ -1,0 +1,507 @@
+/* Add this style to shrink the content when the menu is shrunk */
+.content-shrunk {
+  margin-left: -110px;
+  /* Adjust this value based on your design */
+  transition: margin-left 0.3s ease;
+  /* Add transition for a smooth effect */
+}
+
+#layout-wrapper.content-shrunks .footer {
+  bottom: 0;
+  padding: 20px calc(24px * 0.75);
+  position: fixed;
+  left: 70px;
+  color: var(--bs-footer-color);
+  right: 2px;
+  height: 60px;
+  background-color: var(--bs-footer-bg);
+}
+
+.vertical-menum {
+  background: #20456a !important;
+  /* background: #fff !important; */
+  width: 70px;
+}
+
+body[data-sidebar=dark] .navbar-brand-box {
+  background: #000000;
+}
+
+.navbar-brand-box {
+  background: #20456a !important;
+  width: 175px;
+  height: 70px;
+}
+
+.sh {
+  bottom: 0;
+  padding: 20px calc(24px * 0.75);
+  position: fixed;
+  left: -190px;
+  color: var(--bs-footer-color);
+  right: 207px;
+  height: 60px;
+  background-color: var(--bs-footer-bg);
+  position: fixed;
+}
+
+h4 {
+  top: 2;
+  margin-top: 10px;
+  text-align: center;
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.fa fa-caret-down {
+  margin-left: 40px;
+}
+
+/* .fa fa-light fa-hospital{
+    margin-right: 50px;
+  } */
+
+a {
+  /* text-align: center; */
+  color: rgb(185, 185, 185);
+  margin-left: 15px;
+}
+
+a:hover {
+  color: white;
+}
+
+h5 {
+  color: rgb(190, 188, 188);
+  font-size: 14px;
+}
+
+h5:hover {
+  color: white;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: rgb(238, 237, 237);
+
+
+}
+
+/*  */
+.logo {
+  margin-left: 40px;
+  margin-top: 10px;
+
+}
+
+nav {
+  margin-left: 200px;
+
+}
+
+li {
+  font-size: 12px;
+
+}
+
+main {
+  font-size: 13px;
+}
+
+.button button {
+  width: 150px;
+  font-size: 12px
+}
+
+h4 {
+  text-align: center;
+  color: #434242;
+  font-size: 18px;
+  font-family: sans-serif;
+  margin-bottom: 5px;
+}
+
+::ng-deep .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Adjust the opacity as needed */
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  position: fixed;
+}
+
+input[type=text] {
+  width: 100%;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+input[type=password] {
+  width: 100%;
+  border: 1px solid #ccc;
+
+}
+
+.view {
+  color: #59c3da;
+  margin-left: 22px;
+  margin-top: -2px;
+  width: 50px;
+}
+
+label {
+
+  display: inline-block;
+  font-size: 13px;
+  margin-bottom: 3px;
+  margin-top: 7px;
+}
+
+.eye-button {
+  background: none;
+  border: none;
+  /* top: 200px;
+  right: 30px;
+  bottom: 100px; */
+  margin-right: 50px;
+  float: right;
+  margin-top: -41px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.eyeIcon {
+  margin: 0;
+  /* Reset any margin */
+  /* position: absolute; */
+  /* Ensure consistent positioning */
+  right: 90px;
+  /* Align to the right within the button */
+
+
+  /* margin: 0;
+  position: static;
+  right: auto;
+  top: auto; */
+}
+
+
+.eye-button1 {
+  background: none;
+  border: none;
+  /* top: 200px;
+  right: 30px;
+  bottom: 100px; */
+  margin-right: 50px;
+  float: right;
+  margin-top: -41px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+/* .view{
+  width: 30%;
+	height: 40%
+} */
+/* ::ng-deep .p-dialog {
+	width: 40%;
+	height: 50%
+}
+   */
+
+/* Making the navbar responsive by CSS Media Queries */
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #menu-toggle~.menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  #menu-toggle:checked~.menu li {
+    border: 1px solid #9f9a9a;
+    height: 2.5em;
+    padding: 0.5em;
+  }
+
+  .menu>li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: black;
+    background-color: #E8E8E8;
+
+  }
+
+  .menu>li:not(:last-child) {
+    border-bottom: 1px solid #444;
+
+  }
+}
+
+.sidebar {
+  background-color: #0c0c0c;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, ;
+  display: flex;
+  flex-direction: column;
+  /* Align items vertically */
+
+}
+
+/* Add this to your global CSS or component-specific CSS */
+.active {
+  background-color: #0073aa;
+  border-color: #0073aa;
+  color: #fff !important;
+  font-family: 'Mada', sans-serif;
+  /* background-color: darkcyan;  */
+  /* background-color: #9bc2c2; */
+  /* Change this to the desired color */
+  color: #ffffff;
+  /* Change this to the desired text color */
+  /* Add any other styles you want for the active state */
+}
+
+#sidebar {
+  /* your default styling here */
+  width: 175px;
+  /* set the width of the sidebar */
+  transition: all 0.3s ease;
+  /* for smooth transition */
+}
+
+#sidebar.active {
+  margin-left: -250px;
+  /* move the sidebar out of view */
+}
+
+
+/* .input-container {
+  display: flex;
+  flex-direction: column;
+} */
+
+
+.sideNav-bgColor {
+  background-color: #0073aa;
+  border-color: #0073aa;
+  color: #fff !important;
+  font-family: 'Mada', sans-serif;
+  /* background-color: #0c0c0c; */
+}
+
+
+
+.logoutDialogBox {
+  font-size: 2px;
+}
+
+.custom-confirm-header {
+  font-size: 24px;
+  /* Change this to your desired font size */
+  color: #ff0000;
+  /* Change this to your desired color */
+}
+
+.custom-confirm-message {
+  font-size: 18px;
+  /* Change this to your desired font size */
+  color: #0000ff;
+  /* Change this to your desired color */
+}
+
+::ng-deep {
+  .p-dialog-title {
+    font-size: 16px !important;
+    color: yellow !important;
+  }
+
+  /* .p-dialog-title {
+    margin-left: 10px;
+  } */
+
+}
+
+
+
+
+.before-otp .form-control {
+  width: 80% !important;
+}
+
+.p-dialog .after-otp {
+  max-height: 100% !important;
+}
+
+.after-otp .form-control {
+  width: 80% !important;
+  /* Change this to your desired width */
+}
+
+::ng-deep {
+  .sendOtp-buttonAllignment {
+    margin-right: 36% !important;
+  }
+}
+
+.emailIDallignment {
+  margin-top: -17px;
+}
+
+.required-text {
+  font-size: 14px;
+  margin-top: 5px;
+  font-family: Mada, sans-serif !important;
+  font-weight: 400;
+}
+
+/* .custom1-dialog {
+
+  } */
+/* .sidenavHover:active[_ngcontent-djw-c61] {
+    background-color: #ffffff !important;
+    color: #fff !important ;
+    font-family: 'Mada', sans-serif;
+} */
+
+/* #sidebar-menu ul li a:hover i {
+  color: #ffffff !important;
+} */
+
+.w-md {
+  min-width: 10px;
+  background-color: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+    font-family: 'Mada', sans-serif;
+}
+
+
+
+
+
+
+#sidebar-menu {
+  padding: 0px 0 0px 0;
+  margin-top: 0px !important;
+  color: #000000 !important;
+}
+
+#sidebar-menu ul li a {
+  color: #000000;
+  margin-left: 0rem !important;
+  padding-left: 2rem !important;
+}
+
+
+#sidebar-menu ul li a i {
+  color: #000000;
+  /* Black color for icons */
+}
+
+/* Hover, focus, active state */
+#sidebar-menu ul li a:hover,
+#sidebar-menu ul li a:focus,
+#sidebar-menu ul li a:active {
+  background-color: #0073aa !important;
+  /* White background color */
+  color: white !important;
+}
+
+#sidebar-menu ul li a:hover i,
+#sidebar-menu ul li a:focus i,
+#sidebar-menu ul li a:active i {
+  background-color: #0073aa !important;
+  /* White background color */
+  color: white !important;
+}
+
+.sidenavHover {
+  background-color: #ffffff;
+
+  color: #060404 !important;
+
+
+  /* margin-left: 10px; */
+
+}
+
+
+
+.sidenavHover ul li a {
+  color: #000000;
+}
+
+
+
+
+.sidenavHover:hover,
+.sidenavHover:visited,
+.sidenavHover:active {
+  background-color: #0073aa;
+  border-color: #0073aa;
+  color: #fff !important;
+  font-family: 'Mada', sans-serif;
+
+
+
+}

@@ -1,0 +1,553 @@
+<div id="layout-wrapper">
+
+    <div class="main-content" style="margin-top: -7% !important;">
+      <div class="page-content">
+        <div class="container-fluid">
+  
+
+
+        <div>
+          <div class="fixed-header">
+            <nav aria-label="breadcrumb">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fas fa-book-medical" style="font-size: 1rem;"></i> Study Registration</h4>
+                </div>
+                <div class="col-6"> 
+                  <ol class="breadcrumb" style="margin-left: 17rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/protocolGrid" class="waves-effect">Study</a>
+                          </li>
+                    <li  class="breadcrumb-item active">Edit Study Registration</li>
+                  
+                </ol>
+                </div>
+              </div> 
+            </nav>
+          </div> 
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                  <h4 class="custom-cro-header">
+                  </h4> 
+                  <div class="page-title-right"> 
+                    <ol class="breadcrumb" style="margin-left: 12rem !important; display: none;">
+                      <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item"><a routerLink="/home/cro/protocolGrid" class="waves-effect">Study</a>
+                            </li>
+                      <li  class="breadcrumb-item active">Edit Study Registration</li>
+                    
+                  </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+  
+      
+
+
+
+
+
+
+
+        <p-toast></p-toast>
+  
+        <form [formGroup]="protocolForm">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Sponsor Study ID</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="selected_protocol_id" class="form-control" id=""
+                      placeholder="Enter Study ID"
+                       [class.custom-invalid]="shouldShowRequired('selected_protocol_id') && protocolForm.get('selected_protocol_id')?.touched">
+
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Study Title</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="selected_protocol_name" class="form-control" id=""
+                      placeholder="Enter Study Title"
+                       [class.custom-invalid]="shouldShowRequired('selected_protocol_name') && protocolForm.get('selected_protocol_name')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">CRO Study ID</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="cro_study_id" class="form-control" id=""
+                      placeholder="Enter CRO Study ID">
+                      
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Sponsor ID / Name</label>
+                    <select formControlName="selected_sponsor_id" class="form-select form-control"
+                       [class.custom-invalid]="shouldShowRequired('selected_sponsor_id') && protocolForm.get('selected_sponsor_id')?.touched">
+                      <option  selected value="">Select Sponsor ID</option>
+                      <option *ngFor="let sponser of sponsers" [value]="sponser.sponsor_id">
+                        {{ sponser.sponsor_name + ' ('+ sponser.sponsor_id + ')' }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Kit Variant Count</label>
+                    <input autocomplete="off" maxlength="5" type="number" autocomplete="off" formControlName="selected_vkit_count"
+                      class="form-control" id="" placeholder="Enter Kit Variant Count"
+                       [class.custom-invalid]="shouldShowRequired('selected_vkit_count') && protocolForm.get('selected_vkit_count')?.touched">
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">CRO ID / Name</label>
+                    <select formControlName="selected_cro_id" class="form-select form-control"
+                       [class.custom-invalid]="shouldShowRequired('selected_cro_id') && protocolForm.get('selected_cro_id')?.touched">
+                      <option  selected value="">Select CRO ID</option>
+                      <option *ngFor="let cro of crosList" [value]="cro.cro_id">
+                        {{ cro.cro_name }}
+                      </option>
+                    </select>
+                  </div>
+                </div> -->
+
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Total No.of Patients</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="selected_patients_num" class="form-control" id=""
+                      placeholder=" "
+                       [class.custom-invalid]="shouldShowRequired('selected_patients_num') && protocolForm.get('selected_patients_num')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Total No.of Visits</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="total_visits" (input)="visits($event)" class="form-control"
+                      id="" placeholder=" "
+                       [class.custom-invalid]="shouldShowRequired('total_visits') && protocolForm.get('total_visits')?.touched">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">No.of Screens</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="screens" class="form-control" id="" placeholder=" "
+                       [class.custom-invalid]="shouldShowRequired('screens') && protocolForm.get('screens')?.touched">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="formrow-firstname-input" class="form-label">Screen Kit Count</label>
+                  <input autocomplete="off" type="text" 
+
+
+formControlName="selected_skit_count" class="form-control" id="" placeholder=" "
+                       [class.custom-invalid]="shouldShowRequired('selected_skit_count') && protocolForm.get('selected_skit_count')?.touched">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <hr class="mt-4 mb-4" />
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <!-- <h4 class="r-blue-text">Kit Details</h4> -->
+              </div>
+              <div class="col-md-12 mb-3">
+          
+
+                <div class="tab-content pt-3 text-muted">
+                   </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </form>
+        <p-tabView>
+
+          <p-tabPanel header="Screening">
+            <div class="tab-pane active" *ngIf="screening" id="screening" role="tabpanel">
+              <form [formGroup]="protocolForm">
+                <div class="row">
+                  <div class="col-ml-1 ml-1"></div>
+                  <div class="col-md-3 mb-3">
+                    <button type="button" (click)="dialog()" class="btn btn-primary  waves-light r-blue">Select Lab
+                      Tests</button>
+
+
+                  </div>
+                  <div class="col-md-2 mb-3" style="margin-left: -11%;">
+                    <button style="margin-left: 7%;" type="button" (click)="onMaterialKitAdd()"
+                      class="btn btn-primary  waves-light r-blue">Add Material</button>
+                  </div>
+
+                  <p-dialog [class.overlay]="display" (onShow)="disableScroll()" (onHide)="enableScroll()"
+                    header="Select Lab Tests" [(visible)]="display">
+                    <div class="row">
+                      <div class="col-md-1 mb-3"></div>
+                      <div class="col-md-8 mb-3">
+                        <p-multiSelect [options]="matList" styleClass="custom-multiselect" [(ngModel)]="selectedTests"
+                          formControlName="labTestValue" optionLabel="name" defaultLabel="Select Lab Tests"   [class.custom-invalid]="shouldShowRequired('labTestValue') && protocolForm.get('labTestValue')?.touched"></p-multiSelect>
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+                      <div class="col-md-3 mb-3">
+                        <button style="margin-left:-27%" type="button" align="right" (click)="labValues()"
+                          class="btn btn-primary r-blue">Add Lab Tests</button>
+                      </div>
+                    </div>
+                  </p-dialog>
+
+                  <!-- <div class="col-md-3 mt-2 mb-3"></div> -->
+                  <div class="col-md-3 mt-2 mb-3">
+                    <h6 style="color: black" *ngIf="testDisplay"> <b>&nbsp;&nbsp;Selected Lab Tests</b> </h6>
+
+                    <h6 style="color: black" *ngFor="let item of multipleTests  let k = index">
+                      &nbsp;&nbsp;{{k+1}}.&nbsp;&nbsp;{{ item }}</h6>
+                  </div>
+                </div>
+              </form>
+
+              <div class="row">
+                
+
+                <div class="col-md-8 mb-3"></div>
+
+                <div class="col-md-12 mb-3">
+
+                  <div class="table-responsive" [formGroup]="ScreenMaterialKitForm">
+                    <table class="table table-striped mb-0" formArrayName="materialList">
+                      <thead Style="background:#EEE">
+                        <tr>
+                          <th>Material</th>
+                          <th>Size</th>
+                          <th>Quantity</th>
+                          <th>Frozen at Site</th>
+                          <th>Image</th>
+                          <th>Delete</th>
+
+                        </tr>
+                      </thead>
+
+                      <tbody>
+
+                        <tr [formGroupName]="j" *ngFor="
+                              let item of ScreenMaterialKitForm.get('materialList')
+                                .controls;
+                              let j = index
+                            ">
+                          <th scope="row">
+                            <select (change)="onScreenKitChange($event,j)" formControlName="meterial_id"
+                              class="form-select form-control">
+                              <option  selected value="">Select Materials</option>
+                              <option *ngFor="let lab of labMatTestsList" [value]="lab.meterial_id">
+                                {{ lab.name }}
+                              </option>
+                            </select>
+                          </th>
+
+                          <td>
+                            <select formControlName="size" class="form-select form-control">
+                              <option  selected value="">Select Size</option>
+                              <option *ngFor="let lab of getSizes(j)">
+                                {{ lab }}
+                              </option>
+                            </select>
+
+                          </td>
+                          <td>
+                          <input autocomplete="off" type="number" formControlName="quantity" class="form-control" value="" />
+                          </td>
+                          <td>
+                          <input autocomplete="off" class="form-check-input" formControlName="frozen_status" type="checkbox"
+                              value="checked" id="debugInfo" />
+                          </td>
+                          <td>
+
+
+
+                            <img formControlName="image" ngDefaultControl class="bx bx-image-alt font-size-24"
+                              [src]="ScreenMaterialKitForm.controls.materialList?.controls[j].controls['image'].value"
+                              width="30" height="30">
+                            <!-- <img [src]="imageURL" [alt]="Image"> -->
+                            <!-- <i
+                              formControlName="Image"
+                              class="bx bx-image-alt font-size-24"
+                            ></i> -->
+                          </td>
+                          <td>
+                            <button type="button" (click)="removeMatScreenKit(j)"
+                              class="btn btn-danger ml-3 mt-2">Delete</button>
+                            <!-- <i class="bx bx-edit-alt font-size-16 align-middle me-2"></i> -->
+                          </td>
+                          <!-- <td>
+                        <button type="button" class="btn btn-danger waves-effect delete-btn waves-light">
+                          <img src="../../assets/images/delete-button-svgrepo-com.svg" width="20" height="20" />
+                        </button>
+                      </td> -->
+                        </tr>
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mt-2 mb-3">
+
+              </div>
+              <div class="col-md-3 mb-3">
+
+              </div>
+            </div>
+          </p-tabPanel>
+          
+          <p-tabPanel header="Visits" *ngFor="let card of cards; let i = index" header="Visit {{i+1}}">
+
+            <div class="row">
+              <div class="col-md-12 mt-2 mb-3">
+                <h5>Visit Kit Details</h5>
+              </div>
+
+              <div class="col-md-3 mb-3">
+              <input autocomplete="off" type="text" 
+
+
+[(ngModel)]="kitCountval"  class="form-control"
+                  placeholder="Enter Kit Count" />
+              </div>
+            </div>
+
+
+            <div class="card">
+              <div class="row">
+                <div class="col-ml-1 ml-1"></div>
+                <div class="col-md-3 mb-3">
+                  <button type="button" (click)="dialogv()" class="btn btn-primary  waves-light r-blue">Select Lab
+                    Tests</button>
+
+
+                </div>
+                <div class="col-md-2 mb-3" align="right" style="margin-left: -11%;">
+                  <button type="button"  class="btn btn-primary  waves-light r-blue" (click)="addRow1(i)">Add Material
+                   </button>
+                 
+                </div>
+
+                <p-dialog [class.overlay]="displayv" (onShow)="disableScroll()" (onHide)="enableScroll()"
+                  header="Select Lab Tests" [(visible)]="displayv">
+                  <div class="row">
+                    <div class="col-md-1 mb-3"></div>
+                    <div class="col-md-8 mb-3">
+                      <p-multiSelect [options]="matList" [(ngModel)]="selectedLabTests[i]"
+                      defaultLabel="Select Lab Tests" optionLabel="name" optionValue="name"></p-multiSelect>
+                  
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="col-md-3 mb-3">
+                      <button style="margin-left:-27%" type="button" align="right" (click)="labValuesv()"
+                        class="btn btn-primary r-blue">Add Lab Tests</button>
+                    </div>
+                  </div>
+                </p-dialog>
+
+                <!-- <div class="col-md-3 mt-2 mb-3"></div> -->
+          
+              </div>
+              
+                  <!-- <div class="col-md-3 mt-2 mb-3"></div> -->
+                  <div class="col-md-3 mt-2 mb-3">
+                    <h6 style="color: black" *ngIf="testDisplayv"> <b>&nbsp;&nbsp;Selected Lab Tests</b> </h6>
+
+                    <h6 style="color: black" *ngFor="let material of selectedLabTests[i]  let k = index">
+                      &nbsp;&nbsp;{{k+1}}.&nbsp;&nbsp;{{ material }}</h6>
+                      </div>
+
+<div>
+           
+            </div>
+
+              <form [formGroup]="card.form">
+                <div formArrayName="visits">
+
+                  
+                  <table class="table table-striped mb-0">
+                    <thead Style="background:#EEE">
+                      <tr>
+                        <th>Material</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Frozen at Site</th>
+                        <th>Image</th>
+                        <th>Delete</th>
+
+                      </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                      <tr *ngFor="let row of getRows(i).controls; let j = index" [formGroupName]="j">
+                        <th scope="row">
+                          <select formControlName="meterial_id" class="form-select form-control"
+                            aria-placeholder="Select Test" (change)="onMeterialIdChange($event, i, j)">
+                            <option  selected value="">Select Materials</option>
+                            <option *ngFor="let lab of labMatTestsList" [value]="lab.meterial_id">
+                              {{ lab.name }}
+                            </option>
+                          </select>
+                        </th>
+                        <td>
+                          <select formControlName="size" class="form-select form-control">
+                            <option  selected value="">Select SiZe</option>
+                            <option *ngFor="let size of getSizesv(i, j)" [value]="size">{{ size }}</option>
+                          </select>
+
+                        </td>
+                        <td>
+                        <input autocomplete="off" type="number" formControlName="quantity" class="form-control" value="" />
+                        </td>
+                        <td>
+                        <input autocomplete="off" class="form-check-input" formControlName="frozen_status" type="checkbox"
+                            value="checked" id="debugInfo" />
+                        </td>
+                        <td>
+                          <img [src]="row.get('image')?.value" width="30" height="30" *ngIf="row.get('image')?.value"
+                            alt="Material Image" />
+                        </td>
+
+                        <td>
+                          <button type="button" (click)="deleteRow(i, j)"
+                            class="btn btn-danger ml-3 mt-2">Delete</button>
+
+                        </td>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </form>
+  
+  
+                <!-- <button (click)="onSubmit()">submit</button> -->
+              </div>
+              <!-- </p-accordionTab>
+                </p-accordion> -->
+  
+  
+              <!-- <button type="button" class="btn btn-warning  waves-light r-darkblue pull-Right" (click)="onSubmit()">Submit -->
+  
+              <!-- </button> -->
+  
+              <br>
+              
+             </p-tabPanel>
+             <!-- <div class="col-md-12 mb-3" align="right">
+              <div class="mb-2 text-right" width="100%">
+                <button type="button" class="btn btn-warning waves-effect btn-label waves-light r-blue pull-Right"
+                  style="width: 100px; height: 40px" (click)="SubmitData()">
+                  <i class="bx bx-hdd label-icon"></i> Submit
+                </button>
+              </div>
+            </div>  -->
+            <div class="form-buttons-all">
+              <button class="btn btn-inverse"  (click)="goBack()">Back</button>
+               
+               
+              <button style="margin: 2px;" *ngIf="!view" (click)="reset()"
+                class="btn btn-secondary btn-round">Reset</button>
+    
+              <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="SubmitData()"
+                class="btn btn-primary">Submit</button>
+             </div>
+
+  
+           
+          </p-tabView>
+         
+  
+          <!-- end page title -->
+  
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+  
+  </div>
+  <!-- end main content-->
+  <!-- </div> -->
+  <!-- END layout-wrapper -->
+  
+  
+  
+  <!-- Tab Content -->
+  
+  
+  <!-- Right bar overlay-->
+  <div class="rightbar-overlay"></div>
+
+  <footer class="footer footerheader">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+      </div>
+    </div>
+  </footer>
+
+
+  

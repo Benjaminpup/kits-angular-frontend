@@ -1,0 +1,506 @@
+<p-toast></p-toast>
+<div id="layout-wrapper">
+
+  <div class="main-content" style="margin-top: -7% !important;">
+    <div class="page-content">
+      <div class="container-fluid">
+     
+
+        <div>
+          <div class="fixed-header">
+            <nav aria-label="breadcrumb">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fas fa-laptop-medical" style="font-size: 1rem;"></i> Study Registration</h4>
+                </div>
+                <div class="col-6"> 
+                  <ol class="breadcrumb" style="margin-left: 17rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/protocolGrid" class="waves-effect">Study</a>
+                    </li>
+                    <li class="breadcrumb-item active">Add Study Registration</li>
+  
+                  </ol>
+                </div>
+              </div> 
+            </nav>
+          </div> 
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                  <h4 class="custom-cro-header">
+                  </h4> 
+                  <div class="page-title-right"> 
+                    <ol class="breadcrumb" style="margin-left: 17rem !important; display: none;">
+                      <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item"><a routerLink="/home/cro/protocolGrid" class="waves-effect">Study</a>
+                      </li>
+                      <li class="breadcrumb-item active">Add Study Registration</li>
+    
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+  
+    
+
+
+
+
+
+        <form [formGroup]="protocolForm">
+          <div class="card">
+
+            <div class="card-body">
+              <h5 class="text-primary"
+                style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+                Study Summary Basic Details</h5>
+              <hr>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Sponsor Study ID</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="selected_protocol_id" class="form-control" id="" placeholder="Enter Study ID"
+                      [class.custom-invalid]="shouldShowRequired('selected_protocol_id') && protocolForm.get('selected_protocol_id')?.touched">
+                      <div *ngIf="shouldShowRequired('selected_protocol_id')" class="text-danger">
+                        Sponsor Study ID is required.
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Study Title</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="selected_protocol_name" class="form-control" id=""
+                      placeholder="Enter Study Title"
+                      [class.custom-invalid]="shouldShowRequired('selected_protocol_name') && protocolForm.get('selected_protocol_name')?.touched">
+                      <div *ngIf="shouldShowRequired('selected_protocol_name')" class="text-danger">
+                        Study Title is required.
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>CRO Study ID</label>
+                    <input autocomplete="off" type="text" maxlength="100" autocomplete="off"
+                      formControlName="cro_study_id" class="form-control" id="" placeholder="Enter CRO Study ID">
+                     
+
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Sponsor ID / Name</label><label style="color: red;margin-left: 4px;">*</label>
+
+                    <select maxlength="100" formControlName="selected_sponsor_id" (change)="sponsorname()"
+                      class="form-select form-control"
+                      [class.custom-invalid]="shouldShowRequired('selected_sponsor_id') && protocolForm.get('selected_sponsor_id')?.touched">
+                       
+                      <option selected value="">Select Sponsor ID</option>
+                      <option *ngFor="let sponser of sponsers" [value]="sponser.sponsor_id">
+                        {{ sponser.sponsor_code + ' - ' + sponser.sponsor_name }}
+                      </option>
+                    </select>
+                    <div *ngIf="shouldShowRequired('selected_sponsor_id')" class="text-danger">
+                      Sponsor ID / Name is required.
+                  </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Global Sample Size</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="number" formControlName="global_sample_size" class="form-control"
+                      maxlength="5" (input)="validateMobileNumber($event.target, 'office')" id=""
+                      placeholder="Enter Global Sample Size"
+                      [class.custom-invalid]="shouldShowRequired('global_sample_size') && protocolForm.get('global_sample_size')?.touched">
+                      <div *ngIf="shouldShowRequired('global_sample_size')" class="text-danger">
+                        Global Sample Size is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label> Avant Sante Sample Size</label>
+                    (&nbsp;<input class="form-check-input" placeholder="Enter Avant Sante Sample Size " maxlength="5"
+                      (change)="avantCheck($event)" formControlName="avantc"
+                      (input)="validateMobileNumber($event.target, 'office')" type="checkbox" value="checked"
+                      id="debugInfo" />
+                    &nbsp; <label>Same as Global</label>)
+
+                    <input autocomplete="off" type="number" maxlength="5" formControlName="avant_sample_size"
+                      (blur)="getsize()" class="form-control" id="" placeholder="Enter Avant Sante Sample Size "
+                      (input)="validateMobileNumber($event.target, 'office')"
+                      [class.custom-invalid]="shouldShowRequired('avant_sample_size') && protocolForm.get('avant_sample_size')?.touched">
+                      <div *ngIf="shouldShowRequired('avant_sample_size')" class="text-danger">
+                        Avant Sante Sample Size is required.
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Kit Variant Count</label><label style="color: red;margin-left: 4px;">*</label>
+
+                    <input autocomplete="off" maxlength="5" type="number" autocomplete="off"
+                      formControlName="kit_variant_count" (input)="validateMobileNumber($event.target, 'office')"
+                      (blur)="variantCount()" class="form-control" id="" placeholder="Enter Kit Variant Count"
+                      [class.custom-invalid]="shouldShowRequired('kit_variant_count') && protocolForm.get('kit_variant_count')?.touched">
+                      <div *ngIf="shouldShowRequired('kit_variant_count')" class="text-danger">
+                        Kit Variant Count is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Total No.of Visits</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      formControlName="total_visits" (input)="validateMobileNumber($event.target, 'office')"
+                      placeholder="Enter Total No.of Visits" (blur)="visits($event)" class="form-control"
+                      [class.custom-invalid]="shouldShowRequired('total_visits') && protocolForm.get('total_visits')?.touched">
+                      <div *ngIf="shouldShowRequired('total_visits')" class="text-danger">
+                        Total No.of Visits is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>No.of Screenings</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5" formControlName="screens"
+                    (input)="validateMobileNumber($event.target, 'office')" class="form-control" id=""
+                    placeholder="Enter No.of Screenings"
+                    [class.custom-invalid]="shouldShowRequired('screens') && protocolForm.get('screens')?.touched">
+                    <div *ngIf="shouldShowRequired('screens')" class="text-danger">
+                      No.of Screenings is required.
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Screen Kit Count<label style="color: red;margin-left: 4px;">*</label></label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      (input)="validateMobileNumber($event.target, 'office')" formControlName="selected_skit_count"
+                      class="form-control" id="" placeholder="Enter Screen Kit Count"
+                      [class.custom-invalid]="shouldShowRequired('selected_skit_count') && protocolForm.get('selected_skit_count')?.touched">
+                      <div *ngIf="shouldShowRequired('selected_skit_count')" class="text-danger">
+                        Screen Kit Count is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Visit Kit Count<label style="color: red;margin-left: 4px;">*</label></label>
+                    <input autocomplete="off" type="text" autocomplete="off" maxlength="5"
+                      (input)="validateMobileNumber($event.target, 'office')" formControlName="selected_visit_count"
+                      class="form-control" id="" placeholder="Enter Visit Kit Count"
+                      [class.custom-invalid]="shouldShowRequired('selected_visit_count') && protocolForm.get('selected_visit_count')?.touched">
+                      <div *ngIf="shouldShowRequired('selected_visit_count')" class="text-danger">
+                        Visit Kit Count is required.
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <br>
+                <div class="row">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Special Instructions</label>
+                    <textarea class="form-control" rows="3" cols="5" formControlName="specialInstructions"
+                      id="comment"></textarea>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </form>
+        <br>
+        <div *ngIf="visible" style="margin-top:-2%">
+          <p-tabView>
+
+
+
+            <p-tabPanel header="Visits" *ngFor="let card of cards; let i = index" header="Variant {{i+1}}">
+
+              <div class="card">
+                <div class="row">
+                  <div class="col-ml-1 ml-1"></div>
+                  <div class="col-md-3 mb-3">
+                    <button type="button" (click)="dialogv()" class="btn btn-primary  waves-light r-blue">Select Lab
+                      Tests</button>
+                  </div>
+                  <div class="col-md-3 mb-3" style="margin-left: -11%">
+                    <button type="button" (click)="dialogvisits()" class="btn btn-primary  waves-light r-blue">Select
+                      Visits
+                    </button>
+                  </div>
+                  <div class="col-md-2 mb-3" style="margin-left: -14%;">
+                    <button type="button" class="btn btn-primary  waves-light r-blue" (click)="addRow1(i)">Add Material
+                    </button>
+                  </div>
+
+
+
+
+
+                  <p-dialog [class.overlay]="displayv" (onShow)="disableScroll()" (onHide)="enableScroll()"
+                    header="Select Lab Tests" [(visible)]="displayv">
+                    <div class="row">
+                      <div class="col-md-1 mb-3"></div>
+                      <div class="col-md-8 mb-3">
+                        <p-multiSelect [options]="matList" [(ngModel)]="selectedLabTests[i]" 
+                          defaultLabel="Select Lab Tests"  optionLabel="name" optionValue="name"></p-multiSelect>
+
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+                      <div class="col-md-3 mb-3">
+                        <button style="margin-left:-27%" type="button" align="right" (click)="labValuesv()"
+                          class="btn btn-primary r-blue">Add Lab Tests</button>
+                      </div>
+                    </div>
+                  </p-dialog>
+
+                  <!-- <div class="col-md-3 mt-2 mb-3"></div> -->
+
+                </div>
+
+                <!-- <div class="col-md-3 mt-2 mb-3"></div> -->
+                <div class="col-md-3 mt-2 mb-3">
+                  <h5 *ngIf="testDisplayv"> &nbsp;&nbsp;Selected Lab Tests </h5>
+                  <h6 style="color: black" *ngFor="let labTest of selectedLabTests[i]  let k = index">
+                    &nbsp;&nbsp;{{k+1}}.&nbsp;&nbsp;{{ labTest }}</h6>
+                </div>
+
+                <div>
+                </div>
+                <form [formGroup]="card.form">
+
+                  <p-dialog [class.overlay]="dialogvisitsv" [style]="{width: '40vw'}" (onShow)="disableScroll()"
+                    (onHide)="enableScroll()" header="Select Visits" [(visible)]="dialogvisitsv">
+                    <div class="row">
+                      <div class="col-md-1 mb-3"></div>
+                      <div class="col-md-8 mb-3">
+                        <p-multiSelect [options]="visitcount" formControlName="kitVarient" defaultLabel="Select Visits"
+                          (onChange)="onVisitCountSelected(i, $event.value)" optionLabel="value"
+                          optionValue="value"></p-multiSelect>
+
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <button style="margin-left:-27%" type="button" align="right" (click)="valvisit()"
+                          class="btn btn-primary r-blue">Add Visits</button>
+                      </div>
+
+                      <div *ngIf="selectedVisitCountsPerCard[i] && selectedVisitCountsPerCard[i].length > 0">
+
+
+                        <div class="row">
+                          <div class="col-md-1 mb-3"></div>
+                          <div class="col-md-6 mb-3">
+                            <table id="datatable"
+                              class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                              role="grid" aria-describedby="datatable_info" style="width: 1182px;">
+                              <thead>
+                                <tr role="row">
+                                  <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                    style="width: 143.2px;" aria-sort="ascending"
+                                    aria-label="Code: activate to sort column descending">
+                                    Selected Visit</th>
+                                  <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                    style="width: 200.2px;" aria-label="Name: activate to sort column ascending">
+                                    Enter Alternate Name</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let value of selectedVisitCountsPerCard[i]; let j = index">
+                                  <td>{{ value }}</td>
+                                  <td>
+                                    <!-- Input field for updating alternate name -->
+                                    <input type="text" [value]="getAlternateName(i, j)"
+                                      (blur)="updateAlternateName(i, j, $event)" />
+                                  </td>
+                                </tr>
+
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+
+
+
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+
+                    </div>
+                  </p-dialog>
+                  <div formArrayName="visits">
+                    <table class="table table-striped mb-0">
+                      <thead Style="background:#EEE">
+                        <tr>
+                          <th>Material</th>
+                          <th>Size</th>
+                          <th>Quantity</th>
+
+                          <th>Frozen at Site</th>
+                          <th>Image</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of getRows(i).controls; let j = index" [formGroupName]="j">
+                          <th scope="row">
+                            <select formControlName="meterial_id" class="form-select form-control"
+                              aria-placeholder="Select Test" (change)="onMeterialIdChange($event, i, j)">
+                              <option selected disabled value="">Select Material</option>
+                              <option *ngFor="let lab of labMatTestsList" [value]="lab.meterial_id">
+                                {{ lab.name }}
+                              </option>
+                            </select>
+                          </th>
+                          <td>
+                            <select formControlName="size" class="form-select form-control">
+                              <option selected value="">Select Size</option>
+                              <option *ngFor="let size of getSizesv(i, j)" [value]="size">{{ size }}</option>
+                            </select>
+
+                          </td>
+                          <td>
+                            <input autocomplete="off" type="number"placeholder="Enter Quantity" formControlName="quantity" class="form-control"
+                              value="" />
+                          </td>
+                          <th *ngIf="materialhide" scope="row">
+                            <input type="text" autocomplete="off" formControlName="material_name" class="form-control"
+                              value="" />
+                          </th>
+                          <td>
+                            <input autocomplete="off" class="form-check-input" formControlName="frozen_status"
+                              type="checkbox" value="checked" id="debugInfo" />
+                          </td>
+                          <td>
+                            <img [src]="row.get('image')?.value" width="30" height="30" *ngIf="row.get('image')?.value"
+                              alt="Material Image" />
+                          </td>
+
+                          <td>
+                            <button type="button" (click)="deleteRow(i, j)" class="btn btn-danger ml-3 mt-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-trash" viewBox="0 0 16 16">
+                                <path
+                                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                <path
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                              </svg></button>
+
+                          </td>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </form>
+
+              </div>
+
+
+              <br>
+            </p-tabPanel>
+
+
+
+            <div class="col-md-12 mb-3" align="right">
+              <!-- <div class="mb-2 text-right" width="100%">
+                <button type="button" class="btn btn-warning waves-effect btn-label waves-light r-blue pull-Right"
+                  style="width: 100px; height: 40px" (click)="SubmitData()">
+                  <i class="bx bx-hdd label-icon"></i> Submit
+                </button>
+              </div> -->
+              <div class="form-buttons-all">
+                <button class="btn btn-inverse" (click)="goBack()">Back</button>
+                 
+                 
+                <button style="margin: 2px;" *ngIf="!view" (click)="reset()"
+                  class="btn btn-secondary btn-round">Reset</button>
+     
+                <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="SubmitData()"
+                  class="btn btn-primary">Submit</button>
+               </div>
+            </div>
+          </p-tabView>
+        </div>
+
+        <!-- end page title -->
+
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- container-fluid -->
+  </div>
+  <!-- End Page-content -->
+
+
+
+</div>
+<!-- end main content-->
+<!-- </div> -->
+<!-- END layout-wrapper -->
+
+
+
+<!-- Tab Content -->
+
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+

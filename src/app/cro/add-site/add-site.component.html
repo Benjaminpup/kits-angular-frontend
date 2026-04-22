@@ -1,0 +1,919 @@
+<div class="main-content" style="margin-top: -7% !important;">
+
+  <div class="page-content">
+    <div class="container-fluid">
+
+
+      <div *ngIf="view">
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-clinic-medical" style="font-size: 1rem;"></i> View Site</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                  </li>
+  
+                  <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+  
+  
+  
+                  <li *ngIf="view" class="breadcrumb-item active">View Site</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+    
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+    
+    
+    
+                    <li *ngIf="view" class="breadcrumb-item active">View Site</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div  *ngIf="!view">
+        <div class="fixed-header"> 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <div>
+                  <h4  *ngIf="!isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-clinic-medical" style="font-size: 1rem;"></i>  Site Create</h4>
+                    <h4  *ngIf="isEdit" class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                      class="fas fa-clinic-medical" style="font-size: 1rem;"></i>  Site Update</h4>
+                </div>
+                <div *ngIf="view">
+                  <h4 *ngIf="view" class="custom-site-header"><i class="fas fa-clinic-medical"></i>View Site</h4>
+                </div>
+              </div>
+              <div class="col-6"> 
+                <div *ngIf="!view" class="page-title-right">
+                  <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+    
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+    
+                    <li *ngIf="!isEdit" class="breadcrumb-item active"> Add Site</li>
+                    <li *ngIf="isEdit" class="breadcrumb-item active">Edit Site</li>
+    
+                    <!-- <li *ngIf="view" class="breadcrumb-item active">View Site</li> -->
+                  </ol>
+                </div>
+    
+                <div *ngIf="view" class="page-title-right">
+                  <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+    
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+    
+    
+    
+                    <li *ngIf="view" class="breadcrumb-item active">View Site</li>
+                  </ol>
+                </div>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+
+
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px;" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4>
+                <div *ngIf="!view" class="page-title-right">
+                  <ol class="breadcrumb" style="margin-left: 24rem !important; display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+    
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+    
+                    <li *ngIf="!isEdit" class="breadcrumb-item active"> Add Site</li>
+                    <li *ngIf="isEdit" class="breadcrumb-item active">Edit Site</li>
+    
+                    <!-- <li *ngIf="view" class="breadcrumb-item active">View Site</li> -->
+                  </ol>
+                </div>
+    
+                <div *ngIf="view" class="page-title-right">
+                  <ol class="breadcrumb" style="margin-left: 24rem !important; display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                    </li>
+    
+                    <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+    
+    
+    
+                    <li *ngIf="view" class="breadcrumb-item active">View Site</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- start page title -->
+      <!-- <div class="row">
+        <div class="col-12">
+          <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <div *ngIf="!view">
+              <h4 *ngIf="!isEdit" class="custom-site-header"><i class="fas fa-clinic-medical"></i>Add Site</h4>
+              <h4 *ngIf="isEdit" class="custom-site-header"><i class="fas fa-clinic-medical"></i>Edit Site</h4>
+            </div>
+            <div *ngIf="view">
+              <h4 *ngIf="view" class="custom-site-header"><i class="fas fa-clinic-medical"></i>View Site</h4>
+            </div>
+
+            <div *ngIf="!view" class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                </li>
+
+                <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+
+                <li *ngIf="!isEdit" class="breadcrumb-item active"> Add Site</li>
+                <li *ngIf="isEdit" class="breadcrumb-item active">Edit Site</li>
+
+              </ol>
+            </div>
+
+            <div *ngIf="view" class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                </li>
+
+                <li class="breadcrumb-item"><a routerLink="/home/cro/siteGrid" class="waves-effect">Site</a></li>
+
+
+
+                <li *ngIf="view" class="breadcrumb-item active">View Site</li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
+      </div> -->
+      <!-- <h4><i class="fab fa-codiepie Site-icon mr-sm-2"></i>Site Data</h4>/ -->
+                   <!-- <h4 *ngIf="view" class="mb-sm-0 font-size-18"><i class="fas fa-clinic-medical"></i>View Site</h4> -->
+
+                    <!-- <li *ngIf="view" class="breadcrumb-item active">View Site</li> -->
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <p-toast></p-toast>
+      <form [formGroup]="siteForm">
+        <div class="card ml-2 mr-2 bg-white">
+          <div class="container-fluid">
+
+            <div class="card-body" style="font-family: Mada, sans-serif !important; font-weight: 400;">
+              <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+                Site Basic Details</h5>
+              <hr>
+              <form [formGroup]="siteForm">
+                <div class="row"  style="font-size: 14px; font-family: Mada, sans-serif !important; font-weight: 400;">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Site Code</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input #siteCodeInput autocomplete="off" type="text" class="form-control" id="SiteCode" placeholder="Enter Site Code"
+                        formControlName="site_data_code" maxlength="10"
+                        (input)="siteCodeInput.value = siteCodeInput.value.toUpperCase()"
+                         [class.custom-invalid]="shouldShowRequired('site_data_code') && siteForm.get('site_data_code')?.touched">
+
+                      <div *ngIf="shouldShowRequired('site_data_code')" class="text-danger">
+                        Site Code is required.
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Site Name</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="100" id="SiteName"
+                        placeholder="Enter Site Name" formControlName="site_data_name"
+                         [class.custom-invalid]="shouldShowRequired('site_data_name') && siteForm.get('site_data_name')?.touched">
+                      <div *ngIf="shouldShowRequired('site_data_name')" class="text-danger">Site Name is required.
+                      </div>
+                      <div *ngIf="siteForm.get('site_data_name')?.hasError('pattern') "
+                      class="text-danger">
+                          Site Name Accepts Alphabets and spaces only.
+                        </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Legal Site Name</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" class="form-control" id="LegalSiteName" placeholder="Enter Legal Site Name"
+                        formControlName="legal_site_data_name" maxlength="100"
+                         [class.custom-invalid]="shouldShowRequired('legal_site_data_name') && siteForm.get('legal_site_data_name')?.touched">
+                      <div *ngIf="shouldShowRequired('legal_site_data_name')" class="text-danger">Legal Site Name is required.
+                      </div>
+                      <div *ngIf="siteForm.get('legal_site_data_name')?.hasError('pattern') "
+                      class="text-danger">
+                        Legal Site Name Accepts Alphabets and spaces only.
+                        </div>
+
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <br> -->
+                <!-- <div *ngIf="!isEdit" class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>User Name</label>
+                    <input autocomplete="off" type="text"
+
+
+class="form-control" id="First Name" placeholder="Enter Name"
+                        formControlName="first_name"
+                         [class.custom-invalid]="shouldShowRequired('first_name') && siteForm.get('first_name')?.touched">
+
+                      <div *ngIf="shouldShowRequired('first_name')" class="invalid-feedback">
+                        First Name is required.
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Email Id</label>
+
+
+                    <input autocomplete="off" type="text"
+
+
+class="form-control" id="email" placeholder="Enter Email"
+                        formControlName="uemail">
+                      <div *ngIf="shouldShowRequired('uemail')" class="text-danger">
+                        Email is required.
+                      </div>
+                      <div *ngIf="siteForm.get('uemail')?.hasError('pattern')" class="text-danger">
+                        Please enter a valid email address.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Password</label>
+                    <input autocomplete="off" type="password" class="form-control" id="password" placeholder="Enter Password"
+                        formControlName="password">
+                      <div *ngIf="shouldShowRequired('password')" class="text-danger">
+                        Password is required.
+                      </div>
+                      <div *ngIf="siteForm.get('password')?.hasError('pattern')" class="text-danger">
+                        Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one
+                        digit, and one special character.
+                      </div>
+
+                    </div>
+                  </div>
+                </div> -->
+
+
+              </form>
+            </div>
+
+          </div>
+
+
+          <div class="container-fluid" style="margin-top: 0px;">
+            <div class="card-body">
+              <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">Address Details</h5>
+              <hr>
+              <form [formGroup]="siteForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Address 1</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" class="form-control" id="Address 1" placeholder="Enter Address 1"
+                        formControlName="address_1" maxlength="80"
+                         [class.custom-invalid]="shouldShowRequired('address_1') && siteForm.get('address_1')?.touched">
+                      <div *ngIf="shouldShowRequired('address_1')" class="text-danger">
+                        Adress is required.
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-6" style="position: relative; right: 100px;">
+                    <div class="form-group">
+                      <label>Address 2</label>
+                    <input autocomplete="off" type="text" class="form-control" id="Address" placeholder="Enter Address 2(Optional)"
+                        formControlName="address_2" maxlength="80">
+                    </div>
+                  </div>
+                  <div class="col-md-4" style="position: relative; left: 750px; bottom: 64px;">
+                    <div class="form-group">
+                      <label>Country</label><label style="color: red;margin-left: 4px;">*</label>
+                      <select formControlName="country" maxlength="40" class="form-select country-dropdown"
+                      aria-label="Default select example" formControlName="country"
+                      [class.custom-invalid]="shouldShowRequired('country') && siteForm.get('country')?.touched">
+                      
+                      <option selected value="">Select Country</option>
+                      <option *ngFor="let c of countries" [value]="c.name">
+                        {{c.name}}</option>
+                    </select>
+                      <div *ngIf="shouldShowRequired('country')" class="invalid-feedback">
+                        Country is required.
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+
+                <div class="row" style="margin-top: -70px;">
+                  <div *ngIf="stateenable" class="col-md-4">
+                    <div class="form-group">
+                      <label>Region/State</label><label style="color: red;margin-left: 4px;">*</label>
+                      <select formControlName="region" maxlength="40" class="form-select"
+                      aria-label="Default select example" formControlName="region"
+                      [class.custom-invalid]="shouldShowRequired('region') && siteForm.get('region')?.touched" >
+                      <option selected value="">Select State</option>
+                      <option *ngFor="let s of states" [value]="s.name">
+                        {{s.name}}
+                      </option>
+                    </select>
+                      <div *ngIf="shouldShowRequired('region')" class="invalid-feedback">
+                        Region is required.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="districtEnable" class="col-md-4">
+                       <div class="form-group">
+                      <label>District</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="40" id="District" placeholder="Enter District"
+                        formControlName="district">
+                        <div *ngIf="siteForm.get('district')?.hasError('pattern') "
+                      class="text-danger">
+                          District Accepts Alphabets and spaces only.
+                        </div>
+
+                    </div>
+                  </div>
+                  <div *ngIf="districtEnable" class="col-md-4">
+                      <div class="form-group">
+                      <label>City</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type=" text" class="form-control" maxlength="40" id="City" placeholder="Enter City"
+                        formControlName="city"
+                         [class.custom-invalid]="shouldShowRequired('city') && siteForm.get('city')?.touched">
+                      <div *ngIf="shouldShowRequired('city')" class="invalid-feedback">
+                        City is required.
+                      </div>
+                      <div *ngIf="siteForm.get('city')?.hasError('pattern') "
+                      class="text-danger">
+                          City Accepts Alphabets and spaces only.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="display: flex; margin-top: 13px;">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Zip Code</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="12" id="Zip Code" placeholder="Enter Zip Code"
+                        formControlName="zip_code"
+                         [class.custom-invalid]="shouldShowRequired('zip_code') && siteForm.get('zip_code')?.touched">
+                      <div *ngIf="shouldShowRequired('zip_code')" class="invalid-feedback">
+                        Zipcode is Required.
+                      </div>
+
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-md-4" >
+                  <div class="form-group">
+                    <label>Zipcode </label><label style="color: red;margin-left: 4px;">*</label>
+                    <input id="zipcode" placeholder="Enter Zipcode" formControlName="zipcode" (input)="onZipcodeChange()" min="5" max="6" class="form-control" [class.custom-invalid]="shouldShowRequired('zipcode') && siteForm.get('zipcode')?.touched"/>
+                    <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('zipcode')" class="text-danger">
+                      Zipcode is required.
+                    </div>
+
+
+                    <!-- <div *ngIf="CroForm.get('zipcode')?.invalid && CroForm.get('zipcode')?.touched" class="text-danger"> -->
+                      <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('required')">Zipcode is required.</small> -->
+                      <!-- <small *ngIf="CroForm.get('zipcode')?.hasError('pattern')">Zipcode must be 5 or 6 digits.</small> -->
+                    <!-- </div> -->
+                  </div>
+                  <!-- <div class="form-group">
+                    <label>Country </label><label style="color: red;margin-left: 4px;">*</label>
+                    <select formControlName="country" maxlength="40" class="form-select country-dropdown"
+                      aria-label="Default select example" formControlName="country"
+                      [class.custom-invalid]="shouldShowRequired('country') && CroForm.get('country')?.touched">
+                      <option selected value="">Select Country</option>
+                      <option *ngFor="let c of countries" [value]="c.name">
+                        {{c.name}}</option>
+                    </select>
+
+                    <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('country')&& CroForm.get('country')?.touched" class="text-danger">
+                      Country is required.
+                    </div>
+                  </div> -->
+                </div>
+
+
+                <div class="col-md-4">
+                  <div *ngIf="siteForm.get('country')?.value" class="form-group">
+                    <label for="country">Country</label>
+                    <input id="country" formControlName="country" readonly class="form-control" />
+                    <!-- <div *ngIf="stateenable" class="col-md-4"><select id="country" formControlName="country">
+                      <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                    </select> -->
+                  </div>
+                  <!-- <div class="form-group">
+                    <label>Region/State </label><label style="color: red;margin-left: 4px;">*</label>
+                    <select formControlName="region" maxlength="40" class="form-select"
+                      aria-label="Default select example" formControlName="region"
+                      [class.custom-invalid]="shouldShowRequired('region') && CroForm.get('region')?.touched">
+                      <option selected value="">Select State</option>
+                      <option *ngFor="let s of states" [value]="s.name">
+                        {{s.name}}
+                      </option>
+                    </select>
+                    <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('region')&& CroForm.get('region')?.touched" class="text-danger">
+                      Region is required.
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <br>
+              <!-- <div class="row"> -->
+
+
+
+
+              <!-- </div> -->
+              <br>
+              <div class="row" >
+
+               
+                <div  class="col-md-4">
+                  <div *ngIf="siteForm.get('state')?.value" class="form-group">
+                    <label for="state">State</label>
+                    <input id="state" formControlName="state" readonly class="form-control"/>
+                    <!-- <select id="state" formControlName="state">
+                      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                    </select> -->
+                  </div>
+                  <!-- <div *ngIf="districtEnable" class="col-md-4"> <div class="form-group">
+                    <label>District</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="40" id="District"
+                      placeholder="Enter District" formControlName="district">
+                    <div style="font-size: 0.8rem;" *ngIf="CroForm.get('district')?.hasError('pattern') && CroForm.get('district')?.touched"
+                      class="text-danger">
+                      District Accepts Alphabets only.
+                    </div>
+
+                  </div> -->
+                </div>
+                <div  class="col-md-4">
+                  <div *ngIf="siteForm.get('district')?.value" class="form-group">
+                    <label for="district">District</label>
+                    <input id="district" formControlName="district" readonly class="form-control"/>
+                  </div>
+                  <!-- <div *ngIf="districtEnable" class="col-md-4"><div class="form-group">
+                    <label>City </label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type=" text" class="form-control" maxlength="40" id="City"
+                      placeholder="Enter City" formControlName="city"
+                      [class.custom-invalid]="shouldShowRequired('city') && CroForm.get('city')?.touched">
+                    <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('city')" class="text-danger">
+                      City is required.
+                    </div>
+                    <div style="font-size: 0.8rem;" *ngIf="CroForm.get('city')?.hasError('pattern') && CroForm.get('city')?.touched"
+                      class="text-danger">
+                      City Accepts Alphabets only.
+                    </div>
+                  </div> -->
+                </div>
+                <div class="col-md-4">
+                       
+                  <div *ngIf="siteForm.get('city')?.value" class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" formControlName="city" readonly class="form-control"/>
+                  </div>
+                    <!-- <div class="form-group">
+                      <label>Zip Code </label><label style="color: red;margin-left: 4px;">*</label>
+                      <input autocomplete="off" type="number" class="form-control" maxlength="12" id="Zip Code"
+                        placeholder="Enter Zip Code" formControlName="zip_code"
+                        [class.custom-invalid]="shouldShowRequired('zip_code') && CroForm.get('zip_code')?.touched">
+                      <div style="font-size: 0.8rem;" *ngIf="shouldShowRequired('zip_code')" class="text-danger">
+                        Zipcode is required.
+                      </div>
+ 
+                    </div> -->
+                  </div>
+              </div>
+         
+              <br>
+
+
+              </form>
+            </div>
+
+          </div>
+
+          <div class="container-fluid">
+            <div class="card-body">
+              <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">Communication</h5>
+              <hr>
+              <form [formGroup]="siteForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Office Telephone</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                        (input)="validateMobileNumber($event.target, 'office')" id="Office Telephone"
+                        placeholder="Enter Office Telephone" formControlName="office_telephone">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Extension</label>
+                    <input autocomplete="off" type="text" (input)="validateMobileNumber($event.target, 'office')" class="form-control"
+                        maxlength="10" id="Extension" placeholder="Enter Extension" formControlName="extension">
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Mobile Number</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" maxlength="20" class="form-control" id="mobile_no"
+                        placeholder="Enter Mobile Number" formControlName="mobile_telephone"
+                        (input)="validateMobileNumber($event.target, 'mobile')" [class.custom-invalid]="shouldShowRequired('mobile_telephone') && siteForm.get('mobile_telephone')?.touched">
+                        <div *ngIf="shouldShowRequired('mobile_telephone')" class="text-danger">
+                          Mobile Number is Required.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Email Id</label><label style="color: red;margin-left: 4px;">*</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="100" id="email" placeholder="Enter Email Id"
+                        formControlName="email"
+                        [class.custom-invalid]="shouldShowRequired('email') && siteForm.get('email')?.touched">
+                                    <div *ngIf="shouldShowRequired('email')" class="text-danger">
+                                      Email Id is required.
+                                    </div>
+                                    <div *ngIf="siteForm.get('email')?.hasError('pattern')" class="text-danger">
+                                      Please enter a valid email address.
+                                    </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Website</label>
+                    <input autocomplete="off" type="text" class="form-control" maxlength="100" id="Address" placeholder="Enter Website"
+                        formControlName="website"
+                        [class.custom-invalid]="siteForm.get('website')?.invalid && siteForm.get('website')?.touched">
+                                    <div *ngIf="siteForm.get('website')?.hasError('pattern')" class="text-danger">
+                                      Please enter a valid URL.
+                                    </div>
+
+                    </div>
+                  </div>
+
+                 
+                </div>
+              </form>
+            </div>
+
+          </div>
+          <!-- <div class="container-fluid" *ngIf="view">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Created By</label>
+                            <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                value="{{createdName}}" disabled placeholder="Created By">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Created On</label>
+                            <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                value="{{data.created_on  | date: 'd-M-y'}}" disabled
+                                placeholder="Created On">
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Changed By</label>
+                            <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                value="{{changedName}}" disabled placeholder="Changed By">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Changed On</label>
+                            <input autocomplete="off" type="text" class="form-control" maxlength="20"
+                                value="{{data.changed_on | date: 'd-M-y'}}" disabled
+                                placeholder="Changed On">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div> -->
+          <div class="container-fluid">
+            <div class="card-body">
+              <!-- <h6 style="color: rgb(250, 49, 49);">Communication</h6> -->
+              <hr>
+
+
+              <div *ngIf="!isEdit" class="row">
+                <div class="col-12 mt-auto mb-2 d-flex justify-content-end" style="margin-left:-0.3%">
+                  <button style="font-size: 12px;" (click)="addInvestigators()" class="btn btn-primary">Add
+                    CRA</button>
+                </div>
+
+                <div class="col-md-8 mb-3"></div>
+
+
+                <div *ngIf="investigatorForm.get('investigator').controls.length > 0" class="col-md-12 mb-3">                  <form [formGroup]="investigatorForm">
+                    <div formArrayName="investigator">
+                      <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                          <thead Style="background:#EEE">
+                            <tr>
+                              <th>Select Role</th>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Email Id</th>
+                              <th>Mobile Number</th>
+                              <th>Delete</th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr [formGroupName]="i" class="allText"
+                              *ngFor="let invest of investigatorForm.get('investigator').controls; let i = index;">
+                              <th>
+                                <select style="width: 100% !important;" formControlName="role" class="form-select" aria-label="Default select example">
+                                  <option selected value="">Select CRA</option>
+                                  <option *ngFor="let option of investigate" [value]="option">{{ option }}</option>
+                                </select>
+                              </th>
+
+                              <th scope="row">
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone" placeholder="Enter First Name "
+                                  formControlName="first_name" maxlength="100">
+                              </th>
+
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone" placeholder="Enter Last Name "
+                                  formControlName="last_name" maxlength="100">
+
+                              </td>
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone"
+                                  placeholder="Enter Email Id " maxlength="60" formControlName="email">
+                              </td>
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone"
+                                  placeholder="Enter Mobile Number" maxlength="20"
+                                  (input)="validateMobileNumber($event.target, 'mobile')" formControlName="contact">
+                              </td>
+                              <td>
+                                <button type="button" (click)="removeSite(i)" style="background-color: #ff414b;"
+                                  class="btn btn-danger">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                    <path
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                  </svg>
+                                </button>
+                              
+                              </td>
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+
+              
+              <div *ngIf="isEdit" >
+
+
+
+                <div class="col-12 mt-auto mb-2 d-flex justify-content-end" style="margin-left: -3px;">
+                  <button  *ngIf="!view" style="font-size: 12px;"  (click)="addInvestigatorse()" class="btn btn-primary btn-round">Add CRA</button>
+                  <!-- <button *ngIf="!view" style="margin-right: -17px" (click)="addInvestigatorse()"
+                    class="btn btn-primary">Add CRA</button> -->
+                </div>
+
+                <!-- <div class="col-3 mt-auto mb-2 ">
+
+                  <button *ngIf="!view" (click)="addInvestigatorse()" class="btn btn-primary">Add CRA</button>
+                </div> -->
+                <div class="col-md-8 mb-3"></div>
+
+               
+
+                <div *ngIf="investigatorFormedit.get('investigatoredit').controls.length > 0" class="col-md-12 mb-3">                  <form [formGroup]="investigatorFormedit">
+                    <div formArrayName="investigatoredit">
+                      <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                          <thead Style="background:#EEE">
+                            <tr>
+                              <th>Select Role</th>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Email Id</th>
+                              <th>Mobile Number</th>
+                              <th *ngIf="!view">Delete</th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody class="allText">
+                            <tr [formGroupName]="i"
+                              *ngFor="let invest of investigatorFormedit.get('investigatoredit').controls; let i = index;">
+                              <th>
+                                <select style="width: 100% !important;" formControlName="role" class="td-forms form-select " aria-label="Default select example">
+                                  <option selected disabled value="">Select Role</option>
+                                  <option *ngFor="let option of investigate" [value]="option">{{ option }}</option>
+                                </select>
+                              </th>
+
+                              <th scope="row">
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone" placeholder="Enter First Name "
+                                  formControlName="first_name" maxlength="100">
+                              </th>
+
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone" placeholder="Enter Last Name "
+                                  formControlName="last_name" maxlength="100">
+
+                              </td>
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone"
+                                  placeholder="Enter Email Id " formControlName="email" maxlength="60">
+                              </td>
+                              <td>
+                              <input style="width: 100% !important;" autocomplete="off" type="text" class="form-control" id="Office Telephone"
+                                  placeholder="Enter Mobile Number" maxlength="20"
+                                  (input)="validateMobileNumber($event.target, 'mobile')" formControlName="contact">
+                              </td>
+                              <td *ngIf="!view">
+                                <button *ngIf="invest.get('editable').value !== 'true'" type="button" (click)="removeeditSite(i)" style="background-color: #ff414b;"
+                                  class="btn btn-danger">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                    <path
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                  </svg>
+                                </button>
+                                <!-- <i class="bx bx-edit-alt font-size-16 align-middle me-2"></i> -->
+                              </td>
+
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- <div class="col-12 mt-auto mb-2 d-flex justify-content-end" style="margin-left:-17px">
+              <button style="margin: 2px;" *ngIf="!view" (click)="reset()" class="btn btn-secondary btn-round">Reset</button>
+
+              <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="submit()"
+                class="btn btn-primary">Submit</button>
+            </div> -->
+            <div class="form-buttons-all">
+              <button class="btn btn-inverse"  (click)="goBack()">Back</button>
+               
+               
+              <button style="margin: 2px;" *ngIf="!view" (click)="reset()"
+                class="btn btn-secondary btn-round">Reset</button>
+    
+              <button style="margin: 2px; font-size: 12px;" *ngIf="!view" (click)="submit()"
+                class="btn btn-primary">Submit</button>
+             </div>
+
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- end main content-->
+
+<!-- END layout-wrapper -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+
+

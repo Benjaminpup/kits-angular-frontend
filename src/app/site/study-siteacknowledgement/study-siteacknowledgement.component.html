@@ -1,0 +1,513 @@
+<!-- Begin page -->
+
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+
+    <!-- Start right Content here -->
+
+    <!-- ============================================================== -->
+
+    <div class="main-content" style="margin-top: -7% !important;">
+
+        <div class="page-content">
+
+            <div class="container-fluid">
+
+                <!-- start page title -->
+
+             
+
+
+
+
+
+
+
+                <div>
+                    <div class="fixed-header">
+                      <nav aria-label="breadcrumb">
+                        <div class="row">
+                          <div class="col-6">
+                            <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                                class="fas fa-file-medical-alt" style="font-size: 1rem;"></i> Acknowledgement By Site</h4>
+                          </div>
+                          <div class="col-6"> 
+                            <ol class="breadcrumb" style="margin-left: 2rem !important;">
+
+                                <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards"
+                                        class="waves-effect">Dashboard</a>
+
+                                </li>
+
+                                <li class="breadcrumb-item"><a routerLink="/home/site/viewCRAAcknowledgement"
+                                        class="waves-effect">Study</a></li>
+
+                                <li class="breadcrumb-item active">Acknowledgement By Site : {{name}}</li>
+
+                            </ol>
+                          </div>
+                        </div> 
+                      </nav>
+                    </div> 
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-12">
+                          <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                            <h4 class="custom-cro-header">
+                            </h4> 
+                            <div class="page-title-right"> 
+                                <ol class="breadcrumb" style="margin-left: 2rem !important; display: none;">
+
+                                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards"
+                                            class="waves-effect">Dashboard</a>
+
+                                    </li>
+
+                                    <li class="breadcrumb-item"><a routerLink="/home/site/viewCRAAcknowledgement"
+                                            class="waves-effect">Study</a></li>
+
+                                    <li class="breadcrumb-item active">Acknowledgement By Site : {{name}}</li>
+
+                                </ol>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+            
+               
+                <!-- end page title -->
+
+                <p-toast></p-toast>
+
+
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <form [formGroup]="preparationForm">
+
+                            <div class="row">
+
+
+
+
+
+                                <div *ngIf="displayValues" class="col-md-4 mb-3">
+
+
+
+                                    <label for="formrow-firstname-input" class="form-label">Study Name</label>
+
+                                    <input autocomplete="off" type="text" placeholder="Study Name"
+                                        formControlName="protocol_name" class="form-control" value="" />
+
+                                </div>
+
+
+
+                            </div>
+
+                        </form>
+
+
+
+
+
+                        <hr class="mt-4 mb-4" />
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-12 mb-3">
+
+                                <h4 class="r-blue-text"><b>Kit Details</b></h4>
+
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+
+                                <div *ngIf="displayValues" class="tab-content pt-3 text-muted">
+
+                                    <div class="tab-pane active" role="tabpanel">
+
+                                        <p-tabView>
+
+                                            <p-tabPanel header="Screening">
+
+                                                <h3 style="text-align: center;
+                                                font-size: 18px;
+                                                font-weight: 600;
+                                                color: #222;"> {{screeningVariant}}</h3>
+
+                                                <h5 style="text-align: center;
+                                                font-size: 15px !important;
+                                                font-weight: 600 !important;
+                                                color: #222;">
+
+                                                    Screen Kit Count : {{scount}}
+
+                                                </h5>
+
+
+
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+
+
+
+                                                    <div class="table-responsive" [formGroup]="ScreenKitForm">
+
+                                                        <table class="table table-striped mb-0"
+                                                            formArrayName="screenKitList" style="width: 110%;">
+
+                                                            <thead>
+
+                                                                <tr>
+                                                                    <th style="width: 150px; text-align: left;">Kit Id</th>
+                                                                    <th style="width: 120px; text-align: left;">Central Lab Kit Id</th>
+                                                                    <th style="width: 20px; text-align: left;">Expiration Date</th>
+                                                                    <th style="width: 170px; text-align: left;">Status</th>
+
+                                                                    <th style="width: 120px;">Received Date</th>
+                                                                    <th style="width: 120px;">Remarks</th>
+                                                                </tr>
+
+                                                            </thead>
+
+
+
+                                                            <tbody>
+
+
+
+                                                                <ng-container
+                                                                    *ngFor="let item of ScreenKitForm.get('screenKitList').controls; let i = index">
+                                                                    <tr [formGroupName]="i"
+                                                                        *ngIf="item.get('site_id').value === this.ID">
+
+                                                                        <td>
+                                                                            <input autocomplete="off" type="text"
+                                                                                formControlName="kitId"
+                                                                                placeholder="kit Id" class="form-control"
+                                                                                [disabled]="true"
+                                                                                value="{{item.kitId}}" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <input autocomplete="off" type="text"
+                                                                                placeholder="LabKitId"
+                                                                                formControlName="ckitId"
+                                                                                [disabled]="true" value={{item.ckitId}}
+                                                                                class="form-control" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <input autocomplete="off" type="date"
+                                                                                placeholder="Expiration Date"
+                                                                                value={{item.expiryDate}}
+                                                                                formControlName="expiryDate"
+                                                                                class="form-control"
+                                                                                [disabled]="true" />
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            <select formControlName="siteStatus"
+                                                                                class="form-select form-control">
+                                                                                <option *ngFor="let s of preprationData"
+                                                                                    [value]="s.name">{{s.name}}</option>
+
+                                                                            </select>
+                                                                        </td>
+
+
+
+                                                                        <td>
+
+                                                                            <input autocomplete="off" type="date"
+                                                                                placeholder="Date" class="form-control"
+                                                                                formControlName="recievedDate"   max="{{ getCurrentDate() | date: 'yyyy-MM-dd' }}"
+                                                                                value="" />
+
+                                                                        </td>
+
+
+
+                                                                        <td>
+
+                                                                            <input autocomplete="off" type="text"
+                                                                                placeholder="Remarks"
+                                                                                formControlName="siteRemarks"
+                                                                                class="form-control" value="" />
+
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </ng-container>
+
+                                                            </tbody>
+
+                                                        </table>
+
+                                                    </div>
+
+                                                </div>
+                                                </div>
+                                                </div>
+
+
+                                            </p-tabPanel>
+
+
+
+                                            <p-tabPanel header="Visits" *ngFor="let item of vMatDetails  let i = index"
+                                                header="{{item.alternate_names | titlecase}}">
+
+
+
+
+                                                <h3 style="text-align: center;
+                                                font-size: 18px;
+                                                font-weight: 600;
+                                                color: #222;"> {{item.kit_variant}}</h3>
+
+                                                <h5 style="text-align: center;
+                                                font-size: 15px !important;
+                                                font-weight: 600 !important;
+                                                color: #222;">
+
+                                                    Visit Kit Count : {{vcount}}
+
+                                                </h5>
+
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+
+
+
+
+                                                    <div class="table-responsive" [formGroup]="item.visitKitFormGroup">
+
+                                                        <table class="table table-striped mb-0"
+                                                            formArrayName="visitKitList">
+
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width: 120px; text-align: left;">Kit Id</th>
+                                                                    <th style="width: 120px; text-align: left;">Central Lab Kit Id</th>
+                                                                    <th style="width: 120px; text-align: left;">Expiration Date</th>
+                                                                    <th style="width: 120px; text-align: left;">Status</th>
+
+                                                                    <th style="width: 120px; text-align: left;">Received Date</th>
+                                                                    <th style="width: 120px; text-align: left;">Remarks</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody *ngIf="item.visitsList">
+
+                                                                <ng-container
+                                                                    *ngFor="let control of item.visitsList.controls; let j = index">
+                                                                    <tr [formGroupName]="j"
+                                                                        *ngIf="control.get('site_id').value === this.ID">
+                                                                        <td>
+                                                                            <input autocomplete="off" type="text"
+                                                                                formControlName="kitId"
+                                                                                placeholder="kit Id" class="form-control"
+                                                                                [disabled]="true"
+                                                                                value="{{item.kitId}}" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <input autocomplete="off" type="text"
+                                                                                placeholder="LabKitId"
+                                                                                formControlName="ckitId"
+                                                                                [disabled]="true" value={{item.ckitId}}
+                                                                                class="form-control" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <input autocomplete="off" type="date"
+                                                                                placeholder="Expiration Date"
+                                                                                value={{item.expiryDate}}
+                                                                                formControlName="expiryDate"
+                                                                                class="form-control"
+                                                                                [disabled]="true" />
+                                                                        </td>
+                                                                        <td>
+
+                                                                            <select formControlName="siteStatus"
+                                                                                class="form-select form-control">
+                                                                                <option *ngFor="let s of preprationData"
+                                                                                    [value]="s.name"> {{s.name}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <input autocomplete="off" type="date"
+                                                                                placeholder="Date" class="form-control"
+                                                                                formControlName="recievedDate" max="{{ getCurrentDate() | date: 'yyyy-MM-dd' }}"
+                                                                                value={{date}} />
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <input autocomplete="off" type="text"
+                                                                                placeholder="Remarks"
+                                                                                formControlName="siteRemarks"
+                                                                                class="form-control" value="" />
+                                                                        </td>
+
+
+
+                                                                    </tr>
+                                                                </ng-container>
+
+                                                            </tbody>
+
+                                                        </table>
+
+                                                    </div>
+
+                                                </div>
+                                                </div>
+                                                </div>
+                                                
+
+
+
+                                            </p-tabPanel>
+
+                                            <br>
+
+
+
+                                            <div class="col-md-12 mb-3" align="right">
+
+                                                <div class="mb-2 text-right" width="100%">
+                                                    <button style="margin: 2px; font-size: 12px;" (click)="SubmitData()"
+                                                        class="btn btn-primary">Submit</button>
+
+                                                    <!-- <button type="button"
+                                                        class="btn btn-warning waves-effect btn-label waves-light r-blue pull-Right"
+                                                        style="width: 150px; height: 40px" (click)="SubmitData()">
+
+                                                        <i class="bx bx-hdd label-icon"></i> Submit
+
+                                                    </button> -->
+
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+                                        </p-tabView>
+
+
+
+
+
+
+
+
+
+
+
+                                        <br>
+
+                                        <br>
+
+                                        <div class="row">
+
+
+
+
+
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+                    <!-- end col -->
+
+                </div>
+
+                <!-- end row -->
+
+            </div>
+
+            <!-- HTML template -->
+
+
+
+
+
+
+
+            <!-- container-fluid -->
+
+        </div>
+
+        <!-- End Page-content -->
+
+
+
+      
+
+    </div>
+
+    <!-- end main content-->
+
+</div>
+
+
+
+<!-- END layout-wrapper -->
+
+
+
+<!-- Right bar overlay-->
+
+<div class="rightbar-overlay"></div>
+
+<footer class="footer footerheader">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  

@@ -1,0 +1,263 @@
+<div class="main-content" style="margin-top: -7% !important;">
+
+  <div class="page-content">
+    <div class="container-fluid">
+
+
+
+      <div>
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                  [class]="iconClass" style="font-size: 1rem;"></i> {{heading}}</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 24rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+  
+                  <li class="breadcrumb-item active">{{heading1}}</li>
+                  <!-- <li class="breadcrumb-item active">Add CRO</li> -->
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 24rem !important; display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+    
+                    <li class="breadcrumb-item active">{{heading1}}</li>
+                    <!-- <li class="breadcrumb-item active">Add CRO</li> -->
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p-toast></p-toast>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+       
+
+
+              <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            
+
+                  <div class="row" style="padding: 1rem !important;">
+                    <div class="col-sm-6" style="font-size: 1.2rem; font-weight: bold;"> {{listName}}</div>
+                    <div class="col-sm-6">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div id="datatable_filter" class="dataTables_filter">
+                            <input autocomplete="off" type="text" class="form-control custom-search-input"
+                              [(ngModel)]="searchText" placeholder="Search " (keyup)="applyFilter(searchText)" />
+                          </div>
+                        </div>
+                        <div class="col-sm-6"><button style="text-align: right; font-size: 11px; display: none;" type="button"
+                           class="btn btn-primary btn-round
+                          waves-effect btn-label waves-light pull-right" data-bs-toggle="modal"
+                            data-bs-target=".transaction-detailModal"><i class="bx bx-plus label-icon"></i>
+                            Add Lab</button></div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+               
+
+              
+
+               
+
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table id="datatable"
+                        class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline table-hover"
+                        role="grid" aria-describedby="datatable_info" style="width: 1182px;">
+                        <thead>
+                          <tr role="row">
+                            <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" (click)="toggleSorting()"
+                              style="width: 243.2px;" aria-sort="ascending"
+                              aria-label="Code: activate to sort column descending" (click)="sort('user_protocol_id')">Code
+                              <span style="float: right;" class="sort-icons">
+                                <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort}"></i>
+                                <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort}"></i>
+                              </span>
+                            </th>
+                            <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                              (click)="toggleSorting1()" style="width: 335.2px;"
+                              aria-label="Name: activate to sort column ascending" (click)="sort('protocol_name')">Name
+                              <span style="float: right;" class="sort-icons">
+                                <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort1}"></i>
+                                <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort1}"></i>
+                              </span>
+
+                            </th>
+
+                            <th width="40" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                              style="width: 150.2px;" aria-label="Actions: activate to sort column ascending">Actions
+                            </th>
+                          </tr>
+                        </thead>
+
+
+
+                        <tbody>
+
+                          <tr class="odd" style="  vertical-align: middle;"
+                            *ngFor="let protocolData of protocolDetails  | sort:sortedColumn:sortDirection|paginate: { id: 'sitePagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCount }; let i=index">
+
+                            <td class="sorting_1 dtr-control"
+                              >
+                              {{protocolData.user_protocol_id}}</td>
+
+                            <td>{{protocolData.protocol_name}}</td>
+                            <td class="text-center">
+                              <span class="icon-row">
+                                <i class="fa fa-edit edit-icon" (click)="edit(protocolData.protocol_id)"></i>
+
+                              </span>
+                            </td>
+
+
+                              <!-- <button type="button" (click)="view(protocolData.id)"
+                                              class="btn btn-success waves-effect edit-btn waves-light">
+
+                                              View
+                                            </button> -->
+
+                                            <!-- <td>
+                              <button style="margin-left: 5px;" (click)="edit(protocolData.protocol_id)"
+                                class="btn btn-success waves-effect edit-btn waves-light"><svg
+                                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="bi bi-eye" viewBox="0 0 16 16">
+                                  <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                  <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg></button>
+                            </td> -->
+                          </tr>
+                          <tr>
+                            <td colspan="12" *ngIf="protocolDetails.length === 0"
+                              style="text-align: center; font-size: 0.8rem;">
+                              No Data Found
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                      <pagination-controls id="sitePagination" (pageChange)="pageChange($event)"
+                        *ngIf="protocolDetails && protocolDetails.length"></pagination-controls>
+                        <div class="row">
+                          <div class="col-md-10">
+
+                          </div>
+                          <div class="col-md-2">
+                         <p style="margin-top: -26%; color:#0a0a0a">Total Count:[{{totalCount}}]</p>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+          
+                  </div>
+              
+                  </div>
+                  </div>
+
+
+
+
+
+
+
+      </div>
+      </div>
+      </div>
+   <footer class="footer footerheader">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-sm-6"></div>
+                          <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+                        </div>
+                      </div>
+                    </footer> 
+      <!-- start page title -->
+    
+
+
+   
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+ 
+
+                
+
+                 
+
+
+
+                            

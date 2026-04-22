@@ -1,0 +1,539 @@
+<div class="main-content" style="margin-top: -7% !important;">
+
+  <div class="page-content">
+    <div class="container-fluid">
+
+      <!-- start page title -->
+  
+
+
+      <div>
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i
+                    class="fas fa-microscope" style="font-size: 1rem;"></i> Lab Test</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 26rem !important;">
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+  
+                  <li class="breadcrumb-item active">{{breadcrumb}}</li>
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 26rem !important;display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+    
+                    <li class="breadcrumb-item active">{{breadcrumb}}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <p-tabView  [(activeIndex)]="selectedIndex" (onChange)="onTabChange($event)">
+
+
+
+        <p-tabPanel header="Lab Test" headerClass="custom-tab-panel-header">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+              
+                  <!-- <div class="row" style="margin-right: -13%;">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-2" *ngIf="disableAdd">
+                      <div class="pull-Right mb-2 text-right" width="100%">
+                        <button type="button" (click)="labCreate()"
+                          class="btn btn-warning waves-effect btn-label waves-light r-red pull-Right"
+                          data-bs-toggle="modal" data-bs-target=".transaction-detailModal"><i
+                            class="bx bx-plus label-icon"></i>
+                          Add Lab Test</button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="container-fulid" style=" font-size: 14px; font-family: Mada, sans-serif !important; font-weight: 400;">
+
+                    <div class="card-body p-0" *ngIf="labFormval">
+                      <h5 style="font-family: 'Mada', sans-serif; color: #0073aa !important; font-weight: bold; font-size: 1rem !important;">
+                        Lab Test Basic Details</h5>
+                      <hr>
+                      <form [formGroup]="labForm">
+                        <!-- <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                             <label>Lab Test Code<label style="color: red; display: inline;margin-left: 4px;">*</label></label>
+                            <input #labTestCode autocomplete="off" type="text" class="form-control labTestFormAllignment" formControlName="lab_test" id="lab test"
+                            (input)="labTestCode.value = labTestCode.value.toUpperCase()" maxlength="10"
+                                placeholder="Enter Lab Test Code" [attr.disabled]="isViewMode ? true : null">
+
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                             <label>Classification<label style="color: red; display: inline;margin-left: 4px;">*</label></label>
+                              <select formControlName="classification" class="form-select form-control labTestFormAllignment"
+                              [attr.disabled]="isViewMode ? true : null">
+                                <option *ngFor="let data of classifications">
+                                  {{ data }}
+                                </option>
+                              </select>
+
+                            </div>
+                          </div> -->
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Lab Test Code</label><label style="color: red; display: inline;margin-left: 4px;">*</label>
+                                <input #labTestCode autocomplete="off" type="text" class="form-control labTestFormAllignment" 
+                                       formControlName="lab_test" id="labTestCode"
+                                       (input)="labTestCode.value = labTestCode.value.toUpperCase()" maxlength="10"
+                                       placeholder="Enter Lab Test Code" 
+                                       [attr.disabled]="isViewMode ? true : null" 
+                                       [class.custom-invalid]="shouldShowRequired('lab_test') && labForm.get('lab_test')?.touched">
+                                
+                                
+                                <div *ngIf="shouldShowRequired('lab_test')" class="text-danger">Lab Test Code is required.</div>
+                  
+                                <div *ngIf="labForm.get('lab_test')?.hasError('pattern')" class="text-danger">
+                                  Lab Test Code accepts only uppercase alphabets and numbers.
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Classification</label><label style="color: red; display: inline;margin-left: 4px;">*</label>
+                                <select formControlName="classification" class="form-select form-control labTestFormAllignment"
+                                        [attr.disabled]="isViewMode ? true : null"
+                                        [class.custom-invalid]="shouldShowRequired('classification') && labForm.get('classification')?.touched">
+                                  <option *ngFor="let data of classifications">
+                                    {{ data }}
+                                  </option>
+                                </select>
+                          
+                                
+                                <div *ngIf="shouldShowRequired('classification')" class="text-danger">Classification is required.</div>
+                              </div>
+                            </div>
+                          <div class="col-md-12">
+                            <div class="form-group pull-right mt-2 mb-4">
+
+                              <button (click)="submit()" class="btn btn-primary" [disabled]="isViewMode">Submit</button>
+                              <button style="margin: 2px;" *ngIf="!isViewMode" (click)="reset()"
+                              class="btn btn-secondary btn-round">Reset</button>
+                              <button class="btn btn-inverse"   (click)="goBack()">Back</button>
+               
+               
+                             
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- <hr width="100%" class="mb-4"> -->
+                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                      <div class="row">
+
+                        <div class="row" style="padding: 1rem !important;">
+
+                          <div class="col-sm-6" style="font-size: 1.2rem; font-weight: bold;">Lab Test List</div>
+                          <div class="col-sm-6">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div id="datatable_filter" class="dataTables_filter">
+
+                                  <input autocomplete="off" type="text" class="form-control custom-search-input" style="margin-left: 6rem !important;"
+
+                                    [(ngModel)]="searchText" placeholder="Search " (keyup)="applyFilter(searchText)" />
+                                </div>
+                              </div>
+                              <div class="col-sm-6"><button style="text-align: right; font-size: 11px;" type="button"
+                                (click)="labCreate()" class="btn btn-primary btn-round
+                                waves-effect btn-label waves-light pull-right" data-bs-toggle="modal"
+                                  data-bs-target=".transaction-detailModal"><i class="bx bx-plus label-icon"></i>
+                                  Add Lab Test</button></div>
+                            </div>
+              
+                          </div>
+              
+                        </div>
+
+
+
+
+                        <!-- <div class="col-sm-12 col-md-6">
+
+                          <div class="col-sm-12 col-md-6">
+                            <div id="datatable_filter" class="dataTables_filter" style="text-align:left !important"><label>Search :
+                              <input autocomplete="off"  type="text" class="form-control custom-search-input" [(ngModel)]="searchText"
+                                  placeholder="Search " (keyup)="applyFilter(searchText)" />
+                              </label></div>
+                          </div>
+                        </div>
+                        <div *ngIf="disableaddbtn" class="col-sm-12 col-md-6">
+
+                          <button  type="button" (click)="labCreate()"
+                            class="btn btn-primary btn-round waves-effect btn-label waves-light pull-right" data-bs-toggle="modal"
+                            data-bs-target=".transaction-detailModal"><i class="bx bx-plus label-icon"></i>
+                            Add Lab Test</button>
+
+                        </div> -->
+
+
+                        <div class="row" class="table-responsive text-nowrap">
+                          <!-- <div class="col-sm-3"></div> -->
+                          <div class="col-sm-12">
+                            <table id="datatable" class="table table-hover w-100"
+                  
+                            role="grid" aria-describedby="datatable_info" style="width: 82px;">
+                            <thead style="    display: table-header-group;
+                          vertical-align: middle;
+                          unicode-bidi: isolate;
+                          border-color: inherit;">
+                                <tr role="row">
+                                  <!-- <th width="5%" style="text-align: left; padding-left: 0.5rem;">#</th> -->
+                                  <th width="40%"  tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 243.2px; text-align: left; padding-left: 0.1rem;
+    " aria-sort="ascending"  (click)="toggleSorting()" (click)="sort('name')" >Lab Test
+                                    <span style="float: right;" class="sort-icons">
+                                      <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort}"></i>
+                                      <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort}"></i>
+                                  </span>
+                                </th>
+                                  <th width="40%" tabindex="0" aria-controls="datatable" rowspan="1"
+                                    colspan="1" style="width: 243.2px; text-align: left; padding-left: 0.5rem; " aria-sort="ascending"  (click)="toggleSorting1()"
+                                    aria-label="Lab Test: activate to sort column descending"(click)="sort('classfication')"  >Classification
+                                    <span style="float: right;" class="sort-icons">
+                                      <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort1}"></i>
+                                      <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort1}"></i>
+                                  </span>
+                                </th>
+                                  <th width="20%" style="text-align: left; ">Action</th>
+
+                                </tr>
+
+                              </thead>
+
+
+                              <tbody style="font-size: 14px;   text-align: left; ">
+
+                                <tr class="odd" style="  text-align: left; "
+                                  *ngFor="let labData of LabDetails| sort:sortedColumn:sortDirection  | paginate: { id: 'LabDetailsPagination', itemsPerPage: pageSize, currentPage: page, totalItems: totalCount }; let i=index">
+
+                                  <!-- <td class="sorting_1 dtr-control" style="text-align: left;">{{i+1}}</td> -->
+                                  <td class="sorting_1 dtr-control" style="text-align: left; padding-top: 1rem;">{{labData.name}}</td>
+                                  <td class="sorting_1 dtr-control" style="text-align: left; padding-top: 1rem;">{{labData.classfication}}</td>
+
+                                  <!-- <td class="text-center">
+                                    <span class="icon-row">
+                                      <i class="fa fa-trash delete-icon" (click)="confirm2(labData.lab_id, labData.name)"></i>
+            
+                                    </span>
+                                  </td> -->
+                                  <td class="text-center">
+                                    <span class="icon-row">
+                                    <i class="fa fa-eye view-icon" (click)="view(labData.lab_id)"></i>
+                                    <i class="fa fa-edit edit-icon" (click)="edit1(labData.lab_id, 'edit1')"></i>
+                                    
+                                    <i class="fa fa-trash delete-icon" (click)="confirm2(labData.lab_id, labData.name)"></i>
+                                     
+                                                            </span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                  <td colspan="12" *ngIf="LabDetails.length === 0"
+                                      style="text-align: center; font-size: 0.8rem;">
+                                      No Data Found
+                                  </td>
+                              </tr>
+
+                              </tbody>
+                            </table>
+                            <pagination-controls id="LabDetailsPagination" (pageChange)="pageChange($event)"
+                              *ngIf="LabDetails && LabDetails.length"></pagination-controls>
+
+                              <div class="row">
+                                <div class="col-md-10">
+
+                              </div>
+                              <div class="col-md-2">
+                             <p style="margin-top: -26%; color:#0a0a0a">Total Count:[{{totalCount}}]</p>
+                              </div>
+                              </div>
+
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                 
+                
+              </div>
+            </div>
+            <!-- <p-confirmDialog [style]="{width: '30vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog> -->
+
+      
+          </div>
+        </p-tabPanel>
+
+        <p-tabPanel header="Material" headerClass="custom-tab-panel-header">
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body p-0">
+
+                  <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      
+                      <div class="row" style="padding: 1rem !important;">
+                        <div class="col-sm-6" style="font-size: 1.2rem; font-weight: bold;"> Material List</div>
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <div id="datatable_filter" class="dataTables_filter">
+
+                                <input autocomplete="off" type="text" class="form-control custom-search-input" style="margin-left: 6rem !important;"
+
+                                  [(ngModel)]="searchText" placeholder="Search " (keyup)="applyFilter(searchText)" />
+                              </div>
+                            </div>
+                            <div class="col-sm-6"><button style="text-align: right; font-size: 11px;" type="button"
+                              (click)="materialCreate()" class="btn btn-primary btn-round
+                              waves-effect btn-label waves-light pull-right" data-bs-toggle="modal"
+                                data-bs-target=".transaction-detailModal"><i class="bx bx-plus label-icon"></i>
+                                Add Material</button></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row" class="table-responsive text-nowrap">
+                        <div class="col-sm-12">
+                          <table id="datatable" class="table "
+                            class="table  dt-responsive nowrap w-100 dataTable no-footer dtr-inline table-hover"
+                            role="grid" aria-describedby="datatable_info" style="width: 1182px;">
+                            <thead>
+                              <tr role="row">
+
+                                <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"  (click)="toggleSorting2()"
+                                  style="width: 335.2px; text-align: left; padding-left:0.5rem;" aria-label="Material: activate to sort column ascending"  (click)="sort('name')"F >
+                                  Material
+                                  <span style="float: right;" class="sort-icons">
+                                    <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort2}"></i>
+                                    <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort2}"></i>
+                                </span>
+                                </th>
+                                <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" (click)="toggleSorting2()"
+                                  style="width: 282.2px; text-align: left; padding-left:0.5rem;" aria-label="Size: activate to sort column ascending" >
+                                  Size
+                                  <span style="float: right;" class="sort-icons">
+                                    <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort2}"></i>
+                                    <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort2}"></i>
+                                </span>
+                                </th>
+                                <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" (click)="toggleSorting2()"
+                                  style="width: 282.2px; text-align: left; padding-left:0.5rem;" aria-label="Image: activate to sort column ascending">
+                                  Image
+                                  <span style="float: right;" class="sort-icons">
+                                    <i class="bx bx-chevron-up" [ngClass]="{'active': isAscendingSort2}"></i>
+                                    <i class="bx bx-chevron-down" [ngClass]="{'active': !isAscendingSort2}"></i>
+                                </span>
+                                </th>
+                                <th width="40" tabindex="0" aria-controls="datatable" rowspan="1"
+                                  colspan="1" style="width: 150.2px; text-align: left; padding-left:0.5rem;"
+                                  aria-label="Actions: activate to sort column ascending">Actions</th>
+                              </tr>
+                            </thead>
+
+
+                            <tbody  style="font-size: 14px;   text-align: left; padding-left:0.5rem; ">
+                              <tr class="odd" style="vertical-align: middle;"
+                                *ngFor="let labData of materials | sort:sortedColumn:sortDirection  | paginate: { id: 'materialsPagination', itemsPerPage: pageSizeM, currentPage: pageM, totalItems: totalCountmaterial }; let i=index">
+                                <!-- <td class="sorting_1 dtr-control">{{labData.lab_test}}</td> -->
+                                <td style="text-align: left; padding-left:0.5rem;">
+                                  {{labData.name}}</td>
+                                <td style="text-align: left; padding-left:0.5rem;">{{labData.size}}</td>
+                                <td style="text-align: left; padding-left:0.5rem;">
+                                  <img style="width:50px" src="{{'data:image/jpg;base64,' + labData.image}}" />
+                                </td>
+
+                                <td class="text-center">
+                                  <span class="icon-row">
+                                    <i class="fa fa-eye view-icon" (click)="edit(labData.meterial_id, 'view')"></i>
+                                    <i class="fa fa-edit edit-icon" (click)="edit(labData.meterial_id, 'edit')"></i>
+                                    <i class="fa fa-trash delete-icon" (click)="confirm3(labData.meterial_id, labData.name)"></i>
+    
+                                  </span>
+                                </td>
+                                <!-- <td>
+                                  <button type="button" (click)="edit(labData.meterial_id, 'edit')"
+                                    class="btn btn-success waves-effect edit-btn waves-light">
+                                    <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+
+                                  </button>&nbsp;
+                           
+                                  <button style="margin-left: 5px;" (click)="edit(labData.meterial_id, 'view')"
+                                    class="btn btn-success waves-effect edit-btn waves-light"><svg
+                                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-eye" viewBox="0 0 16 16">
+                                      <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                      <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                    </svg></button>&nbsp;&nbsp;&nbsp;
+                                    <button type="button" style="background-color: #ff414b;" (click)="confirm3(labData.meterial_id, labData.name)"
+                                      class="btn btn-danger waves-effect edit-btn btn-sm waves-light">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                        <path
+                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                      </svg>
+                                    </button>
+                                </td> -->
+                              </tr>
+                              <tr>
+                                <td colspan="12" *ngIf="materials.length === 0"
+                                    style="text-align: center; font-size: 0.8rem;">
+                                    No Data Found
+                                </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <pagination-controls id="materialsPagination" (pageChange)="pageChangem($event)"
+                        *ngIf="materials && materials.length"></pagination-controls>
+                        <div class="row">
+                          <div class="col-md-10">
+
+                        </div>
+                        <div class="col-md-2">
+                          <p style="margin-top: -26%; color:#0a0a0a">Total Count:[{{totalCountmaterial}}]</p>
+
+                        </div>
+                        </div>
+               
+                  </div>
+                </div>
+              </div>
+
+              <!-- end col -->
+            </div> <!-- end row -->
+          </div>
+        </p-tabPanel>
+
+        </p-tabView>
+      <!-- end page title -->
+
+      <p-toast></p-toast>
+
+
+
+    </div>
+  </div>
+</div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+
+

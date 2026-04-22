@@ -1,0 +1,185 @@
+
+/* Add this CSS to your stylesheet */
+.sort-icons i {
+    font-size: 15px; /* Adjust this value for icon size */
+    opacity: 0.5; /* Adjust this value to control icon opacity */
+    transition: opacity 0.3s;
+}
+
+.sort-icons i.active {
+    opacity: 2;
+    color: blue;
+}
+.custom-sponsor-header {
+    color: #757575;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Mada', sans-serif;
+}
+/* Add this CSS to your component's CSS file */
+.breadcrumb-item {
+    font-family: 'Mada', sans-serif;
+    color: #757575;
+   
+}
+
+.breadcrumb-item a {
+    font-family: 'Mada', sans-serif;
+    color: #757575;
+    
+}
+/* Add this CSS to your component's CSS file */
+.breadcrumb-item,
+.breadcrumb-item.active {
+    font-family: 'Mada', sans-serif;
+    color: #757575;
+    
+}
+
+.breadcrumb-item a {
+    font-family: 'Mada', sans-serif;
+    color: #757575;
+    
+}
+
+
+.custom-sponsor-button {
+    font-family: 'Mada', sans-serif;
+    color: #757575;
+    /* font-size: 16px; */
+    /* font-weight: 400; */
+}
+
+
+.text-muted {
+    /* --bs-text-opacity: 1; */
+    color: #212529;
+    font-size: .875em;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* .table-hover{
+    $table-hover-bg: $gray-100 !default;
+} */ 
+.btn-primary {
+    background-color: #0073aa;
+border-color: #0073aa;
+color: #fff;
+}
+/* .container-fluid {
+    width: 900px;
+    margin-left: 8px;
+} */
+/* .main-content {
+    background-color: #fff;
+} */
+
+.custom-search-input {
+    height: 35px;
+    padding: 3px 10px;
+  }
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    color: #212529 !important;
+  
+  }
+  
+  th {
+    height: 10px !important;
+    padding: 5px!important;
+  }
+  
+  th,
+  td {
+    font-family: 'Mada', sans-serif !important;
+    /* Apply font-family to both th and td */
+  }
+  
+  .table th {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+  }
+  
+  .table td {
+    color: #212529 !important;
+    font-size: .875em !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+  
+  }
+  
+  table {
+    border-collapse: collapse !important;
+  }
+  
+  .table td,
+  .table th {
+    padding: .75rem !important;
+    /* vertical-align: top; */
+    border-top: none !important;
+  
+    /* border-top: 1px solid #dee2e6 !important; */
+    border-right: none !important;
+}
+  
+  
+  th {
+    white-space: nowrap !important;
+  }
+  
+  th {
+    text-align: inherit !important;
+  }
+  
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+  }
+  
+  th {
+    display: table-cell !important;
+    vertical-align: inherit !important;
+    font-weight: bold !important;
+    text-align: -internal-center;
+    unicode-bidi: isolate !important;
+  }
+  
+  .table {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+    color: #212529 !important;
+  }
+  
+  table {
+    border-collapse: collapse !important;
+  }
+  
+   table {
+    border-collapse: separate !important;
+    text-indent: initial !important;
+    border-spacing: 2px !important;
+  }
+  
+  tbody {
+    display: table-row-group !important;
+    vertical-align: middle !important;
+    unicode-bidi: isolate !important;
+    border-color: inherit !important;
+  }
+  
+  #datatable[_ngcontent-dty-c79] tbody[_ngcontent-dty-c79] td[_ngcontent-dty-c79] {
+    padding-left: 13px !important;
+    font-size: 14px !important;
+  }
+  
+  #datatable tbody td {
+    padding: 10px;
+    font-size: 14px !important;
+  }
+  
+  
+  
+  

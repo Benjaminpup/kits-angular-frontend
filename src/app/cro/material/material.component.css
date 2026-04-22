@@ -1,0 +1,158 @@
+/* ::ng-deep .p-card{
+    background-color:pink
+}
+
+h6 {
+   
+    color:maroon;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h5 {
+   
+    color:blue;
+    font-size: 16px;
+    font-weight: bold;
+   
+  } */
+  /* ::ng-deep .p-card{
+    background-color:pink
+}
+
+h6 {
+   
+    color:maroon;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h5 {
+   
+    color:blue;
+    font-size: 16px;
+    font-weight: bold;
+   
+  } */
+/* ::ng-deep .p-card{
+    background-color:pink
+}
+
+h6 {
+   
+    color:maroon;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h5 {
+   
+    color:blue;
+    font-size: 16px;
+    font-weight: bold;
+   
+  } */
+  /* .main-content { */
+    /* background-color: rgb(204, 230, 245); */
+  /* } */
+  .cra{
+    order: -1;
+  }
+
+ ::ng-deep .p-card{
+    background-color:rgb(204, 230, 245)
+}
+.custom-chart {
+  height: 10000%; /* Adjust the height as needed */
+}
+
+
+.numbers {
+  font-weight: 600;
+  color: #222;
+/* font-size: 1.75rem; */
+font-size: 22px;
+font-family: Mada, sans-serif;
+margin-top: 10px;
+text-align: center;
+}
+
+.roles {
+  margin-bottom: 16px;
+  font-size: 17px;
+  font-family: Mada, sans-serif;
+  color: #212529;
+  font-weight: 400;
+  /* line-height: 25px; */
+}
+
+.round-lg {
+  line-height: 65px;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-danger-rgb), var(--bs-bg-opacity)) !important;
+
+  --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
+/* .cardsAlignment {
+  height: 300px;
+  width: 250px;
+} */
+
+.card-allignment {
+  height: 110px;
+  width: 250px;
+}
+
+.card-border {
+  border-top: 3px solid rgba(0, 115, 170, .5);
+}
+
+.labcreationlIcon {
+  margin-left: 0px !important;
+}
+
+.materialIcon {
+  margin-left: 22px !important;
+}
+
+h5 {
+  font-family: Mada, sans-serif;
+font-weight: 400;
+font-size: 14px;
+}
+.custom-dashboard-header {
+  color: #757575;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Mada', sans-serif;
+}
+.btn-primary {
+  background-color: #0073aa;
+  border-color: #0073aa;
+  color: #fff;
+  }
+  .custom-search-input {
+    height: 35px;
+    padding: 3px 10px;
+    width: 14rem !important;
+    margin-left: 9rem !important;
+  }
+  .footerheader{
+  position: absolute;
+  left:61px;
+  }
+  .footerheader1{
+  position: fixed;
+  background-color: #fff;
+   
+  }
+   
+  .footercontent{
+  text-align: right;
+  }

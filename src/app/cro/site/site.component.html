@@ -1,0 +1,662 @@
+<div class="main-content" style="margin-top: -7% !important;">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      <div>
+        <div class="fixed-header">
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;"><i class="fas fa-clinic-medical" style="font-size: 1rem;"></i> Site</h4>
+              </div>
+              <div class="col-6"> 
+                <ol class="breadcrumb" style="margin-left: 28rem !important;">
+                  <li class="breadcrumb-item">
+                    <a routerLink="/home/cro/dashboards" class="waves-effect"
+                      >Dashboard</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item active">Site</li>
+                  <!-- <li class="breadcrumb-item active">Add CRO</li> -->
+                </ol>
+              </div>
+            </div> 
+          </nav>
+        </div> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between"> 
+                <h4 class="custom-cro-header">
+                </h4> 
+                <div class="page-title-right"> 
+                  <ol class="breadcrumb" style="margin-left: 28rem !important; display: none;">
+                    <li class="breadcrumb-item">
+                      <a routerLink="/home/cro/dashboards" class="waves-effect"
+                        >Dashboard</a
+                      >
+                    </li>
+                    <li class="breadcrumb-item active">Site</li>
+                    <!-- <li class="breadcrumb-item active">Add CRO</li> -->
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- end page title -->
+      <p-toast></p-toast>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+              <div
+                id="datatable_wrapper"
+                class="dataTables_wrapper dt-bootstrap4 no-footer"
+              >
+              <div class="row" style="padding: 1rem !important;">
+
+                <div class="col-sm-6" style="font-size: 1.2rem; font-weight: bold;">Site List</div>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div id="datatable_filter" class="dataTables_filter">
+                        <input autocomplete="off" type="text" class="form-control custom-search-input"
+                          [(ngModel)]="searchText" placeholder="Search " (keyup)="applyFilter(searchText)" />
+                      </div>
+                    </div>
+                    <div class="col-sm-6"><button style="text-align: right; font-size: 11px;" type="button"
+                      (click)="siteCreate()"class="btn btn-primary btn-round
+                      waves-effect btn-label waves-light pull-right" data-bs-toggle="modal"
+                        data-bs-target=".transaction-detailModal"><i class="bx bx-plus label-icon"></i>
+                        Add Site</button></div>
+                  </div>
+    
+                </div>
+    
+              </div>
+
+
+
+
+
+
+
+
+
+              <p-dialog
+              [class.overlay]="display"
+              (onShow)="disableScroll()"
+              (onHide)="enableScroll()"
+              styleClass="AssociatedStudy-Cards"
+              style="padding-top: 40px;"
+              header="Associated Study Id's"
+              [(visible)]="display"
+             >
+              <div class="table-container">
+                <table
+                  id="datatable"
+                  *ngIf="tabledisplay"
+                  class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline table-hover scrollable-container"
+                  role="grid"
+                  aria-describedby="datatable_info"
+                  style="width: 1182px; padding-top: 40px"
+                >
+                  <thead>
+                    <tr role="row">
+                      <th>#</th>
+
+                      <th
+                        tabindex="0"
+                        aria-controls="datatable"
+                        rowspan="1"
+                        colspan="1"
+                        (click)="toggleSortinga()"
+                        style="width: 335.2px"
+                        aria-label="Name: activate to sort column ascending"
+                        (click)="sort('user_protocol_id')"
+                      >
+                        Study Id
+                        <span style="float: right" class="sort-icons">
+                          <i
+                            class="bx bx-chevron-up"
+                            [ngClass]="{ active: isAscendingSorta }"
+                          ></i>
+                          <i
+                            class="bx bx-chevron-down"
+                            [ngClass]="{ active: !isAscendingSorta }"
+                          ></i>
+                        </span>
+                      </th>
+                      <th
+                        tabindex="0"
+                        aria-controls="datatable"
+                        rowspan="1"
+                        colspan="1"
+                        (click)="toggleSortingb()"
+                        (click)="sort('protocol_name')"
+                        style="width: 335.2px"
+                        aria-label="Name: activate to sort column ascending"
+                      >
+                        Study Name
+                        <span style="float: right" class="sort-icons">
+                          <i
+                            class="bx bx-chevron-up"
+                            [ngClass]="{ active: isAscendingSortb }"
+                          ></i>
+                          <i
+                            class="bx bx-chevron-down"
+                            [ngClass]="{ active: !isAscendingSortb }"
+                          ></i>
+                        </span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   
+                    <tr
+                      class="odd"
+                      style="vertical-align: 12px"
+                      *ngFor="
+                        let siteData of uniqueCombinedArray
+                          | sort : sortedColumn : sortDirection
+                          | paginate
+                            : {
+                                id: 'sitePagination',
+                                itemsPerPage: pageSize,
+                                currentPage: page
+                              };
+                        let i = index
+                      "
+                    >
+                    <th scope="row">{{i+1}}</th>
+                      <td
+                        class="sorting_1 dtr-control"
+                        style="color: blue; cursor: pointer"
+                        (click)="dashboard(siteData)"
+                      >
+                        {{ siteData.user_protocol_id }}
+                      </td>
+                      <td>{{ siteData.protocol_name }}</td>
+                    </tr>
+                    <tr *ngIf="uniqueCombinedArray.length === 0">
+                      <td
+                        colspan="12"
+                        style="text-align: center; font-size: 0.8rem"
+                      >
+                        No Data Found
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div *ngIf="crasiteenable">
+                <div class="row">
+                  <div class="col-12">
+                    <button
+                      style="margin: 2px; float: right"
+                      (click)="change()"
+                      class="btn btn-primary"
+                    >
+                      <i
+                        class="fa fa-angle-double-left"
+                        aria-hidden="true"
+                      ></i
+                      >Back
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div>
+                            <div class="row">
+                              <h5 style="color: blue; text-align: center">
+                                Summary Panel
+                              </h5>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <div class="card">
+                                    <table
+                                      id="datatable"
+                                      class="table table-striped"
+                                      class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                      role="grid"
+                                      aria-describedby="datatable_info"
+                                      style="width: 82px"
+                                    >
+                                      <thead>
+                                        <tr role="row">
+                                          <th
+                                            tabindex="0"
+                                            aria-controls="datatable"
+                                            rowspan="1"
+                                            colspan="1"
+                                            style="width: 335.2px"
+                                            aria-label="Name: activate to sort column ascending"
+                                          ></th>
+                                          <th
+                                            tabindex="0"
+                                            aria-controls="datatable"
+                                            rowspan="1"
+                                            colspan="1"
+                                            style="width: 243.2px"
+                                            aria-sort="ascending"
+                                            aria-label="Code: activate to sort column descending"
+                                          >
+                                            Actual
+                                          </th>
+                                          <th
+                                            tabindex="0"
+                                            aria-controls="datatable"
+                                            rowspan="1"
+                                            colspan="1"
+                                            style="width: 335.2px"
+                                            aria-label="Name: activate to sort column ascending"
+                                          >
+                                            Planned
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>Countries</th>
+                                          <td>
+                                            {{
+                                              subjectDetails.actual_countries
+                                            }}
+                                          </td>
+                                          <td>
+                                            {{
+                                              subjectDetails.planned_countries
+                                            }}
+                                          </td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>Sites</th>
+                                          <td>
+                                            {{
+                                              subjectDetails.actual_sites
+                                            }}
+                                          </td>
+                                          <td>
+                                            {{
+                                              subjectDetails.planned_sites
+                                            }}
+                                          </td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>Subjects Screened</th>
+                                          <td>
+                                            {{
+                                              subjectDetails.acutal_subjects_screened
+                                            }}
+                                          </td>
+                                          <td>
+                                            {{
+                                              subjectDetails.planned_subects_screened
+                                            }}
+                                          </td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>--</th>
+                                          <td>NA</td>
+                                          <td>NA</td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>Samples Received</th>
+                                          <td>
+                                            {{
+                                              subjectDetails.actual_sample_received
+                                            }}
+                                          </td>
+                                          <td>
+                                            {{
+                                              subjectDetails.planed_sample_received
+                                            }}
+                                          </td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>--</th>
+                                          <td>NA</td>
+                                          <td>NA</td>
+                                        </tr>
+                                        <tr
+                                          class="odd"
+                                          style="vertical-align: middle"
+                                        >
+                                          <th>--</th>
+                                          <td>NA</td>
+                                          <td>NA</td>
+                                        </tr>
+                                        <tr>
+                                          <td
+                                            colspan="12"
+                                            *ngIf="
+                                              subjectDetails.length === 0
+                                            "
+                                            style="
+                                              text-align: center;
+                                              font-size: 0.8rem;
+                                            "
+                                          >
+                                            No Data Found
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-2"></div>
+                              <div class="col-md-8" style="height: 60% !important;">
+                                <h5
+                                  style="color: blue; text-align: center"
+                                >
+                                  Screening Number
+                                </h5>
+                                <div class="form-group" style="height: 150px !important; width: 150px !important; margin-left: 60px !important;">
+                                  <p-chart
+                                  styleClass="ScreeningNumber-chartAllignment"
+                                    type="doughnut"
+                                    [data]="dataCra"
+                                    [options]="chartOptions"
+                                    [style]="{ width: '2%' }"
+                                  ></p-chart>
+                                </div>
+                              </div>
+                              <div class="col-md-2"></div>
+                              <!-- <div  class="col-md-3"></div> -->
+                              <div
+                                class="col-md-12"
+                                style="margin-top: 2%; padding-top: 20px !important;"
+                              >
+                                <!-- <div class="col-md-2"></div> -->
+                                <h5
+                                  style="color: blue; text-align: center"
+                                >
+                                  Randomization Status
+                                </h5>
+                                <div class="form-group" style="height: 200px !important; width: 220px !important; margin-left: 90px !important;">
+                                  <p-chart
+                                    class="custom-chart"
+                                    type="bar"
+                                    [data]="basicData"
+                                    [options]="basicOptions"
+                                  ></p-chart>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </p-dialog>
+
+                <div class="row">
+                  
+                  <!-- <br /> -->
+                 
+                  <div class="row" class="table-responsive text-nowrap">
+                    <div class="col-sm-12">
+                      <table
+                        id="datatable"
+                        class="table table-striped"
+                        class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline table-hover"
+                        role="grid"
+                        aria-describedby="datatable_info"
+                        style="width: 1182px; "
+                      >
+                        <thead>
+                          <tr role="row">
+                            <th style="text-align: left;">#</th>
+
+                            <th
+                              tabindex="0"
+                              aria-controls="datatable"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 243.2px; text-align: left;"
+                              (click)="toggleSorting()"
+                              aria-label="Code: activate to sort column ascending"
+                              (click)="sort('site_data_code')"
+                            >
+                              Code
+                              <span style="float: right" class="sort-icons">
+                                <i
+                                  class="bx bx-chevron-up"
+                                  [ngClass]="{ active: isAscendingSort }"
+                                ></i>
+                                <i
+                                  class="bx bx-chevron-down"
+                                  [ngClass]="{ active: !isAscendingSort }"
+                                ></i>
+                              </span>
+                            </th>
+                            <th
+                              tabindex="0"
+                              aria-controls="datatable"
+                              rowspan="1"
+                              colspan="1"
+                              (click)="toggleSorting1()"
+                              style="width: 335.2px; text-align: left;"
+                              aria-label="Name: activate to sort column ascending"
+                              (click)="sort('site_data_name')"
+                            >
+                              Name
+                              <span style="float: right" class="sort-icons">
+                                <i
+                                  class="bx bx-chevron-up"
+                                  [ngClass]="{ active: isAscendingSort1 }"
+                                ></i>
+                                <i
+                                  class="bx bx-chevron-down"
+                                  [ngClass]="{ active: !isAscendingSort1 }"
+                                ></i>
+                              </span>
+                            </th>
+                            <th
+                              tabindex="0"
+                              aria-controls="datatable"
+                              rowspan="1"
+                              colspan="1"
+                              (click)="toggleSorting2()"
+                              style="width: 282.2px; text-align: left;"
+                              aria-label="Email: activate to sort column ascending"
+                              (click)="sort('email')"
+                            >
+                              Email Id
+                              <span style="float: right" class="sort-icons">
+                                <i
+                                  class="bx bx-chevron-up"
+                                  [ngClass]="{ active: isAscendingSort2 }"
+                                ></i>
+                                <i
+                                  class="bx bx-chevron-down"
+                                  [ngClass]="{ active: !isAscendingSort2 }"
+                                ></i>
+                              </span>
+                            </th>
+                            <th
+                              width="15%"
+                              tabindex="0"
+                              aria-controls="datatable"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 150.2px; text-align: left;"
+                              aria-label="Actions: activate to sort column ascending"
+                            >
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            class="odd"
+                            style="text-align: left;"
+                            *ngFor="
+                              let siteData of siteDetails
+                                | sort : sortedColumn : sortDirection
+                                | paginate
+                                  : {
+                                      id: 'sitePagination',
+                                      itemsPerPage: pageSize,
+                                      currentPage: page,
+                                      totalItems: totalCount
+                                    };
+                              let i = index
+                            "
+                          >
+                          <th scope="row" style="text-align: left;">{{i+1}}</th>
+                            <td
+                              class="sorting_1 dtr-control" style="text-align: left;"
+                            >
+                              {{ siteData.site_data_code }}
+                            </td>
+                            <td style="text-align: left;">{{ siteData.site_data_name }}</td>
+                            <td style="text-align: left;">{{ siteData.email }}</td>
+                            <td class="text-center">
+                              <span class="icon-row">
+                                <i class="fa fa-book book-icon" (click)="study(siteData.site_id)"></i>
+                                <i class="fa fa-eye view-icon" (click)="edit(siteData.site_id, 'view')"></i>
+                                <i class="fa fa-edit edit-icon" (click)="edit(siteData.site_id, 'edit')"></i>
+                                <i class="fa fa-trash delete-icon" (click)="confirm2(siteData.site_id, siteData.name)"></i>
+                              </span>
+                            </td>
+                              <!-- <button
+                                type="button"
+                                (click)="study(siteData.site_id)"
+                                class="btn btn-success waves-effect edit-btn waves-light"
+                              >
+                                Associated Studies</button> -->
+                                <!-- <td>
+                                <button
+                                type="button"
+                                (click)="study(siteData.site_id)"
+                                class="btn btn-success waves-effect edit-btn waves-light"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Associated Studies"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                              <path d="M4.5 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4.5zm1-1a2 2 0 0 1 2 2h3a2 2 0 1 1 0 4h-7a2 2 0 1 1 0-4h3a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            </button>
+                              &nbsp;
+                              <button
+                                type="button"
+                                (click)="edit(siteData.site_id, 'edit')"
+                                class="btn btn-success waves-effect edit-btn waves-light"
+                              >
+                                <i
+                                  class="bx bx-edit-alt font-size-16 align-middle"
+                                ></i></button
+                              >&nbsp;
+                              <button
+                                style="margin-left: 5px"
+                                (click)="edit(siteData.site_id, 'view')"
+                                class="btn btn-success waves-effect edit-btn waves-light"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  class="bi bi-eye"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                                  />
+                                  <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                                  />
+                                </svg>
+                              </button>&nbsp;&nbsp;&nbsp;
+                              <button type="button" style="background-color: #ff414b;" (click)="confirm2(siteData.site_id, siteData.name)"
+                                      class="btn btn-danger waves-effect edit-btn btn-sm waves-light">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                        <path
+                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                      </svg>
+                                    </button>
+                            </td> -->
+                          </tr>
+                          <tr>
+                            <td
+                              colspan="12"
+                              *ngIf="siteDetails.length === 0"
+                              style="text-align: center; font-size: 0.8rem"
+                            >
+                              No Data Found
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <pagination-controls
+                        id="sitePagination"
+                        (pageChange)="pageChange($event)"
+                        *ngIf="siteDetails && siteDetails.length"
+                      ></pagination-controls>
+                      <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                          <p style="margin-top: -20%; color: #0a0a0a">
+                            Total Count:[{{ totalCount }}]
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    <!-- end main content-->
+    <!-- END layout-wrapper -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+  </div>
+</div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,187 @@
+body {
+  /* background-image: url("../images/login_bg.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 100%;
+  width:100%
+}
+.form-group {
+  margin-bottom: 20px;
+  }
+  .password-label {
+    position: relative;
+}
+ 
+ 
+.eye-button {
+  background: none;
+    border: none;
+    top: 23px;
+    right: 40px;
+    height: 20pt;
+    cursor: pointer;
+    position: absolute;
+    padding: 0%;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+ 
+.eyeIcon {
+  margin: 0; /* Reset any margin */
+  position: absolute; /* Ensure consistent positioning */
+  right: 0; /* Align to the right within the button */
+}
+ 
+/* .eye-button {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+} */
+ 
+/* .eyeIcon {
+    margin-left: 0;
+    font-size: 1.2em;
+    transition: color 0.3s;
+} */
+ 
+.eye-button:focus {
+    outline: none;
+}
+ 
+ 
+ 
+ 
+.eye-button2 {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+  height: 22pt;
+}
+.eye-button3 {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+  height: 22pt;
+  margin-top: -1%;
+ 
+}
+ 
+  label {
+  display: block;
+  }
+ 
+   input[type="text"],
+  input[type="password"],
+  input[type="otp"] {
+  width: 100%;
+  padding: 5px;
+  font-size: 13px;
+  }
+ 
+  .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  /* background-image: url('https://wallpapers.com/images/high/healthcare-background-o7kakwfefccof7gn.webp'); */
+  background-image: url('https://wallpapers.com/images/high/healthcare-background-8u6l9oyzn67dtdas.webp');
+ 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* opacity: 0.9; */
+  }
+  .containerreset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+   
+    }
+  .globalbutton{
+    background-color: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+    font-family: 'Mada', sans-serif;
+  }
+  .globalbutton:hover{
+    color: #fff;
+    background-color: #0096dd;
+    border-color: #0096dd;
+  }
+  .globalbuttonb{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+ 
+  .login-card {
+  background-color: #ffffff;
+  padding: 20px;
+  /* width: 450px; */
+  /* width: 430px; */
+  width: 300px;
+  margin-top:10px;
+  margin-left: -43rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ 
+  }
+ 
+  .transaction-detailModal .modal-content {
+    overflow-y: auto;
+  }
+ 
+  .userNamePlaceholder {
+    width: 100% !important;
+  }
+ 
+  .login-card-allignment {
+    width: 65% !important;
+  }
+ 
+  input {
+    width: 85% !important;
+  }
+ 
+  ::ng-deep .modal-popup-allignment {
+    margin-right: 272px !important;
+    margin-top: 8px;
+    }
+    .w-md {
+      min-width: 100px;
+  }
+  .text-center {
+    text-align: left !important;
+}
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  /* padding: var(--bs-modal-padding); */
+  padding: 1.5rem;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+  margin-left: 8.78rem !important;
+}
+

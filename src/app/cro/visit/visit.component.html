@@ -1,0 +1,119 @@
+<div class="main-content" style="margin-top: -4%;">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- Page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <div class="page-title-right">
+              <ol class="breadcrumb" style="margin-left: 26rem !important;">
+                <li class="breadcrumb-item">
+                  <a routerLink="/home/cro/dashboards" class="waves-effect">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a routerLink="/home/cro/sponsorGrid" class="waves-effect">Sponsor</a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-11 mb-3" align="right">
+          <div class="mb-2 text-right" width="100%">
+            <button type="button" class="btn btn-warning waves-effect btn-label waves-light r-darkblue pull-Right"
+              (click)="addCard()">
+              <i class="bx bx-plus label-icon"></i> Add Visit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p-accordion>
+        <p-accordionTab style="margin-left: 3%;" *ngFor="let card of cards; let i = index" header="Visit {{i+1}}">
+          <div class="card">
+            <p-multiSelect
+              [options]="labMatTestsList"
+              [(ngModel)]="selectedLabTests[i]"
+              defaultLabel="Select Materials"
+              optionLabel="name"
+              optionValue="meterial_id"
+            ></p-multiSelect>
+            <div *ngIf="selectedLabTests[i]?.length">
+              <p>Selected Materials:</p>
+              <ul>
+                <li *ngFor="let material of selectedLabTests[i]">{{ material }}</li>
+              </ul>
+            </div>
+            <form [formGroup]="card.form">
+              <div formArrayName="rows">
+                <div class="row">
+                  <div class="col-md-11 mb-3" align="right" style="margin-left: 3%;">
+                    <button type="button" class="btn btn-warning waves-effect btn-label waves-light r-darkblue pull-Right"
+                      (click)="addRow1(i)">
+                      <i class="bx bx-plus label-icon"></i> Add Material
+                    </button>
+                  </div>
+                </div>
+                <table class="table table-striped mb-0">
+                  <thead Style="background:#EEE">
+                    <tr>
+                      <th>Material</th>
+                      <th>Size</th>
+                      <th>Quantity</th>
+                      <th>Frozen at Site</th>
+                      <th>Image</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of getRows(i).controls; let j = index" [formGroupName]="j">
+                      <th scope="row">
+                        <select formControlName="meterial_id" class="form-select form-control"
+                          aria-placeholder="Select Test" (change)="onMeterialIdChange($event, i, j)">
+                          <option *ngFor="let lab of labMatTestsList" [value]="lab.meterial_id">
+                            {{ lab.name }}
+                          </option>
+                        </select>
+                      </th>
+                      <td>
+                        <select formControlName="size" class="form-select form-control">
+                          <option *ngFor="let size of getSizes(i, j)" [value]="size">{{ size }}</option>
+                        </select>
+                      </td>
+                      <td>
+                      <input autocomplete="off" type="number" formControlName="quantity" class="form-control" value="" />
+                      </td>
+                      <td>
+                      <input autocomplete="off" class="form-check-input" formControlName="frozen_status" type="checkbox" value="checked"
+                          id="debugInfo" />
+                      </td>
+                      <td>
+                        <img [src]="row.get('image')?.value" width="30" height="30" *ngIf="row.get('image')?.value"
+                          alt="Material Image" />
+                      </td>
+                      <td>
+                        <button type="button" (click)="deleteRow(i, j)" class="btn btn-danger ml-3 mt-2">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+
+            <!-- Selected values display -->
+          
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+
+      <button type="button" class="btn btn-warning waves-light r-darkblue pull-Right" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+

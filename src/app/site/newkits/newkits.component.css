@@ -1,0 +1,64 @@
+/* Style the calendar icon */
+.calendar-icon {
+    cursor: pointer;
+  }
+  
+  /* Style the calendar icon when clicked */
+  .calendar-icon.clicked {
+    background-color: lightgray;
+  }
+  
+  /* Hide the input type="date" when the calendar is open */
+  input[type="date"][hidden] {
+    display: none;
+  }
+  th, td {
+    font-family: 'Mada', sans-serif !important; /* Apply font-family to both th and td */
+}
+
+th {
+    height: 10px;
+    padding: 5px;
+    /* padding: 8px 16px; */
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    text-align: center;
+    padding-left: 6px;
+}
+.table th {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+}
+.table td {
+    color: #212529;
+    font-size: .875em;
+    font-weight: 400;
+    text-align: center;
+    
+}
+.text-muted {
+    /* --bs-text-opacity: 1; */
+    color: #212529;
+    font-size: .875em;
+    font-weight: 400;
+    /* text-align: center; */
+}
+.custom-lab-header {
+  color: #757575;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Mada', sans-serif;
+}
+.btn-primary {
+  background-color: #0073aa;
+border-color: #0073aa;
+color: #fff;
+}
+.btn-secondary {
+  background-color: #cccccc;;
+  border-color: #cccccc;;
+  color: #fff;
+}
+  

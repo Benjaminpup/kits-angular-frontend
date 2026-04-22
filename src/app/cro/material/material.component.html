@@ -1,0 +1,1277 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="main-content" style="margin-top: -6% !important">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div>
+        <div class="fixed-header">
+ 
+          <nav aria-label="breadcrumb">
+            <div class="row">
+              <div class="col-6">
+                <h4 class="mb-sm-0 font-size-18" style="margin-left: 12rem !important; margin-top: 1rem !important;">
+                  <i class="fa fa-chart-bar" style="font-size: 1rem;"></i> Dashboard</h4>
+
+              </div>
+              <div class="col-6">
+ 
+                <ol class="breadcrumb" >
+ 
+                  <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards"
+                      class="waves-effect linkactive" style="color:white !important">Dashboard</a>
+ 
+                  
+                </ol>
+              </div>
+            </div>
+ 
+ 
+ 
+ 
+          </nav>
+        </div>
+ 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div style="padding:1px" class="page-title-box d-sm-flex align-items-center justify-content-between">
+ 
+                <h4 class="custom-cro-header">
+ 
+                </h4>
+ 
+                <div class="page-title-right">
+ 
+                  <ol class="breadcrumb" style="margin-left: 28rem !important; display: none;">
+                    <li class="breadcrumb-item"> <a routerLink="/home/cro/dashboards" class="waves-effect" style="color:white !important">Dashboard</a>
+ 
+                   
+                  </ol>
+                </div>
+ 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+
+
+
+
+
+
+
+
+
+
+
+   
+      <!-- end page title -->
+
+      <!-- <div *ngIf="adminfields">
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <p-card class="cardcolor">
+                <h5 style="margin-left: 34%" style="text-align: center">
+                  Users
+                </h5>
+                <h6 style="margin-left: 41%" style="text-align: center">
+                  {{ this.dashboardsData.no_of_cro || 0 }}
+                </h6>
+              </p-card>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <p-card class="cardcolor">
+                <h5 style="margin-left: 34%" style="text-align: center">CRO</h5>
+                <h6 style="margin-left: 41%" style="text-align: center">
+                  {{ this.dashboardsData.no_of_cro || 0 }}
+                </h6>
+              </p-card>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div *ngIf="adminfields">
+        <!-- <br /> -->
+        <!-- <br /> -->
+        <div class="row">
+          <div class="col-md-6 col-lg-3 cardsAlignment">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-users round-lg"></i>
+                  </div>
+                  <div class="ms-4">
+                    <h5 class="roles">Users</h5>
+                    <h3 class="numbers">{{ this.dashboardsData.no_of_users || 0 }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-md-6 col-lg-3 cardsAlignment">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-building round-lg"></i>
+                  </div>
+                  <div class="ms-4">
+                    <h5 class="roles">CRO</h5>
+                    <h3 class="numbers">{{ this.dashboardsData.no_of_cro || 0 }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div *ngIf="disablefields">
+        <div class="row ">
+          <div class="col-md-6 col-lg-3 cardsAlignment">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-users round-lg"></i>
+                  </div>
+                  <div class="ms-4">
+                    <h5 class="roles margin-left:6px ">Sponsors</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_sponsors || 0}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                  <i class="fa fa-sitemap round-lg"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h5 class="roles">Sites</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_sites || 0}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-flask round-lg"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h5 class="roles">Lab Tests</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_lab_tests || 0}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-home round-lg labcreationlIcon "></i>
+                  </div>
+                  <div class="ms-3">
+                    <h5 class="roles">Lab Creation</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_lab_tests ||0 }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fas fa-cube fa-stack-1x round-lg materialIcon"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h5 class="roles">Materials</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_materials || 0}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-border">
+              <div class="card-body card-allignment">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+                  >
+                    <i class="fa fa-list-alt round-lg"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h5 class="roles">Study Summary</h5>
+                    <h3 class="numbers">{{this.dashboardsData.no_of_protocols || 0}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="enableFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-2" style="margin-left: 41px">
+        <div class="form-group">
+          <p-card class="cardcolor" class="row">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              No.of Kits
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              Prepared Kits
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_completed_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              In Progress kits
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_inprogress_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="enableFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-box round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Kits</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-check-circle round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Prepared Kits</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_completed_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-spinner round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">In Progress Kits</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_inprogress_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div *ngIf="verificationFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-2" style="margin-left: 41px">
+        <div class="form-group">
+          <p-card class="cardcolor" class="row">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 24%" style="text-align: center">
+              Verified Kits
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_verified_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5
+              style="margin-left: 24%"
+              style="text-align: center; font-size: 90%"
+            >
+              Not Verified kits
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_not_verified_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="verificationFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-check round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Verified Kits</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_verified_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-times round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Not Verified Kits</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_not_verified_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div *ngIf="distributionFields">
+    <br />
+    <br />
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-2" style="margin-left: 41px">
+        <div class="form-group">
+          <p-card class="cardcolor" class="row">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2" style="margin-left: 20px">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              No.of Sites
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_sites || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="distributionFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-sitemap round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Sites</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_sites || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- <div *ngIf="acknowledgementFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-2" style="margin-left: 41px">
+        <div class="form-group">
+          <p-card class="cardcolor" class="row">
+            <h5 style="margin-left: 34%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 24%" style="text-align: center">
+              Received
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_verified_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5
+              style="margin-left: 24%"
+              style="text-align: center; font-size: 100%"
+            >
+              Pending
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_not_verified_kits || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="acknowledgementFields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 41px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-inbox round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Received</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_verified_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-clock round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Pending</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_not_verified_kits || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div *ngIf="disappearfields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-2" style="margin-left: 20px">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              ReceivedSamples
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_received_collections || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              PendingSamples
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_pending_collections || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor" class="row">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              No.of Patients
+            </h5>
+            <h6 style="margin-left: 41%">
+              {{ this.dashboardsData.no_of_patients || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="disappearfields">
+    <div class="row" style="margin-top: -4%">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-vial round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Received Samples</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_received_collections || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-hourglass-half round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">Pending Samples</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_pending_collections || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-user round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Patients</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_patients || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- <div *ngIf="sponserfields">
+    <div class="row">
+      <div class="col-md-2" style="margin-left: 20px">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              No.of Studies
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_protocols || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <p-card class="cardcolor">
+            <h5 style="margin-left: 54%" style="text-align: center">
+              No.of Sponsors
+            </h5>
+            <h6 style="margin-left: 71%" style="text-align: center">
+              {{ this.dashboardsData.no_of_sponsors || 0 }}
+            </h6>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="sponserfields">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 cardsAlignment" style="margin-left: 20px">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-book round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Studies</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_protocols || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-lg-3 cardsAlignment">
+        <div class="card card-border">
+          <div class="card-body card-allignment">
+            <div class="d-flex align-items-center">
+              <div
+                class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-success text-success"
+              >
+                <i class="fa fa-users round-lg"></i>
+              </div>
+              <div class="ms-4">
+                <h5 class="roles">No. of Sponsors</h5>
+                <h3 class="numbers">{{ this.dashboardsData.no_of_sponsors || 0 }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div *ngIf="crasiteenable" style="margin-top:-6% !important">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="formrow-firstname-input" class="form-label"
+                    >Study ID</label
+                  >
+                  <select
+                    class="form-select form-control"
+                    (change)="getdashboardDetails($event)"
+                  >
+                    <option selected value="">Select Study ID</option>
+                    <option *ngFor="let data of protocols" [value]="data.id">
+                      {{ data.protocol_id }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div *ngIf="enablestudy">
+                <br />
+                <h4 style="color: blue">Overall Dashboard</h4>
+                <div class="row" style="margin-top: 2%">
+                  <div class="col-md-3">
+                    <h5 style="color: blue">Summary Panel</h5>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 style="color: blue; text-align: center">
+                      Screening Number
+                    </h5>
+                  </div>
+                  <div class="col-md-3">
+                    <h5
+                      style="color: blue; text-align: center; margin-left: 21%"
+                    >
+                      Randomization Status
+                    </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <div class="card">
+                        <table
+                          id="datatable"
+                          class="table table-striped"
+                          class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                          role="grid"
+                          aria-describedby="datatable_info"
+                          style="width: 82px"
+                        >
+                          <thead>
+                            <tr role="row">
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 335.2px"
+                                aria-label="Name: activate to sort column ascending"
+                              ></th>
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 243.2px"
+                                aria-sort="ascending"
+                                aria-label="Code: activate to sort column descending"
+                              >
+                                Actual
+                              </th>
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 335.2px"
+                                aria-label="Name: activate to sort column ascending"
+                              >
+                                Planned
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Countries</th>
+                              <td>
+                                {{ subjectDetails.actual_countries || 0 }}
+                              </td>
+                              <td>
+                                {{ subjectDetails.planned_countries || 0 }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Sites</th>
+                              <td>{{ subjectDetails.actual_sites || 0 }}</td>
+                              <td>{{ subjectDetails.planned_sites || 0 }}</td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Subjects Screened</th>
+                              <td>
+                                {{
+                                  subjectDetails.acutal_subjects_screened || 0
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  subjectDetails.planned_subects_screened || 0
+                                }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Samples Received</th>
+                              <td>
+                                {{ subjectDetails.actual_sample_received || 0 }}
+                              </td>
+                              <td>
+                                {{ subjectDetails.planed_sample_received || 0 }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+                            <tr>
+                              <td
+                                colspan="12"
+                                *ngIf="subjectDetails.length === 0"
+                                style="text-align: center; font-size: 0.8rem"
+                              >
+                                No Data Found
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3" style="margin-left: 2%; margin-top: 6%">
+                    <div class="form-group">
+                      <p-chart
+                        type="doughnut"
+                        [data]="dataCra"
+                        [options]="chartOptions"
+                        [style]="{ width: '2%' }"
+                      ></p-chart>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-2"></div> -->
+                  <div class="col-md-5" style="margin-top: 6%">
+                    <div class="form-group">
+                      <p-chart
+                        class="custom-chart"
+                        type="bar"
+                        [data]="basicData"
+                        [options]="basicOptions"
+                      ></p-chart>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-4" style="margin-top: 15%;">
+                    <div class="form-group">
+                      <div class="card">
+
+                        <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+                        
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- <div class="col-md-4" style="margin-top: 15%;">
+                    <div class="form-group">
+                      <div class="card">
+                        <p-chart type="bar" [data]="stackedData2" [options]="stackedOptions"></p-chart>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <div *ngIf="enablestudy">
+                <h4 style="color: blue">
+                  Dashboard for Study : {{ protoname }}
+                </h4>
+                <br />
+                <div class="row" style="margin-top: 2%">
+                  <div class="col-md-3">
+                    <h5 style="color: blue">Summary Panel</h5>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 style="color: blue; text-align: center">
+                      Screening Number
+                    </h5>
+                  </div>
+                  <div class="col-md-3">
+                    <h5
+                      style="color: blue; text-align: center; margin-left: 21%"
+                    >
+                      Randomization Status
+                    </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <div class="card">
+                        <table
+                          id="datatable"
+                          class="table table-striped"
+                          class="table table-bordered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                          role="grid"
+                          aria-describedby="datatable_info"
+                          style="width: 82px"
+                        >
+                          <thead>
+                            <tr role="row">
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 335.2px"
+                                aria-label="Name: activate to sort column ascending"
+                              ></th>
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 243.2px"
+                                aria-sort="ascending"
+                                aria-label="Code: activate to sort column descending"
+                              >
+                                Actual
+                              </th>
+                              <th
+                                tabindex="0"
+                                aria-controls="datatable"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 335.2px"
+                                aria-label="Name: activate to sort column ascending"
+                              >
+                                Planned
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Countries</th>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.actual_countries || 0
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.planned_countries || 0
+                                }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Sites</th>
+                              <td>
+                                {{ subjectDetailsprotocol.actual_sites || 0 }}
+                              </td>
+                              <td>
+                                {{ subjectDetailsprotocol.planned_sites || 0 }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Subjects Screened</th>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.acutal_subjects_screened ||
+                                    0
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.planned_subects_screened ||
+                                    0
+                                }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>Samples Received</th>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.actual_sample_received ||
+                                    0
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                  subjectDetailsprotocol.planed_sample_received ||
+                                    0
+                                }}
+                              </td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+                            <tr class="odd" style="vertical-align: middle">
+                              <th>--</th>
+                              <td>NA</td>
+                              <td>NA</td>
+                            </tr>
+                            <tr>
+                              <td
+                                colspan="12"
+                                *ngIf="subjectDetails.length === 0"
+                                style="text-align: center; font-size: 0.8rem"
+                              >
+                                No Data Found
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3" style="margin-left: 2%; margin-top: 6%">
+                    <div class="form-group">
+                      <p-chart
+                        type="doughnut"
+                        [data]="dataCraProtocol"
+                        [options]="chartOptions"
+                        [style]="{ width: '2%' }"
+                      ></p-chart>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-2"></div> -->
+                  <div class="col-md-5" style="margin-top: 6%">
+                    <div class="form-group">
+                      <p-chart
+                        class="custom-chart"
+                        type="bar"
+                        [data]="basicDataProtocol"
+                        [options]="basicOptions"
+                      ></p-chart>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-4" style="margin-top: 15%;">
+                    <div class="form-group">
+                      <div class="card">
+
+                        <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+                        
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- <div class="col-md-4" style="margin-top: 15%;">
+                    <div class="form-group">
+                      <div class="card">
+                        <p-chart type="bar" [data]="stackedData2" [options]="stackedOptions"></p-chart>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- end col -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <footer class="footer" style="position: fixed">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">{{ getCurrentYear() }} © ROBOXA</div>
+      </div>
+    </div>
+  </footer> -->
+
+</div>
+<footer class="footer footerheader">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6 footercontent">{{ getCurrentYear() }} © ROBOXA</div>
+    </div>
+  </div>
+</footer>
+
+
